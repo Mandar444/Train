@@ -6,10 +6,9 @@ const CODE = `
     ${MARK}
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
       try {
-        @Suppress("DEPRECATION")
-        val display = windowManager.defaultDisplay
-        val cur = display.mode
-        val best = display.supportedModes
+        val disp = windowManager.defaultDisplay
+        val cur = disp.mode
+        val best = disp.supportedModes
           .filter { it.physicalWidth == cur.physicalWidth && it.physicalHeight == cur.physicalHeight }
           .maxByOrNull { it.refreshRate }
         if (best != null) {
