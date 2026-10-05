@@ -178,7 +178,7 @@ export default function Settings() {
           const set = (h: number, m: number) => setRem({ ...rem, [timeKey]: { ...r, hour: (h + 24) % 24, minute: (m + 60) % 60 } } as repo.Reminders);
           return (
             <>
-              <Text style={{ fontFamily: F.display, fontSize: 64, color: C.text, textAlign: 'center' }}>{fmtTime(r.hour, r.minute)}</Text>
+              <Text style={{ fontFamily: F.display, fontSize: 48, color: C.text, textAlign: 'center' }}>{fmtTime(r.hour, r.minute)}</Text>
               <Row gap={8}>
                 <Btn small kind="ghost" title="−1 h" style={{ flex: 1 }} onPress={() => set(r.hour - 1, r.minute)} />
                 <Btn small kind="ghost" title="+1 h" style={{ flex: 1 }} onPress={() => set(r.hour + 1, r.minute)} />

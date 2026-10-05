@@ -29,7 +29,7 @@ export default function Onboarding() {
       <Enter>
         <View style={{ gap: 10, paddingTop: 24 }}>
           <T.Label>12-WEEK CUT + MUSCLE</T.Label>
-          <Text style={{ fontFamily: F.display, fontSize: 64, lineHeight: 62, color: C.text, textTransform: 'uppercase' }}>
+          <Text style={{ fontFamily: F.display, fontSize: 44, lineHeight: 50, color: C.text }}>
             Boringly{'\n'}<Text style={{ color: C.lime }}>measurable.</Text>
           </Text>
           <T.Body style={{ color: C.muted }}>Sustainable deficit, three full-body sessions a week, daily walking, enough sleep. Change things only when the trend says so.</T.Body>
@@ -41,7 +41,7 @@ export default function Onboarding() {
           {[['2,150', 'kcal'], ['130+', 'g protein'], ['7k→10k', 'steps'], ['3×', 'lifts / wk']].map(([v, l]) => (
             <Card key={l} style={{ flex: 1, padding: 12, gap: 2 }}>
               <Text style={{ fontFamily: F.displayBold, fontSize: 20, color: C.text }}>{v}</Text>
-              <T.Small style={{ fontSize: 11 }}>{l}</T.Small>
+              <T.Small style={{ fontSize: 12.5 }}>{l}</T.Small>
             </Card>
           ))}
         </Row>

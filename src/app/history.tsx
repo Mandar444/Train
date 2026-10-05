@@ -72,9 +72,9 @@ export default function ExerciseDetail() {
       {bySession.length ? (
         <>
           <Row gap={8}>
-            <Stat label={weighted ? 'TOP SET' : 'BEST'} value={`${top[top.length - 1]}${weighted ? ' kg' : ''}`} />
-            <Stat label="SINCE START" value={top.length > 1 ? `${top[top.length - 1] - top[0] >= 0 ? '+' : ''}${+(top[top.length - 1] - top[0]).toFixed(2)}` : '—'} />
-            <Stat label="SESSIONS" value={String(bySession.length)} />
+            <Stat label={weighted ? 'Top set' : 'Best'} value={`${top[top.length - 1]}${weighted ? ' kg' : ''}`} />
+            <Stat label="Since start" value={top.length > 1 ? `${top[top.length - 1] - top[0] >= 0 ? '+' : ''}${+(top[top.length - 1] - top[0]).toFixed(2)}` : '—'} />
+            <Stat label="Sessions" value={String(bySession.length)} />
           </Row>
           <Card style={{ gap: 12 }}>
             {weighted ? <Segmented options={[{ key: 'w', label: 'Weight' }, { key: 'v', label: 'Volume' }, { key: 'e', label: 'Est. 1RM' }]} value={mode} onChange={setMode} /> : null}
@@ -82,8 +82,8 @@ export default function ExerciseDetail() {
               ? <Bars values={series} labels={bySession.map((g) => dayMonth(g.date).split(' ')[0])} width={w} height={170} highlightLast={false} format={(v) => `${Math.round(v / 100) / 10}k`} />
               : <LineChart values={series} width={w} height={170} />}
             <Row style={{ justifyContent: 'space-between' }}>
-              <T.Label style={{ fontSize: 10 }}>{dayMonth(bySession[0].date).toUpperCase()}</T.Label>
-              <T.Label style={{ fontSize: 10 }}>{dayMonth(bySession[bySession.length - 1].date).toUpperCase()}</T.Label>
+              <T.Label style={{ fontSize: 12 }}>{dayMonth(bySession[0].date).toUpperCase()}</T.Label>
+              <T.Label style={{ fontSize: 12 }}>{dayMonth(bySession[bySession.length - 1].date).toUpperCase()}</T.Label>
             </Row>
           </Card>
           <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
@@ -94,10 +94,10 @@ export default function ExerciseDetail() {
                 <Row key={g.sid} gap={12} style={{ minHeight: 58, paddingHorizontal: 16, borderTopWidth: i ? 1 : 0, borderTopColor: '#21221C' }}>
                   <View style={{ width: 70 }}>
                     <T.Strong style={{ fontSize: 13 }}>{dayMonth(g.date)}</T.Strong>
-                    <T.Small style={{ fontSize: 11, color: C.dim }}>Full Body {g.type}</T.Small>
+                    <T.Small style={{ fontSize: 12.5, color: C.dim }}>Full Body {g.type}</T.Small>
                   </View>
                   <T.Mono style={{ flex: 1 }}>{`${weighted ? `${g.sets[0].weight_kg} × ` : ''}${g.sets.map((s) => s.reps).join(', ')}`}</T.Mono>
-                  <Text style={{ fontFamily: F.mono, fontSize: 12, color: pain ? C.orange : full ? C.lime : C.dim }}>{pain ? 'PAIN' : full ? '↑ NEXT' : 'HOLD'}</Text>
+                  <Text style={{ fontFamily: F.mono, fontSize: 12, color: pain ? C.orange : full ? C.lime : C.dim }}>{pain ? 'Pain' : full ? '↑ Next' : 'Hold'}</Text>
                 </Row>
               );
             })}

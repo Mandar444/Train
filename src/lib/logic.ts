@@ -38,10 +38,10 @@ export type StatusKey = 'COLLECTING' | 'ON_TRACK' | 'AUDIT' | 'REVIEW' | 'RECOMP
 export type Status = { key: StatusKey; tag: string; line: string; detail: string; color: string; ink: string };
 
 export function status(ws: Weigh[], date: string, strengthUp: number): Status {
-  if (!ws.length) return { key: 'START', tag: 'DAY ONE', line: 'Log your first morning weigh-in.', detail: 'Everything else builds on a reliable baseline.', color: C.lime, ink: C.bg };
+  if (!ws.length) return { key: 'START', tag: 'Day one', line: 'Log your first morning weigh-in.', detail: 'Everything else builds on a reliable baseline.', color: C.lime, ink: C.bg };
   const span = diffDays(date, ws[0].date);
   if (span < 14) {
-    return { key: 'COLLECTING', tag: 'COLLECTING DATA', line: 'Building your baseline. Keep logging.', detail: `${14 - span} more day${14 - span === 1 ? '' : 's'} until the trend is reliable.`, color: C.text, ink: C.bg };
+    return { key: 'COLLECTING', tag: 'Collecting data', line: 'Building your baseline. Keep logging.', detail: `${14 - span} more day${14 - span === 1 ? '' : 's'} until the trend is reliable.`, color: C.text, ink: C.bg };
   }
   const now = avgAt(ws, date)!;
   const wk = weeklyChange(ws, date) ?? 0;
@@ -50,12 +50,12 @@ export function status(ws: Weigh[], date: string, strengthUp: number): Status {
   const pct = (-wk / now.avg) * 100;
   const prevPct = (-prevWk / now.avg) * 100;
   const loss = -wk;
-  if (two > -0.3) return { key: 'AUDIT', tag: 'AUDIT', line: 'Almost no change for 2 weeks.', detail: 'Check portions, snacks, drinks, steps and logging first. Then cut ~150–200 kcal or add steps — one change only.', color: C.orange, ink: C.bg };
-  if (pct > 1 && prevPct > 1) return { key: 'REVIEW', tag: 'REVIEW', line: 'Losing fast two weeks running.', detail: 'If you feel drained or lifts are dropping, add a little food and reassess.', color: C.orange, ink: C.bg };
-  if (loss >= 0.35 && loss <= 0.85) return { key: 'ON_TRACK', tag: 'ON TRACK', line: 'Keep the plan unchanged.', detail: `−${loss.toFixed(1)} kg this week, inside the 0.4–0.8 kg range.`, color: C.lime, ink: C.bg };
-  if (loss < 0.35 && strengthUp > 0) return { key: 'RECOMP', tag: 'RECOMP', line: 'Strength up, weight slow. Don’t panic.', detail: 'Recomposition may be happening. Watch the waist.', color: C.lime, ink: C.bg };
-  if (loss < 0.35) return { key: 'SLOW', tag: 'SLOW WEEK', line: 'Slower than planned. Stay the course.', detail: 'One slow week is noise. Re-check next week before changing anything.', color: C.text, ink: C.bg };
-  return { key: 'FAST', tag: 'AHEAD', line: 'Faster than planned this week.', detail: 'Fine if training feels good. Don’t cut food further.', color: C.lime, ink: C.bg };
+  if (two > -0.3) return { key: 'AUDIT', tag: 'Audit', line: 'Almost no change for 2 weeks.', detail: 'Check portions, snacks, drinks, steps and logging first. Then cut ~150–200 kcal or add steps — one change only.', color: C.orange, ink: C.bg };
+  if (pct > 1 && prevPct > 1) return { key: 'REVIEW', tag: 'Review', line: 'Losing fast two weeks running.', detail: 'If you feel drained or lifts are dropping, add a little food and reassess.', color: C.orange, ink: C.bg };
+  if (loss >= 0.35 && loss <= 0.85) return { key: 'ON_TRACK', tag: 'On track', line: 'Keep the plan unchanged.', detail: `−${loss.toFixed(1)} kg this week, inside the 0.4–0.8 kg range.`, color: C.lime, ink: C.bg };
+  if (loss < 0.35 && strengthUp > 0) return { key: 'RECOMP', tag: 'Recomp', line: 'Strength up, weight slow. Don’t panic.', detail: 'Recomposition may be happening. Watch the waist.', color: C.lime, ink: C.bg };
+  if (loss < 0.35) return { key: 'SLOW', tag: 'Slow week', line: 'Slower than planned. Stay the course.', detail: 'One slow week is noise. Re-check next week before changing anything.', color: C.text, ink: C.bg };
+  return { key: 'FAST', tag: 'Ahead', line: 'Faster than planned this week.', detail: 'Fine if training feels good. Don’t cut food further.', color: C.lime, ink: C.bg };
 }
 
 export function nextMilestone(avg: number) {

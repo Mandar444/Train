@@ -70,7 +70,7 @@ export default function Body() {
           <View style={{ gap: 4 }}>
             <T.Label>WAIST · AT NAVEL</T.Label>
             <Row gap={6} style={{ alignItems: 'baseline' }}>
-              <Text style={{ fontFamily: F.displayBold, fontSize: 64, lineHeight: 64, color: C.text }}>{last?.waist_cm?.toFixed(1) ?? '—'}</Text>
+              <Text style={{ fontFamily: F.displayBold, fontSize: 44, color: C.text }}>{last?.waist_cm?.toFixed(1) ?? '—'}</Text>
               <T.Small style={{ fontSize: 14 }}>cm</T.Small>
             </Row>
           </View>
@@ -103,7 +103,7 @@ export default function Body() {
             <Pressable onLongPress={() => p && Alert.alert('Delete photo?', '', [{ text: 'Cancel', style: 'cancel' }, { text: 'Delete', style: 'destructive', onPress: () => repo.deletePhoto(p.id) }])}
               style={{ height: colW * 1.33, borderRadius: 18, overflow: 'hidden', backgroundColor: C.card, borderWidth: 1, borderColor: C.line, alignItems: 'center', justifyContent: 'center' }}>
               {p ? <Image source={{ uri: p.uri }} style={{ width: '100%', height: '100%' }} /> : <Icon name="camera" size={32} color={C.line3} />}
-              {p ? <Text style={{ position: 'absolute', left: 10, top: 10, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: 'rgba(13,14,11,0.85)', color: C.text, fontFamily: F.mono, fontSize: 11 }}>{dayMonth(p.date).toUpperCase()}</Text> : null}
+              {p ? <Text style={{ position: 'absolute', left: 10, top: 10, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: 'rgba(13,14,11,0.85)', color: C.text, fontFamily: F.mono, fontSize: 12.5 }}>{dayMonth(p.date).toUpperCase()}</Text> : null}
             </Pressable>
             <T.Small style={{ textAlign: 'center' }}>{p ? `${weightOn(p.date)?.toFixed(1) ?? '—'} kg · ${waistOn(p.date)?.toFixed(1) ?? '—'} cm` : i === 0 ? 'Baseline' : 'Latest'}</T.Small>
           </View>

@@ -65,7 +65,7 @@ export default function Library() {
               <View style={{ flex: 1, gap: 4 }}>
                 <Text style={{ fontFamily: F.bold, fontSize: 15, color: C.text }} numberOfLines={2}>{e.name}</Text>
                 <Text style={{ fontFamily: F.body, fontSize: 12, color: C.muted }}>{`${e.group} · ${e.equip}`}</Text>
-                <Text style={{ fontFamily: F.mono, fontSize: 11, color: C.dim }}>{scheme(e)}</Text>
+                <Text style={{ fontFamily: F.mono, fontSize: 12.5, color: C.dim }}>{scheme(e)}</Text>
               </View>
               {pick ? (
                 <View style={{ width: 36, height: 36, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: picked ? C.lime : 'transparent', borderWidth: 1, borderColor: picked ? C.lime : C.line3 }}>

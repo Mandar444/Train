@@ -142,6 +142,10 @@ export async function addMeal(date: string, meal: MealKey, name: string, calorie
   await db().runAsync('INSERT INTO meal_item (date, meal, name, calories, protein_g, created_at) VALUES (?, ?, ?, ?, ?, ?)', date, meal, name, Math.round(calories), protein, new Date().toISOString());
   emitChange();
 }
+export async function recentFoods(limit = 8): Promise<{ name: string; calories: number; protein_g: number }[]> {
+  return db().getAllAsync(
+    `SELECT name, calories, protein_g FROM meal_item WHERE id IN (SELECT MAX(id) FROM meal_item GROUP BY name) ORDER BY id DESC LIMIT ?`, limit);
+}
 export async function deleteMeal(id: number): Promise<void> {
   await db().runAsync('DELETE FROM meal_item WHERE id = ?', id);
   emitChange();

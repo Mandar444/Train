@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Pressable, Text, useWindowDimensions, View } from 'react-native';
 import { router } from 'expo-router';
-import { Bar, Btn, Card, Enter, Pill, Row, Screen, Segmented, T } from '../../components/ui';
+import { Bar, Btn, Card, Enter, Icon, Pill, Row, Screen, Segmented, T } from '../../components/ui';
 import { Bars, TrendChart } from '../../components/charts';
 import { useQuery } from '../../lib/hooks';
 import { loadSummary, strengthTrend } from '../../lib/summary';
@@ -26,15 +26,27 @@ export default function Progress() {
 
   return (
     <Screen>
-      <Enter>
-        <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <View style={{ gap: 6 }}>
-            <T.Label>{`${s.day} DAYS · WEEK ${s.week} OF 12`}</T.Label>
-            <T.Display>Progress</T.Display>
-          </View>
-          <Btn small kind="ghost" title="Weekly review" onPress={() => router.push('/review')} />
-        </Row>
-      </Enter>
+      <View style={{ gap: 4, paddingTop: 8 }}>
+        <T.Display>Progress</T.Display>
+        <T.Small>{`Day ${s.day} · week ${s.week} of 12`}</T.Small>
+      </View>
+
+      <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
+        {[
+          { t: 'Weekly review', d: 'Is the plan working? What to change', to: '/review' },
+          { t: 'Waist & progress photos', d: 'Measure weekly, photos every 2 weeks', to: '/body' },
+          { t: '12-week plan', d: 'This week, targets and the rules', to: '/plan' },
+          { t: 'Exercise library', d: '112 exercises with form animations', to: '/library' },
+        ].map((x, i) => (
+          <Pressable key={x.t} onPress={() => router.push(x.to as never)} style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 14, borderTopWidth: i ? 1 : 0, borderTopColor: '#21221C', backgroundColor: pressed ? C.card2 : 'transparent' })}>
+            <View style={{ flex: 1, gap: 2 }}>
+              <T.Strong>{x.t}</T.Strong>
+              <T.Small>{x.d}</T.Small>
+            </View>
+            <Icon name="chevron" color={C.muted} />
+          </Pressable>
+        ))}
+      </Card>
 
       <Segmented options={[{ key: 'w', label: 'Weight' }, { key: 'c', label: 'Waist' }, { key: 's', label: 'Strength' }]} value={seg} onChange={setSeg} />
 
@@ -43,17 +55,17 @@ export default function Progress() {
           <Card style={{ gap: 12 }}>
             <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
               <Row gap={6} style={{ alignItems: 'baseline' }}>
-                <Text style={{ fontFamily: F.displayBold, fontSize: 56, lineHeight: 56, color: C.text }}>{s.avg != null ? `${s.lostKg >= 0 ? '−' : '+'}${Math.abs(s.lostKg).toFixed(1)}` : '—'}</Text>
+                <Text style={{ fontFamily: F.display, fontSize: 40, letterSpacing: -1, color: C.text }}>{s.avg != null ? `${s.lostKg >= 0 ? '−' : '+'}${Math.abs(s.lostKg).toFixed(1)}` : '—'}</Text>
                 <T.Small style={{ fontSize: 14 }}>kg (avg)</T.Small>
               </Row>
               <View style={{ alignItems: 'flex-end', gap: 4 }}>
-                <Row gap={6}><View style={{ width: 14, height: 3, borderRadius: 2, backgroundColor: C.lime }} /><T.Small style={{ fontSize: 11 }}>7-day avg</T.Small></Row>
-                <Row gap={6}><View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#6A6B60' }} /><T.Small style={{ fontSize: 11 }}>Daily</T.Small></Row>
+                <Row gap={6}><View style={{ width: 14, height: 3, borderRadius: 2, backgroundColor: C.lime }} /><T.Small style={{ fontSize: 12.5 }}>7-day avg</T.Small></Row>
+                <Row gap={6}><View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#6A6B60' }} /><T.Small style={{ fontSize: 12.5 }}>Daily</T.Small></Row>
               </View>
             </Row>
             <TrendChart daily={s.weights.map((w) => w.weight_kg)} avg={series.map((x) => x.avg)} width={chartW} height={210} showGrid
               band={first ? { startKg: first.weight_kg, slowPerDay: 0.4 / 7, fastPerDay: 0.8 / 7 } : undefined} animKey={seg} />
-            {first ? <Row style={{ justifyContent: 'space-between', paddingLeft: 30 }}><T.Label style={{ fontSize: 10 }}>{dayMonth(first.date).toUpperCase()}</T.Label><T.Label style={{ fontSize: 10 }}>TODAY</T.Label></Row> : null}
+            {first ? <Row style={{ justifyContent: 'space-between', paddingLeft: 30 }}><T.Label style={{ fontSize: 12 }}>{dayMonth(first.date).toUpperCase()}</T.Label><T.Label style={{ fontSize: 12 }}>TODAY</T.Label></Row> : null}
             <T.Small>Shaded band = expected pace, 0.4–0.8 kg/week. Daily dots bounce with water, salt and carbs. Judge the line, not the dots.</T.Small>
           </Card>
         </Enter>
@@ -63,7 +75,7 @@ export default function Progress() {
         <Enter key="c">
           <Card style={{ gap: 14 }}>
             <Row gap={6} style={{ alignItems: 'baseline' }}>
-              <Text style={{ fontFamily: F.displayBold, fontSize: 56, lineHeight: 56, color: C.text }}>{waistDelta != null ? `${waistDelta <= 0 ? '−' : '+'}${Math.abs(waistDelta).toFixed(1)}` : waists.length ? waists[0].waist_cm!.toFixed(1) : '—'}</Text>
+              <Text style={{ fontFamily: F.display, fontSize: 40, letterSpacing: -1, color: C.text }}>{waistDelta != null ? `${waistDelta <= 0 ? '−' : '+'}${Math.abs(waistDelta).toFixed(1)}` : waists.length ? waists[0].waist_cm!.toFixed(1) : '—'}</Text>
               <T.Small style={{ fontSize: 14 }}>{waistDelta != null ? 'cm at the navel' : 'cm · first measurement'}</T.Small>
             </Row>
             {waists.length ? (
@@ -92,7 +104,7 @@ export default function Progress() {
       ) : null}
 
       <View style={{ gap: 4, marginTop: 4 }}>
-        <T.Label style={{ marginBottom: 6 }}>MILESTONES</T.Label>
+        <T.Strong style={{ marginBottom: 6, fontSize: 18 }}>Milestones</T.Strong>
         {MILESTONES.map((ms, i) => {
           const reached = s.avg != null && s.avg <= ms.kg + 0.05;
           const current = s.milestone?.kg === ms.kg;

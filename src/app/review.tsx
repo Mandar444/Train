@@ -50,10 +50,10 @@ export default function Review() {
   const main = watch[0];
 
   const RULES = [
-    { key: 'ON_TRACK', tag: 'ON TRACK', when: 'Losing ~0.4–0.8 kg/week, training okay', then: 'Keep the plan unchanged.' },
-    { key: 'AUDIT', tag: 'AUDIT', when: 'Almost no change for 2–3 weeks', then: 'Check portions, snacks, drinks, steps, logging. Then −150–200 kcal or more steps.' },
-    { key: 'REVIEW', tag: 'REVIEW', when: '>1% bodyweight/week + fatigue', then: 'Consider a small increase in food and reassess.' },
-    { key: 'RECOMP', tag: 'RECOMP', when: 'Strength up, weight falling slowly', then: 'Don’t panic. Recomposition may be happening.' },
+    { key: 'ON_TRACK', tag: 'On track', when: 'Losing ~0.4–0.8 kg/week, training okay', then: 'Keep the plan unchanged.' },
+    { key: 'AUDIT', tag: 'Audit', when: 'Almost no change for 2–3 weeks', then: 'Check portions, snacks, drinks, steps, logging. Then −150–200 kcal or more steps.' },
+    { key: 'REVIEW', tag: 'Review', when: '>1% bodyweight/week + fatigue', then: 'Consider a small increase in food and reassess.' },
+    { key: 'RECOMP', tag: 'Recomp', when: 'Strength up, weight falling slowly', then: 'Don’t panic. Recomposition may be happening.' },
   ];
 
   return (
@@ -61,8 +61,8 @@ export default function Review() {
       <Header title="Weekly review" kicker={`WEEK ${r.week} · ${dayMonth(r.from).toUpperCase()} – ${dayMonth(r.to).toUpperCase()}`} />
 
       <View style={{ padding: 22, borderRadius: 24, backgroundColor: r.st.color, gap: 10 }}>
-        <Text style={{ fontFamily: F.monoBold, fontSize: 11, letterSpacing: 1.1, color: r.st.ink }}>VERDICT</Text>
-        <Text style={{ fontFamily: F.display, fontSize: 52, lineHeight: 52, color: r.st.ink, textTransform: 'uppercase' }}>{r.st.tag}</Text>
+        <Text style={{ fontFamily: F.monoBold, fontSize: 12.5, color: r.st.ink }}>Verdict</Text>
+        <Text style={{ fontFamily: F.display, fontSize: 38, color: r.st.ink }}>{r.st.tag}</Text>
         <Text style={{ fontFamily: F.medium, fontSize: 15, lineHeight: 21, color: r.st.ink }}>{r.st.line} {r.st.detail}</Text>
       </View>
 
@@ -102,7 +102,7 @@ export default function Review() {
           const on = x.key === r.st.key;
           return (
             <Row key={x.key} gap={12} style={{ padding: 14, paddingHorizontal: 16, borderTopWidth: 1, borderTopColor: '#21221C', alignItems: 'flex-start', backgroundColor: on ? 'rgba(212,255,79,0.06)' : 'transparent' }}>
-              <Text style={{ minWidth: 76, textAlign: 'center', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: on ? C.lime : C.card2, color: on ? C.bg : C.muted, fontFamily: F.monoBold, fontSize: 10 }}>{x.tag}</Text>
+              <Text style={{ minWidth: 76, textAlign: 'center', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: on ? C.lime : C.card2, color: on ? C.bg : C.muted, fontFamily: F.monoBold, fontSize: 12 }}>{x.tag}</Text>
               <View style={{ flex: 1, gap: 3 }}>
                 <T.Body style={{ fontSize: 13, color: on ? C.text : C.text2 }}>{x.when}</T.Body>
                 <T.Small style={{ color: C.dim }}>{x.then}</T.Small>

@@ -5,9 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { BigShouldersDisplay_800ExtraBold, BigShouldersDisplay_900Black } from '@expo-google-fonts/big-shoulders-display';
-import { Geist_400Regular, Geist_500Medium, Geist_600SemiBold, Geist_700Bold } from '@expo-google-fonts/geist';
-import { GeistMono_500Medium, GeistMono_600SemiBold } from '@expo-google-fonts/geist-mono';
+import { PlusJakartaSans_400Regular, PlusJakartaSans_500Medium, PlusJakartaSans_600SemiBold, PlusJakartaSans_700Bold, PlusJakartaSans_800ExtraBold } from '@expo-google-fonts/plus-jakarta-sans';
 import { Anton_400Regular } from '@expo-google-fonts/anton';
 import { Intro } from '../components/Intro';
 import { migrate } from '../lib/db';
@@ -20,9 +18,8 @@ SplashScreen.preventAutoHideAsync().catch(() => {});
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    BigShouldersDisplay_800ExtraBold, BigShouldersDisplay_900Black,
-    Geist_400Regular, Geist_500Medium, Geist_600SemiBold, Geist_700Bold,
-    GeistMono_500Medium, GeistMono_600SemiBold, Anton_400Regular,
+    PlusJakartaSans_400Regular, PlusJakartaSans_500Medium, PlusJakartaSans_600SemiBold, PlusJakartaSans_700Bold, PlusJakartaSans_800ExtraBold,
+    Anton_400Regular,
   });
   const [intro, setIntro] = useState(true);
   const [ready, setReady] = useState(false);

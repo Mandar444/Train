@@ -5,11 +5,11 @@ import { haptic, Icon, IconName } from '../../components/ui';
 import { C, F } from '../../lib/theme';
 
 const TABS: { name: string; label: string; icon: IconName }[] = [
-  { name: 'index', label: 'Today', icon: 'home' },
+  { name: 'index', label: 'Home', icon: 'home' },
   { name: 'food', label: 'Food', icon: 'bowl' },
-  { name: 'train', label: 'Train', icon: 'dumbbell' },
+  { name: 'steps', label: 'Steps', icon: 'steps' },
+  { name: 'train', label: 'Workout', icon: 'dumbbell' },
   { name: 'progress', label: 'Progress', icon: 'trend' },
-  { name: 'plan', label: 'Plan', icon: 'calendar' },
 ];
 
 function TabBar({ state, navigation }: BottomTabBarProps) {
@@ -34,8 +34,10 @@ function TabBar({ state, navigation }: BottomTabBarProps) {
             }}
             style={{ minWidth: 60, minHeight: 48, alignItems: 'center', justifyContent: 'center', gap: 4 }}
           >
-            <Icon name={tab.icon} size={24} color={color} width={1.8} />
-            <Text style={{ color, fontFamily: F.medium, fontSize: 11 }}>{tab.label}</Text>
+            <View style={{ width: 52, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: focused ? C.limeSoft : 'transparent' }}>
+              <Icon name={tab.icon} size={22} color={color} width={focused ? 2.2 : 1.8} />
+            </View>
+            <Text style={{ color, fontFamily: focused ? F.bold : F.medium, fontSize: 12 }}>{tab.label}</Text>
           </Pressable>
         );
       })}

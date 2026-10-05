@@ -69,8 +69,8 @@ export default function Health() {
           <Row key={p.n} gap={12} style={{ minHeight: 58, paddingHorizontal: 16, borderTopWidth: 1, borderTopColor: '#21221C' }}>
             <View style={{ width: 36, height: 36, borderRadius: 11, backgroundColor: C.card2, alignItems: 'center', justifyContent: 'center' }}><Icon name={p.icon} size={18} color={C.text2} /></View>
             <View style={{ flex: 1 }}><T.Strong style={{ fontSize: 14 }}>{p.n}</T.Strong><T.Small style={{ color: C.dim }}>{p.s}</T.Small></View>
-            <Text style={{ fontFamily: F.monoBold, fontSize: 10, letterSpacing: 0.8, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: p.on ? C.limeSoft : C.card2, color: p.on ? C.lime : C.muted }}>
-              {p.on ? 'ALLOWED' : p.req ? 'REQUIRED' : 'OPTIONAL'}
+            <Text style={{ fontFamily: F.monoBold, fontSize: 12, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: p.on ? C.limeSoft : C.card2, color: p.on ? C.lime : C.muted }}>
+              {p.on ? 'Allowed' : p.req ? 'Required' : 'Optional'}
             </Text>
           </Row>
         ))}
@@ -78,7 +78,7 @@ export default function Health() {
 
       {connected && data ? (
         <Card tone="green" style={{ gap: 8 }}>
-          <Row style={{ justifyContent: 'space-between' }}><T.Strong style={{ fontSize: 14 }}>Synced</T.Strong><Text style={{ fontFamily: F.mono, fontSize: 11, color: C.lime }}>LIVE</Text></Row>
+          <Row style={{ justifyContent: 'space-between' }}><T.Strong style={{ fontSize: 14 }}>Synced</T.Strong><Text style={{ fontFamily: F.mono, fontSize: 12.5, color: C.lime }}>Live</Text></Row>
           <Row style={{ justifyContent: 'space-between' }}><T.Small style={{ color: C.text2 }}>Today</T.Small><T.Mono>{fmt(data.day?.steps ?? 0)} steps</T.Mono></Row>
           <Row style={{ justifyContent: 'space-between' }}><T.Small style={{ color: C.text2 }}>Last sync</T.Small><T.Mono>{data.last ? new Date(data.last).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : '—'}</T.Mono></Row>
           <Row style={{ justifyContent: 'space-between' }}><T.Small style={{ color: C.text2 }}>Refresh</T.Small><T.Mono>on open + pull to refresh</T.Mono></Row>

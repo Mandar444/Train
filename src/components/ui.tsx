@@ -42,6 +42,7 @@ export const ICONS = {
   settings: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z',
   sync: 'M20 11a8 8 0 0 0-14.9-3M4 4v4h4M4 13a8 8 0 0 0 14.9 3M20 20v-4h-4',
   timer: 'M12 8v5l3 2M12 22a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9 2h6',
+  search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4',
 };
 export type IconName = keyof typeof ICONS;
 
@@ -54,9 +55,12 @@ export function Icon({ name, size = 20, color = C.text, width = 2 }: { name: Ico
 }
 
 // ---------- text ----------
+export { nice } from '../lib/text';
+import { nice } from '../lib/text';
+
 type TP = { children?: ReactNode; style?: StyleProp<TextStyle>; numberOfLines?: number };
 export const T = {
-  Label: ({ children, style }: TP) => <Text style={[s.label, style]}>{children}</Text>,
+  Label: ({ children, style }: TP) => <Text style={[s.label, style]}>{nice(children)}</Text>,
   Display: ({ children, style, numberOfLines }: TP) => <Text numberOfLines={numberOfLines} style={[s.display, style]}>{children}</Text>,
   Num: ({ children, style }: TP) => <Text style={[s.num, style]}>{children}</Text>,
   Body: ({ children, style, numberOfLines }: TP) => <Text numberOfLines={numberOfLines} style={[s.body, style]}>{children}</Text>,
@@ -110,7 +114,7 @@ export function Header({ title, kicker, back = true, right }: { title: string; k
       {back && <IconBtn name="back" label="Back" onPress={() => (router.canGoBack() ? router.back() : router.replace('/'))} />}
       <View style={{ flex: 1, gap: 2 }}>
         {kicker ? <T.Label>{kicker}</T.Label> : null}
-        <T.Display style={{ fontSize: 34 }} numberOfLines={1}>{title}</T.Display>
+        <T.Display style={{ fontSize: 26 }} numberOfLines={1}>{title}</T.Display>
       </View>
       {right}
     </Row>
@@ -163,7 +167,7 @@ export function Pill({ text, tone = 'muted', style }: { text: string; tone?: 'li
   const fg = { lime: C.lime, muted: C.text2, orange: C.orange, solid: C.bg }[tone];
   return (
     <View style={[{ paddingHorizontal: 10, paddingVertical: 6, borderRadius: 999, backgroundColor: bg, alignSelf: 'flex-start' }, style]}>
-      <Text style={{ color: fg, fontFamily: F.monoBold, fontSize: 12 }}>{text}</Text>
+      <Text style={{ color: fg, fontFamily: F.bold, fontSize: 13 }}>{nice(text)}</Text>
     </View>
   );
 }
@@ -203,7 +207,7 @@ export function Segmented<K extends string>({ options, value, onChange }: { opti
         const on = o.key === value;
         return (
           <Pressable key={o.key} onPress={() => { haptic(); onChange(o.key); }} style={{ flex: 1, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? C.text : 'transparent' }}>
-            <Text style={{ fontFamily: F.semibold, fontSize: 13, color: on ? C.bg : C.muted }}>{o.label}</Text>
+            <Text style={{ fontFamily: F.semibold, fontSize: 14, color: on ? C.bg : C.muted }}>{o.label}</Text>
           </Pressable>
         );
       })}
@@ -232,7 +236,7 @@ export function Sheet({ visible, onClose, title, children }: { visible: boolean;
         <View style={{ backgroundColor: '#121310', borderTopLeftRadius: 28, borderTopRightRadius: 28, borderWidth: 1, borderColor: C.line2, padding: 20, paddingBottom: 20 + ins.bottom, gap: 14, maxHeight: '88%' }}>
           <View style={{ alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: C.line3 }} />
           <Row style={{ justifyContent: 'space-between' }}>
-            <T.Display style={{ fontSize: 28 }}>{title}</T.Display>
+            <T.Display style={{ fontSize: 22 }}>{title}</T.Display>
             <IconBtn name="close" label="Close" onPress={onClose} />
           </Row>
           <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ gap: 14 }}>{children}</ScrollView>
@@ -245,8 +249,8 @@ export function Sheet({ visible, onClose, title, children }: { visible: boolean;
 export function Stat({ label, value, sub, subColor = C.muted }: { label: string; value: string; sub?: string; subColor?: string }) {
   return (
     <Card style={{ flex: 1, padding: 14, gap: 6 }}>
-      <T.Label style={{ fontSize: 10 }}>{label}</T.Label>
-      <T.Num style={{ fontSize: 28 }}>{value}</T.Num>
+      <T.Label style={{ fontSize: 13 }}>{label}</T.Label>
+      <T.Num style={{ fontSize: 24 }}>{value}</T.Num>
       {sub ? <T.Small style={{ color: subColor }}>{sub}</T.Small> : null}
     </Card>
   );
@@ -266,13 +270,13 @@ export function ListRow({ title, sub, right, onPress, first }: { title: string; 
 }
 
 const s = StyleSheet.create({
-  label: { fontFamily: F.mono, fontSize: 11, letterSpacing: 1.1, color: C.muted, textTransform: 'uppercase' },
-  display: { fontFamily: F.display, fontSize: 44, lineHeight: undefined, color: C.text, textTransform: 'uppercase', letterSpacing: 0.3 },
-  num: { fontFamily: F.displayBold, fontSize: 40, color: C.text },
-  body: { fontFamily: F.body, fontSize: 15, color: C.text, lineHeight: 21 },
-  small: { fontFamily: F.body, fontSize: 12.5, color: C.muted, lineHeight: 18 },
-  strong: { fontFamily: F.bold, fontSize: 15, color: C.text },
-  mono: { fontFamily: F.mono, fontSize: 13, color: C.text2 },
+  label: { fontFamily: F.semibold, fontSize: 14, color: C.muted },
+  display: { fontFamily: F.display, fontSize: 30, color: C.text, letterSpacing: -0.5 },
+  num: { fontFamily: F.display, fontSize: 32, color: C.text, letterSpacing: -0.5, fontVariant: ['tabular-nums'] },
+  body: { fontFamily: F.body, fontSize: 16, color: C.text, lineHeight: 23 },
+  small: { fontFamily: F.medium, fontSize: 14, color: C.muted, lineHeight: 20 },
+  strong: { fontFamily: F.bold, fontSize: 16, color: C.text },
+  mono: { fontFamily: F.semibold, fontSize: 14, color: C.text2, fontVariant: ['tabular-nums'] },
   card: { backgroundColor: C.card, borderWidth: 1, borderColor: C.line, borderRadius: 22, padding: 18, gap: 12 },
   cardOrange: { backgroundColor: C.orangeSoft, borderColor: C.orangeLine },
   cardLime: { backgroundColor: C.lime, borderColor: C.lime },

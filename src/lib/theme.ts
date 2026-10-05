@@ -7,8 +7,8 @@ export const C = {
   line3: '#3A3B33',
   text: '#F2F1EA',
   text2: '#D6D5CC',
-  muted: '#A3A396',
-  dim: '#8F8F83',
+  muted: '#B9B9AD',
+  dim: '#9C9C90',
   faint: '#5A5B50',
   lime: '#D4FF4F',
   limeSoft: 'rgba(212,255,79,0.13)',
@@ -21,14 +21,15 @@ export const C = {
 };
 
 export const F = {
-  display: 'BigShouldersDisplay_900Black',
-  displayBold: 'BigShouldersDisplay_800ExtraBold',
-  body: 'Geist_400Regular',
-  medium: 'Geist_500Medium',
-  semibold: 'Geist_600SemiBold',
-  bold: 'Geist_700Bold',
-  mono: 'GeistMono_500Medium',
-  monoBold: 'GeistMono_600SemiBold',
+  display: 'PlusJakartaSans_800ExtraBold',
+  displayBold: 'PlusJakartaSans_800ExtraBold',
+  body: 'PlusJakartaSans_400Regular',
+  medium: 'PlusJakartaSans_500Medium',
+  semibold: 'PlusJakartaSans_600SemiBold',
+  bold: 'PlusJakartaSans_700Bold',
+  mono: 'PlusJakartaSans_600SemiBold',
+  monoBold: 'PlusJakartaSans_700Bold',
+  logo: 'Anton_400Regular',
 };
 
 export const R = { sm: 12, md: 16, lg: 20, xl: 24 };

@@ -150,10 +150,10 @@ function Live({ data }: { data: TD }) {
         style={{ flexDirection: 'row', alignItems: 'center', gap: 14, padding: 12, borderRadius: 18, backgroundColor: restLeft > 0 ? C.lime : C.card, borderWidth: 1, borderColor: restLeft > 0 ? C.lime : C.line }}>
         <RestRing left={restLeft} total={restLen} active={restLeft > 0} label={restLeft > 0 ? mm(restLeft) : 'GO'} />
         <View style={{ flex: 1, gap: 2 }}>
-          <Text style={{ fontFamily: F.monoBold, fontSize: 11, letterSpacing: 1.1, color: restLeft > 0 ? C.bg : C.muted }}>{restLeft > 0 ? 'REST' : 'READY'}</Text>
+          <Text style={{ fontFamily: F.monoBold, fontSize: 12.5, color: restLeft > 0 ? C.bg : C.muted }}>{restLeft > 0 ? 'Resting' : 'Ready'}</Text>
           <Text style={{ fontFamily: F.semibold, fontSize: 14, color: restLeft > 0 ? C.bg : C.text }}>{`Next: ${data.defs[current]?.name ?? 'finish'}`}</Text>
         </View>
-        <Text style={{ fontFamily: F.semibold, fontSize: 13, color: restLeft > 0 ? C.bg : C.lime }}>{restLeft > 0 ? 'Skip' : '+30s'}</Text>
+        <Text style={{ fontFamily: F.semibold, fontSize: 13, color: restLeft > 0 ? C.bg : C.lime }}>{restLeft > 0 ? 'Skip' : '+30 s'}</Text>
       </Pressable>
 
       {data.exKeys.map((k, idx) => {
@@ -181,7 +181,7 @@ function Live({ data }: { data: TD }) {
           <Card key={k} style={{ gap: 14, borderColor: C.line3 }}>
             <Row style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <View style={{ gap: 4, flex: 1 }}>
-                <Text style={{ fontFamily: F.monoBold, fontSize: 11, letterSpacing: 1.1, color: C.lime }}>{`EXERCISE ${idx + 1} OF ${data.exKeys.length}`}</Text>
+                <Text style={{ fontFamily: F.monoBold, fontSize: 12.5, color: C.lime }}>{`Exercise ${idx + 1} of ${data.exKeys.length}`}</Text>
                 <T.Display style={{ fontSize: 30 }}>{def.name}</T.Display>
                 <T.Small>{`${scheme(def)} · ${def.unit === 'reps' ? 'leave 1–3 reps in reserve' : def.group}`}</T.Small>
               </View>
@@ -195,17 +195,17 @@ function Live({ data }: { data: TD }) {
             <Row gap={6} style={{ alignItems: 'stretch' }}>
               {def.cues.map((c) => (
                 <View key={c} style={{ flex: 1, padding: 10, borderRadius: 12, backgroundColor: C.card2, gap: 3 }}>
-                  <Text style={{ fontFamily: F.mono, fontSize: 10, color: C.dim, letterSpacing: 0.8 }}>CUE</Text>
+                  <Text style={{ fontFamily: F.semibold, fontSize: 12.5, color: C.dim }}>Tip</Text>
                   <Text style={{ fontFamily: F.body, fontSize: 12, color: C.text, lineHeight: 16 }}>{c}</Text>
                 </View>
               ))}
             </Row>
 
             <Row gap={6} style={{ paddingHorizontal: 2 }}>
-              <Text style={[hdr, { width: 26 }]}>SET</Text>
-              <Text style={[hdr, { flex: 1 }]}>LAST</Text>
-              <Text style={[hdr, { width: 64, textAlign: 'center' }]}>KG</Text>
-              <Text style={[hdr, { width: 52, textAlign: 'center' }]}>{def.unit === 'sec' ? 'SEC' : def.unit === 'min' ? 'MIN' : 'REPS'}</Text>
+              <Text style={[hdr, { width: 26 }]}>Set</Text>
+              <Text style={[hdr, { flex: 1 }]}>Last</Text>
+              <Text style={[hdr, { width: 64, textAlign: 'center' }]}>kg</Text>
+              <Text style={[hdr, { width: 52, textAlign: 'center' }]}>{def.unit === 'sec' ? 'Sec' : def.unit === 'min' ? 'Min' : 'Reps'}</Text>
               <Text style={[hdr, { width: 36, textAlign: 'center' }]}>RIR</Text>
               <View style={{ width: 44 }} />
             </Row>
@@ -241,7 +241,7 @@ function Live({ data }: { data: TD }) {
   );
 }
 
-const hdr = { fontFamily: F.mono, fontSize: 10, letterSpacing: 0.8, color: C.dim } as const;
+const hdr = { fontFamily: F.mono, fontSize: 12, color: C.dim } as const;
 
 function FinishBar({ label, onPress }: { label: string; onPress: () => void }) {
   return (
@@ -320,9 +320,9 @@ function Done({ data }: { data: TD }) {
         </View>
       </Enter>
       <Row gap={8}>
-        <Card style={{ flex: 1, padding: 14, gap: 4 }}><T.Label style={{ fontSize: 10 }}>SETS</T.Label><T.Num style={{ fontSize: 30 }}>{done.length}</T.Num></Card>
-        <Card style={{ flex: 1, padding: 14, gap: 4 }}><T.Label style={{ fontSize: 10 }}>VOLUME</T.Label><T.Num style={{ fontSize: 30 }}>{Math.round(vol).toLocaleString('en-US')}</T.Num></Card>
-        <Card style={{ flex: 1, padding: 14, gap: 4 }}><T.Label style={{ fontSize: 10 }}>MINUTES</T.Label><T.Num style={{ fontSize: 30 }}>{mins ?? '—'}</T.Num></Card>
+        <Card style={{ flex: 1, padding: 14, gap: 4 }}><T.Label style={{ fontSize: 12 }}>SETS</T.Label><T.Num style={{ fontSize: 30 }}>{done.length}</T.Num></Card>
+        <Card style={{ flex: 1, padding: 14, gap: 4 }}><T.Label style={{ fontSize: 12 }}>VOLUME</T.Label><T.Num style={{ fontSize: 30 }}>{Math.round(vol).toLocaleString('en-US')}</T.Num></Card>
+        <Card style={{ flex: 1, padding: 14, gap: 4 }}><T.Label style={{ fontSize: 12 }}>MINUTES</T.Label><T.Num style={{ fontSize: 30 }}>{mins ?? '—'}</T.Num></Card>
       </Row>
       <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
         {Object.entries(byEx).map(([k, sets], i) => (

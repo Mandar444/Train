@@ -73,7 +73,7 @@ export default function WorkoutEdit() {
 function Stepper({ label, value, onChange, step = 1 }: { label: string; value: number; onChange: (v: number) => void; step?: number }) {
   return (
     <View style={{ flex: 1, gap: 4 }}>
-      <Text style={{ fontFamily: F.mono, fontSize: 9.5, letterSpacing: 0.6, color: C.dim }}>{label}</Text>
+      <Text style={{ fontFamily: F.mono, fontSize: 12, color: C.dim }}>{label}</Text>
       <View style={{ flexDirection: 'row', alignItems: 'center', height: 40, borderRadius: 12, borderWidth: 1, borderColor: C.line2, backgroundColor: C.bg }}>
         <Pressable accessibilityLabel={`Decrease ${label}`} onPress={() => { haptic(); onChange(value - step); }} style={{ width: 30, height: 40, alignItems: 'center', justifyContent: 'center' }}><Icon name="minus" size={14} color={C.muted} /></Pressable>
         <Text style={{ flex: 1, textAlign: 'center', fontFamily: F.monoBold, fontSize: 14, color: C.text }}>{value}</Text>

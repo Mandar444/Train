@@ -54,11 +54,11 @@ export default function LogWeight() {
             <TextInput
               autoFocus keyboardType="decimal-pad" value={typed} onChangeText={setTyped} selectionColor={C.lime}
               onBlur={() => { const v = parseFloat(typed.replace(',', '.')); if (v > 30 && v < 300) setTenths(Math.round(v * 10)); setTyping(false); }}
-              style={{ fontFamily: F.display, fontSize: 120, color: C.text, textAlign: 'center', minWidth: 260 }}
+              style={{ fontFamily: F.display, fontSize: 88, color: C.text, textAlign: 'center', minWidth: 260 }}
             />
           ) : (
             <Row gap={8} style={{ alignItems: 'baseline' }}>
-              <Text style={{ fontFamily: F.display, fontSize: 140, lineHeight: 140, color: C.text }}>
+              <Text style={{ fontFamily: F.display, fontSize: 96, color: C.text }}>
                 {Math.floor(kg)}<Text style={{ color: C.lime }}>.{tenths % 10}</Text>
               </Text>
               <T.Body style={{ fontSize: 22, color: C.muted }}>kg</T.Body>
@@ -96,7 +96,7 @@ export default function LogWeight() {
             {recent.map((r) => (
               <View key={r.date} style={{ alignItems: 'center', gap: 4 }}>
                 <T.Strong>{r.weight_kg.toFixed(1)}</T.Strong>
-                <T.Small style={{ fontSize: 11 }}>{r.date === addDays(date, -1) ? 'Yday' : dowShort(r.date).slice(0, 1) + dowShort(r.date).slice(1).toLowerCase()}</T.Small>
+                <T.Small style={{ fontSize: 12.5 }}>{r.date === addDays(date, -1) ? 'Yday' : dowShort(r.date).slice(0, 1) + dowShort(r.date).slice(1).toLowerCase()}</T.Small>
               </View>
             ))}
           </Row>

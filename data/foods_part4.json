@@ -1,0 +1,2252 @@
+[
+{
+"n": "Banana",
+"c": "Fruits",
+"s": "1 medium (120 g)",
+"k": 105,
+"p": 1.3,
+"cb": 27,
+"f": 0.4
+},
+{
+"n": "Apple",
+"c": "Fruits",
+"s": "1 medium (180 g)",
+"k": 95,
+"p": 0.5,
+"cb": 25,
+"f": 0.3
+},
+{
+"n": "Orange",
+"c": "Fruits",
+"s": "1 medium (150 g)",
+"k": 70,
+"p": 1.4,
+"cb": 17,
+"f": 0.2
+},
+{
+"n": "Mango",
+"c": "Fruits",
+"s": "1 cup sliced (165 g)",
+"k": 99,
+"p": 1.4,
+"cb": 25,
+"f": 0.6
+},
+{
+"n": "Papaya",
+"c": "Fruits",
+"s": "1 cup cubes (145 g)",
+"k": 62,
+"p": 0.7,
+"cb": 16,
+"f": 0.4
+},
+{
+"n": "Watermelon",
+"c": "Fruits",
+"s": "1 cup (150 g)",
+"k": 46,
+"p": 0.9,
+"cb": 11.5,
+"f": 0.2
+},
+{
+"n": "Muskmelon",
+"c": "Fruits",
+"s": "1 cup (160 g)",
+"k": 54,
+"p": 1.3,
+"cb": 13,
+"f": 0.3
+},
+{
+"n": "Guava",
+"c": "Fruits",
+"s": "1 medium (100 g)",
+"k": 68,
+"p": 2.6,
+"cb": 14,
+"f": 1.0
+},
+{
+"n": "Pomegranate",
+"c": "Fruits",
+"s": "1/2 cup arils (87 g)",
+"k": 72,
+"p": 1.5,
+"cb": 16,
+"f": 1.0
+},
+{
+"n": "Grapes",
+"c": "Fruits",
+"s": "1 cup (150 g)",
+"k": 104,
+"p": 1.1,
+"cb": 27,
+"f": 0.2
+},
+{
+"n": "Chikoo",
+"c": "Fruits",
+"s": "1 medium (100 g)",
+"k": 83,
+"p": 0.4,
+"cb": 20,
+"f": 1.1
+},
+{
+"n": "Pineapple",
+"c": "Fruits",
+"s": "1 cup chunks (165 g)",
+"k": 82,
+"p": 0.9,
+"cb": 22,
+"f": 0.2
+},
+{
+"n": "Pear",
+"c": "Fruits",
+"s": "1 medium (180 g)",
+"k": 101,
+"p": 0.6,
+"cb": 27,
+"f": 0.2
+},
+{
+"n": "Kiwi",
+"c": "Fruits",
+"s": "1 medium (75 g)",
+"k": 46,
+"p": 0.9,
+"cb": 11,
+"f": 0.4
+},
+{
+"n": "Strawberries",
+"c": "Fruits",
+"s": "1 cup (150 g)",
+"k": 48,
+"p": 1.0,
+"cb": 11.5,
+"f": 0.5
+},
+{
+"n": "Litchi",
+"c": "Fruits",
+"s": "10 pieces (100 g)",
+"k": 66,
+"p": 0.8,
+"cb": 16.5,
+"f": 0.4
+},
+{
+"n": "Custard apple",
+"c": "Fruits",
+"s": "1 medium (150 g)",
+"k": 141,
+"p": 3.2,
+"cb": 35,
+"f": 0.5
+},
+{
+"n": "Jamun",
+"c": "Fruits",
+"s": "1 cup (100 g)",
+"k": 62,
+"p": 0.7,
+"cb": 15,
+"f": 0.2
+},
+{
+"n": "Dates",
+"c": "Fruits",
+"s": "2 pieces (16 g)",
+"k": 45,
+"p": 0.4,
+"cb": 12,
+"f": 0.1
+},
+{
+"n": "Dried figs",
+"c": "Fruits",
+"s": "2 pieces (20 g)",
+"k": 50,
+"p": 0.7,
+"cb": 13,
+"f": 0.2
+},
+{
+"n": "Raisins",
+"c": "Fruits",
+"s": "1 small handful (15 g)",
+"k": 45,
+"p": 0.5,
+"cb": 12,
+"f": 0.1
+},
+{
+"n": "Dried apricots",
+"c": "Fruits",
+"s": "4 pieces (30 g)",
+"k": 72,
+"p": 1.0,
+"cb": 19,
+"f": 0.2
+},
+{
+"n": "Fresh coconut",
+"c": "Fruits",
+"s": "1 slice (45 g)",
+"k": 160,
+"p": 1.5,
+"cb": 6.8,
+"f": 15
+},
+{
+"n": "Jackfruit",
+"c": "Fruits",
+"s": "1 cup bulbs (150 g)",
+"k": 143,
+"p": 2.6,
+"cb": 35,
+"f": 1.0
+},
+{
+"n": "Plum",
+"c": "Fruits",
+"s": "1 medium (65 g)",
+"k": 30,
+"p": 0.5,
+"cb": 7.5,
+"f": 0.2
+},
+{
+"n": "Peach",
+"c": "Fruits",
+"s": "1 medium (150 g)",
+"k": 59,
+"p": 1.4,
+"cb": 14,
+"f": 0.4
+},
+{
+"n": "Cherries",
+"c": "Fruits",
+"s": "1 cup (140 g)",
+"k": 87,
+"p": 1.5,
+"cb": 22,
+"f": 0.3
+},
+{
+"n": "Amla",
+"c": "Fruits",
+"s": "1 medium (30 g)",
+"k": 13,
+"p": 0.3,
+"cb": 3,
+"f": 0.1
+},
+{
+"n": "Blueberries",
+"c": "Fruits",
+"s": "1/2 cup (75 g)",
+"k": 43,
+"p": 0.6,
+"cb": 11,
+"f": 0.2
+},
+{
+"n": "Avocado",
+"c": "Fruits",
+"s": "1/2 medium (100 g)",
+"k": 160,
+"p": 2,
+"cb": 8.5,
+"f": 14.7
+},
+{
+"n": "Mosambi",
+"c": "Fruits",
+"s": "1 medium (150 g)",
+"k": 65,
+"p": 1.1,
+"cb": 14,
+"f": 0.3
+},
+{
+"n": "Kinnow",
+"c": "Fruits",
+"s": "1 medium (130 g)",
+"k": 60,
+"p": 1,
+"cb": 14,
+"f": 0.3
+},
+{
+"n": "Elaichi banana",
+"c": "Fruits",
+"s": "2 small (100 g)",
+"k": 90,
+"p": 1.1,
+"cb": 23,
+"f": 0.3
+},
+{
+"n": "Raw mango",
+"c": "Fruits",
+"s": "1/2 medium (100 g)",
+"k": 60,
+"p": 0.8,
+"cb": 15,
+"f": 0.4
+},
+{
+"n": "Starfruit (kamrakh)",
+"c": "Fruits",
+"s": "1 medium (90 g)",
+"k": 28,
+"p": 0.9,
+"cb": 6,
+"f": 0.3
+},
+{
+"n": "Bael (wood apple)",
+"c": "Fruits",
+"s": "1/2 cup pulp (100 g)",
+"k": 137,
+"p": 1.8,
+"cb": 32,
+"f": 0.3
+},
+{
+"n": "Mixed fruit bowl",
+"c": "Fruits",
+"s": "1 bowl (200 g)",
+"k": 120,
+"p": 1.5,
+"cb": 30,
+"f": 0.5
+},
+{
+"n": "Fruit chaat",
+"c": "Fruits",
+"s": "1 bowl (200 g)",
+"k": 130,
+"p": 1.8,
+"cb": 31,
+"f": 0.6
+},
+{
+"n": "Prunes",
+"c": "Fruits",
+"s": "4 pieces (40 g)",
+"k": 96,
+"p": 0.9,
+"cb": 25.5,
+"f": 0.2
+},
+{
+"n": "Dried cranberries",
+"c": "Fruits",
+"s": "1 tbsp (15 g)",
+"k": 46,
+"p": 0,
+"cb": 12.3,
+"f": 0.2
+},
+{
+"n": "Mulberries (shahtoot)",
+"c": "Fruits",
+"s": "1 cup (140 g)",
+"k": 60,
+"p": 2,
+"cb": 13.7,
+"f": 0.5
+},
+{
+"n": "Grapefruit",
+"c": "Fruits",
+"s": "1/2 medium (120 g)",
+"k": 50,
+"p": 0.9,
+"cb": 12.5,
+"f": 0.2
+},
+{
+"n": "Dragon fruit",
+"c": "Fruits",
+"s": "1 cup (150 g)",
+"k": 90,
+"p": 2,
+"cb": 20,
+"f": 0.6
+},
+{
+"n": "Singhara (water chestnut)",
+"c": "Fruits",
+"s": "1 cup (100 g)",
+"k": 97,
+"p": 1.4,
+"cb": 24,
+"f": 0.1
+},
+{
+"n": "Tender coconut malai",
+"c": "Fruits",
+"s": "1/2 cup (50 g)",
+"k": 60,
+"p": 0.6,
+"cb": 4,
+"f": 4.5
+},
+{
+"n": "Cucumber",
+"c": "Vegetables & salads",
+"s": "1 medium (200 g)",
+"k": 30,
+"p": 1.3,
+"cb": 7,
+"f": 0.2
+},
+{
+"n": "Carrot",
+"c": "Vegetables & salads",
+"s": "1 medium (70 g)",
+"k": 29,
+"p": 0.6,
+"cb": 7,
+"f": 0.2
+},
+{
+"n": "Tomato",
+"c": "Vegetables & salads",
+"s": "1 medium (120 g)",
+"k": 22,
+"p": 1.1,
+"cb": 4.7,
+"f": 0.2
+},
+{
+"n": "Onion salad",
+"c": "Vegetables & salads",
+"s": "1 small bowl (50 g)",
+"k": 20,
+"p": 0.6,
+"cb": 4.7,
+"f": 0.1
+},
+{
+"n": "Green salad",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 35,
+"p": 1.8,
+"cb": 7,
+"f": 0.3
+},
+{
+"n": "Kachumber salad",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 40,
+"p": 1.5,
+"cb": 8.5,
+"f": 0.3
+},
+{
+"n": "Sprouts salad",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 150,
+"p": 10,
+"cb": 25,
+"f": 1.5
+},
+{
+"n": "Beetroot boiled",
+"c": "Vegetables & salads",
+"s": "1 medium (80 g)",
+"k": 35,
+"p": 1.3,
+"cb": 8,
+"f": 0.1
+},
+{
+"n": "Boiled potato",
+"c": "Vegetables & salads",
+"s": "1 medium (150 g)",
+"k": 130,
+"p": 2.8,
+"cb": 30,
+"f": 0.2
+},
+{
+"n": "Sweet potato boiled",
+"c": "Vegetables & salads",
+"s": "1 medium (130 g)",
+"k": 112,
+"p": 2,
+"cb": 26,
+"f": 0.2
+},
+{
+"n": "Sweet potato roasted",
+"c": "Vegetables & salads",
+"s": "1 medium (130 g)",
+"k": 117,
+"p": 2.6,
+"cb": 27,
+"f": 0.2
+},
+{
+"n": "Shakarkandi chaat",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 160,
+"p": 2.5,
+"cb": 35,
+"f": 1.5
+},
+{
+"n": "Bhutta (roasted corn)",
+"c": "Vegetables & salads",
+"s": "1 cob (100 g kernels)",
+"k": 125,
+"p": 4.5,
+"cb": 26,
+"f": 1.8
+},
+{
+"n": "Boiled sweet corn",
+"c": "Vegetables & salads",
+"s": "1 cup (150 g)",
+"k": 145,
+"p": 5.1,
+"cb": 31,
+"f": 2.0
+},
+{
+"n": "Broccoli steamed",
+"c": "Vegetables & salads",
+"s": "1 cup (90 g)",
+"k": 31,
+"p": 2.5,
+"cb": 6,
+"f": 0.3
+},
+{
+"n": "Spinach cooked",
+"c": "Vegetables & salads",
+"s": "1 cup (180 g)",
+"k": 41,
+"p": 5.3,
+"cb": 4.5,
+"f": 0.5
+},
+{
+"n": "Mushrooms sauteed",
+"c": "Vegetables & salads",
+"s": "1 cup (110 g)",
+"k": 70,
+"p": 3.5,
+"cb": 4.5,
+"f": 4.5
+},
+{
+"n": "Capsicum",
+"c": "Vegetables & salads",
+"s": "1 medium (120 g)",
+"k": 24,
+"p": 1,
+"cb": 5.5,
+"f": 0.2
+},
+{
+"n": "Green peas boiled",
+"c": "Vegetables & salads",
+"s": "1/2 cup (80 g)",
+"k": 67,
+"p": 4.3,
+"cb": 12.5,
+"f": 0.2
+},
+{
+"n": "French beans boiled",
+"c": "Vegetables & salads",
+"s": "1 cup (125 g)",
+"k": 44,
+"p": 2.4,
+"cb": 8,
+"f": 0.3
+},
+{
+"n": "Salad with dressing",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 120,
+"p": 2,
+"cb": 9,
+"f": 8.5
+},
+{
+"n": "Coleslaw",
+"c": "Vegetables & salads",
+"s": "1/2 cup (60 g)",
+"k": 90,
+"p": 0.8,
+"cb": 7,
+"f": 6.5
+},
+{
+"n": "Russian salad",
+"c": "Vegetables & salads",
+"s": "1/2 cup (100 g)",
+"k": 180,
+"p": 2.5,
+"cb": 12,
+"f": 13.5
+},
+{
+"n": "Chickpea salad",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 210,
+"p": 9,
+"cb": 28,
+"f": 6.5
+},
+{
+"n": "Lettuce",
+"c": "Vegetables & salads",
+"s": "1 cup shredded (50 g)",
+"k": 8,
+"p": 0.6,
+"cb": 1.5,
+"f": 0.1
+},
+{
+"n": "Radish (mooli)",
+"c": "Vegetables & salads",
+"s": "1 medium (100 g)",
+"k": 16,
+"p": 0.7,
+"cb": 3.4,
+"f": 0.1
+},
+{
+"n": "Cabbage raw",
+"c": "Vegetables & salads",
+"s": "1 cup shredded (70 g)",
+"k": 18,
+"p": 0.9,
+"cb": 4,
+"f": 0.1
+},
+{
+"n": "Cauliflower steamed",
+"c": "Vegetables & salads",
+"s": "1 cup (125 g)",
+"k": 29,
+"p": 2.3,
+"cb": 5,
+"f": 0.6
+},
+{
+"n": "Zucchini sauteed",
+"c": "Vegetables & salads",
+"s": "1 cup (180 g)",
+"k": 60,
+"p": 2.2,
+"cb": 6,
+"f": 3.5
+},
+{
+"n": "Baby corn",
+"c": "Vegetables & salads",
+"s": "5 pieces (50 g)",
+"k": 13,
+"p": 1,
+"cb": 2.5,
+"f": 0.1
+},
+{
+"n": "Grilled vegetables",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 110,
+"p": 3,
+"cb": 12,
+"f": 6
+},
+{
+"n": "Stir-fried vegetables",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 120,
+"p": 3.5,
+"cb": 13,
+"f": 6.5
+},
+{
+"n": "Steamed mixed vegetables",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 70,
+"p": 3.5,
+"cb": 13,
+"f": 0.5
+},
+{
+"n": "Corn salad",
+"c": "Vegetables & salads",
+"s": "1 bowl (150 g)",
+"k": 170,
+"p": 5,
+"cb": 30,
+"f": 4
+},
+{
+"n": "Pumpkin (kaddu) boiled",
+"c": "Vegetables & salads",
+"s": "1 cup (150 g)",
+"k": 30,
+"p": 1.2,
+"cb": 7,
+"f": 0.1
+},
+{
+"n": "Lauki boiled",
+"c": "Vegetables & salads",
+"s": "1 cup (150 g)",
+"k": 22,
+"p": 0.9,
+"cb": 5,
+"f": 0.1
+},
+{
+"n": "Bhindi boiled",
+"c": "Vegetables & salads",
+"s": "1 cup (100 g)",
+"k": 33,
+"p": 1.9,
+"cb": 7,
+"f": 0.2
+},
+{
+"n": "Cherry tomatoes",
+"c": "Vegetables & salads",
+"s": "1 cup (150 g)",
+"k": 27,
+"p": 1.3,
+"cb": 5.8,
+"f": 0.3
+},
+{
+"n": "Moong sprouts raw",
+"c": "Vegetables & salads",
+"s": "1 cup (100 g)",
+"k": 30,
+"p": 3,
+"cb": 6,
+"f": 0.2
+},
+{
+"n": "Potato salad",
+"c": "Vegetables & salads",
+"s": "1/2 cup (125 g)",
+"k": 180,
+"p": 3,
+"cb": 18,
+"f": 10.5
+},
+{
+"n": "Almonds",
+"c": "Nuts & seeds",
+"s": "10 pieces (12 g)",
+"k": 70,
+"p": 2.5,
+"cb": 2.6,
+"f": 6
+},
+{
+"n": "Walnuts",
+"c": "Nuts & seeds",
+"s": "2 whole (14 g)",
+"k": 92,
+"p": 2.1,
+"cb": 1.9,
+"f": 9.2
+},
+{
+"n": "Cashews",
+"c": "Nuts & seeds",
+"s": "10 pieces (15 g)",
+"k": 83,
+"p": 2.7,
+"cb": 4.5,
+"f": 6.6
+},
+{
+"n": "Pistachios",
+"c": "Nuts & seeds",
+"s": "20 pieces (15 g)",
+"k": 85,
+"p": 3,
+"cb": 4.2,
+"f": 6.8
+},
+{
+"n": "Roasted peanuts",
+"c": "Nuts & seeds",
+"s": "1 handful (30 g)",
+"k": 175,
+"p": 7.5,
+"cb": 5,
+"f": 15
+},
+{
+"n": "Mixed nuts",
+"c": "Nuts & seeds",
+"s": "1 handful (30 g)",
+"k": 180,
+"p": 5,
+"cb": 6,
+"f": 16
+},
+{
+"n": "Flaxseed",
+"c": "Nuts & seeds",
+"s": "1 tbsp (10 g)",
+"k": 53,
+"p": 1.8,
+"cb": 2.9,
+"f": 4.2
+},
+{
+"n": "Chia seeds",
+"c": "Nuts & seeds",
+"s": "1 tbsp (12 g)",
+"k": 58,
+"p": 2,
+"cb": 5,
+"f": 3.7
+},
+{
+"n": "Pumpkin seeds",
+"c": "Nuts & seeds",
+"s": "1 tbsp (10 g)",
+"k": 56,
+"p": 3,
+"cb": 1.1,
+"f": 4.9
+},
+{
+"n": "Sunflower seeds",
+"c": "Nuts & seeds",
+"s": "1 tbsp (10 g)",
+"k": 58,
+"p": 2.1,
+"cb": 2,
+"f": 5.1
+},
+{
+"n": "Sesame seeds (til)",
+"c": "Nuts & seeds",
+"s": "1 tbsp (9 g)",
+"k": 52,
+"p": 1.6,
+"cb": 2.1,
+"f": 4.5
+},
+{
+"n": "Makhana plain",
+"c": "Nuts & seeds",
+"s": "1 bowl (30 g)",
+"k": 105,
+"p": 2.9,
+"cb": 23,
+"f": 0.1
+},
+{
+"n": "Roasted makhana with ghee",
+"c": "Nuts & seeds",
+"s": "1 bowl (30 g)",
+"k": 140,
+"p": 2.9,
+"cb": 23,
+"f": 4
+},
+{
+"n": "Trail mix",
+"c": "Nuts & seeds",
+"s": "1 handful (30 g)",
+"k": 140,
+"p": 4,
+"cb": 13,
+"f": 9
+},
+{
+"n": "Dry coconut (copra)",
+"c": "Nuts & seeds",
+"s": "1 tbsp grated (10 g)",
+"k": 65,
+"p": 0.7,
+"cb": 2.4,
+"f": 6.5
+},
+{
+"n": "Boiled peanuts",
+"c": "Nuts & seeds",
+"s": "1/2 cup (60 g)",
+"k": 190,
+"p": 8,
+"cb": 12.8,
+"f": 13
+},
+{
+"n": "Masala peanuts",
+"c": "Nuts & seeds",
+"s": "1 handful (30 g)",
+"k": 160,
+"p": 6,
+"cb": 9,
+"f": 11
+},
+{
+"n": "Roasted chana",
+"c": "Nuts & seeds",
+"s": "1 handful (30 g)",
+"k": 110,
+"p": 6.5,
+"cb": 17,
+"f": 1.6
+},
+{
+"n": "Hazelnuts",
+"c": "Nuts & seeds",
+"s": "10 pieces (14 g)",
+"k": 88,
+"p": 2.1,
+"cb": 2.3,
+"f": 8.5
+},
+{
+"n": "Melon seeds (magaz)",
+"c": "Nuts & seeds",
+"s": "1 tbsp (10 g)",
+"k": 56,
+"p": 2.8,
+"cb": 1.5,
+"f": 4.7
+},
+{
+"n": "Peanut chikki",
+"c": "Nuts & seeds",
+"s": "1 piece (25 g)",
+"k": 120,
+"p": 3.5,
+"cb": 14,
+"f": 6
+},
+{
+"n": "Til chikki",
+"c": "Nuts & seeds",
+"s": "1 piece (25 g)",
+"k": 125,
+"p": 3,
+"cb": 14,
+"f": 6.5
+},
+{
+"n": "Salted cashews",
+"c": "Nuts & seeds",
+"s": "1 handful (30 g)",
+"k": 175,
+"p": 5,
+"cb": 9,
+"f": 14
+},
+{
+"n": "Pine nuts (chilgoza)",
+"c": "Nuts & seeds",
+"s": "1 tbsp (10 g)",
+"k": 67,
+"p": 1.4,
+"cb": 1.3,
+"f": 6.8
+},
+{
+"n": "Sabja seeds",
+"c": "Nuts & seeds",
+"s": "1 tbsp (12 g)",
+"k": 55,
+"p": 2.3,
+"cb": 5,
+"f": 3
+},
+{
+"n": "Rolled oats (dry)",
+"c": "Cereals & grains",
+"s": "40 g",
+"k": 150,
+"p": 5.3,
+"cb": 27,
+"f": 2.6
+},
+{
+"n": "Oats with milk",
+"c": "Cereals & grains",
+"s": "1 bowl (40 g oats + 200 ml milk)",
+"k": 270,
+"p": 12,
+"cb": 37,
+"f": 8.5
+},
+{
+"n": "Oats with water",
+"c": "Cereals & grains",
+"s": "1 bowl (40 g oats)",
+"k": 152,
+"p": 5.3,
+"cb": 27,
+"f": 2.6
+},
+{
+"n": "Masala oats",
+"c": "Cereals & grains",
+"s": "1 bowl (40 g dry)",
+"k": 170,
+"p": 5,
+"cb": 28,
+"f": 4.5
+},
+{
+"n": "Cornflakes",
+"c": "Cereals & grains",
+"s": "1 bowl (30 g)",
+"k": 113,
+"p": 2.2,
+"cb": 25,
+"f": 0.3
+},
+{
+"n": "Cornflakes with milk",
+"c": "Cereals & grains",
+"s": "1 bowl (30 g + 200 ml milk)",
+"k": 235,
+"p": 8.5,
+"cb": 35,
+"f": 6.5
+},
+{
+"n": "Muesli",
+"c": "Cereals & grains",
+"s": "1 bowl (40 g)",
+"k": 150,
+"p": 4,
+"cb": 27,
+"f": 3
+},
+{
+"n": "Granola",
+"c": "Cereals & grains",
+"s": "1/2 cup (50 g)",
+"k": 230,
+"p": 5,
+"cb": 32,
+"f": 9.5
+},
+{
+"n": "Wheat flakes",
+"c": "Cereals & grains",
+"s": "1 bowl (30 g)",
+"k": 110,
+"p": 3,
+"cb": 23.5,
+"f": 0.6
+},
+{
+"n": "Ragi porridge",
+"c": "Cereals & grains",
+"s": "1 bowl (250 g)",
+"k": 180,
+"p": 5,
+"cb": 32,
+"f": 3.5
+},
+{
+"n": "Daliya with milk",
+"c": "Cereals & grains",
+"s": "1 bowl (250 g)",
+"k": 220,
+"p": 8,
+"cb": 35,
+"f": 5
+},
+{
+"n": "Namkeen daliya",
+"c": "Cereals & grains",
+"s": "1 bowl (200 g)",
+"k": 180,
+"p": 5.5,
+"cb": 30,
+"f": 4
+},
+{
+"n": "Quinoa cooked",
+"c": "Cereals & grains",
+"s": "1 cup (185 g)",
+"k": 222,
+"p": 8.1,
+"cb": 39,
+"f": 3.6
+},
+{
+"n": "Brown bread toast",
+"c": "Cereals & grains",
+"s": "1 slice (30 g)",
+"k": 75,
+"p": 3,
+"cb": 13,
+"f": 1
+},
+{
+"n": "White bread toast",
+"c": "Cereals & grains",
+"s": "1 slice (25 g)",
+"k": 67,
+"p": 2,
+"cb": 12.5,
+"f": 0.8
+},
+{
+"n": "Multigrain toast",
+"c": "Cereals & grains",
+"s": "1 slice (30 g)",
+"k": 80,
+"p": 4,
+"cb": 13,
+"f": 1.2
+},
+{
+"n": "Brown rice cooked",
+"c": "Cereals & grains",
+"s": "1 cup (195 g)",
+"k": 216,
+"p": 5,
+"cb": 45,
+"f": 1.8
+},
+{
+"n": "Murmura (puffed rice)",
+"c": "Cereals & grains",
+"s": "1 cup (15 g)",
+"k": 60,
+"p": 1,
+"cb": 13,
+"f": 0.1
+},
+{
+"n": "Poha flakes (dry)",
+"c": "Cereals & grains",
+"s": "1/2 cup (40 g)",
+"k": 140,
+"p": 2.7,
+"cb": 31,
+"f": 0.5
+},
+{
+"n": "Chocolate flakes cereal",
+"c": "Cereals & grains",
+"s": "1 bowl (30 g)",
+"k": 120,
+"p": 1.5,
+"cb": 25,
+"f": 1.5
+},
+{
+"n": "Overnight oats",
+"c": "Cereals & grains",
+"s": "1 jar (250 g)",
+"k": 300,
+"p": 12,
+"cb": 45,
+"f": 8
+},
+{
+"n": "Sattu",
+"c": "Cereals & grains",
+"s": "2 tbsp (20 g)",
+"k": 80,
+"p": 4.5,
+"cb": 12,
+"f": 1.2
+},
+{
+"n": "Barley (jau) cooked",
+"c": "Cereals & grains",
+"s": "1 cup (157 g)",
+"k": 193,
+"p": 3.5,
+"cb": 44,
+"f": 0.7
+},
+{
+"n": "Rusk",
+"c": "Cereals & grains",
+"s": "2 pieces (25 g)",
+"k": 100,
+"p": 2.5,
+"cb": 18,
+"f": 2
+},
+{
+"n": "Foxtail millet cooked",
+"c": "Cereals & grains",
+"s": "1 cup (175 g)",
+"k": 200,
+"p": 5,
+"cb": 40,
+"f": 1.8
+},
+{
+"n": "Masala chai with sugar",
+"c": "Beverages",
+"s": "1 cup (150 ml)",
+"k": 90,
+"p": 2.5,
+"cb": 13,
+"f": 3
+},
+{
+"n": "Chai without sugar",
+"c": "Beverages",
+"s": "1 cup (150 ml)",
+"k": 50,
+"p": 2.5,
+"cb": 4,
+"f": 2.8
+},
+{
+"n": "Black coffee",
+"c": "Beverages",
+"s": "1 cup (240 ml)",
+"k": 2,
+"p": 0.3,
+"cb": 0,
+"f": 0
+},
+{
+"n": "Coffee with milk",
+"c": "Beverages",
+"s": "1 cup (150 ml, 1 tsp sugar)",
+"k": 90,
+"p": 3,
+"cb": 12,
+"f": 3.5
+},
+{
+"n": "Coffee with milk, no sugar",
+"c": "Beverages",
+"s": "1 cup (150 ml)",
+"k": 60,
+"p": 3.2,
+"cb": 5,
+"f": 3.2
+},
+{
+"n": "Filter coffee",
+"c": "Beverages",
+"s": "1 tumbler (150 ml)",
+"k": 100,
+"p": 3.5,
+"cb": 13,
+"f": 3.8
+},
+{
+"n": "Cold coffee",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 210,
+"p": 6.5,
+"cb": 30,
+"f": 7
+},
+{
+"n": "Green tea",
+"c": "Beverages",
+"s": "1 cup (240 ml)",
+"k": 2,
+"p": 0,
+"cb": 0.4,
+"f": 0
+},
+{
+"n": "Lemon tea",
+"c": "Beverages",
+"s": "1 cup (200 ml)",
+"k": 30,
+"p": 0.1,
+"cb": 7.5,
+"f": 0
+},
+{
+"n": "Nimbu pani (sweet)",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 80,
+"p": 0.2,
+"cb": 20,
+"f": 0.1
+},
+{
+"n": "Nimbu pani (salted)",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 8,
+"p": 0.1,
+"cb": 2,
+"f": 0
+},
+{
+"n": "Coconut water",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 48,
+"p": 1.8,
+"cb": 9,
+"f": 0.5
+},
+{
+"n": "Sugarcane juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 180,
+"p": 0.3,
+"cb": 45,
+"f": 0.1
+},
+{
+"n": "Fresh orange juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 112,
+"p": 1.7,
+"cb": 26,
+"f": 0.5
+},
+{
+"n": "Mosambi juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 110,
+"p": 1.5,
+"cb": 26,
+"f": 0.3
+},
+{
+"n": "Packaged fruit juice",
+"c": "Beverages",
+"s": "1 glass (200 ml)",
+"k": 110,
+"p": 0.3,
+"cb": 27,
+"f": 0
+},
+{
+"n": "Cola",
+"c": "Beverages",
+"s": "1 can (330 ml)",
+"k": 139,
+"p": 0,
+"cb": 35,
+"f": 0
+},
+{
+"n": "Diet cola",
+"c": "Beverages",
+"s": "1 can (330 ml)",
+"k": 1,
+"p": 0,
+"cb": 0,
+"f": 0
+},
+{
+"n": "Lemon soda",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 90,
+"p": 0,
+"cb": 22.5,
+"f": 0
+},
+{
+"n": "Energy drink",
+"c": "Beverages",
+"s": "1 can (250 ml)",
+"k": 112,
+"p": 0,
+"cb": 28,
+"f": 0
+},
+{
+"n": "Sports drink",
+"c": "Beverages",
+"s": "1 bottle (500 ml)",
+"k": 130,
+"p": 0,
+"cb": 32,
+"f": 0
+},
+{
+"n": "Badam milk",
+"c": "Beverages",
+"s": "1 glass (200 ml)",
+"k": 200,
+"p": 7,
+"cb": 26,
+"f": 7.5
+},
+{
+"n": "Rose milk",
+"c": "Beverages",
+"s": "1 glass (200 ml)",
+"k": 170,
+"p": 6,
+"cb": 25,
+"f": 5
+},
+{
+"n": "Haldi doodh",
+"c": "Beverages",
+"s": "1 glass (200 ml)",
+"k": 130,
+"p": 6.5,
+"cb": 12,
+"f": 6.5
+},
+{
+"n": "Jaljeera",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 40,
+"p": 0.3,
+"cb": 9.5,
+"f": 0.1
+},
+{
+"n": "Aam panna",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 120,
+"p": 0.4,
+"cb": 30,
+"f": 0.1
+},
+{
+"n": "Mango shake",
+"c": "Beverages",
+"s": "1 glass (300 ml)",
+"k": 260,
+"p": 8,
+"cb": 42,
+"f": 7
+},
+{
+"n": "Banana shake",
+"c": "Beverages",
+"s": "1 glass (300 ml)",
+"k": 250,
+"p": 8.5,
+"cb": 40,
+"f": 6.5
+},
+{
+"n": "Beer",
+"c": "Beverages",
+"s": "1 can (330 ml)",
+"k": 150,
+"p": 1.6,
+"cb": 35,
+"f": 0
+},
+{
+"n": "Toned milk",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 145,
+"p": 7.8,
+"cb": 11.8,
+"f": 7.5
+},
+{
+"n": "Full cream milk",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 215,
+"p": 8,
+"cb": 12,
+"f": 15
+},
+{
+"n": "Skimmed milk",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 88,
+"p": 8.5,
+"cb": 12.5,
+"f": 0.3
+},
+{
+"n": "Buttermilk (chaas)",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 45,
+"p": 2.5,
+"cb": 4,
+"f": 2
+},
+{
+"n": "Sweet lassi",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 220,
+"p": 7,
+"cb": 32,
+"f": 7
+},
+{
+"n": "Salted lassi",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 110,
+"p": 6.5,
+"cb": 9,
+"f": 5.5
+},
+{
+"n": "Hot chocolate",
+"c": "Beverages",
+"s": "1 cup (200 ml)",
+"k": 190,
+"p": 7,
+"cb": 26,
+"f": 6.5
+},
+{
+"n": "Thandai",
+"c": "Beverages",
+"s": "1 glass (200 ml)",
+"k": 230,
+"p": 7,
+"cb": 28,
+"f": 10
+},
+{
+"n": "Strawberry milkshake",
+"c": "Beverages",
+"s": "1 glass (300 ml)",
+"k": 240,
+"p": 8,
+"cb": 38,
+"f": 6.5
+},
+{
+"n": "Chocolate milkshake",
+"c": "Beverages",
+"s": "1 glass (300 ml)",
+"k": 300,
+"p": 9,
+"cb": 45,
+"f": 9
+},
+{
+"n": "Orange soda",
+"c": "Beverages",
+"s": "1 can (330 ml)",
+"k": 160,
+"p": 0,
+"cb": 40,
+"f": 0
+},
+{
+"n": "Lemon-lime soft drink",
+"c": "Beverages",
+"s": "1 can (330 ml)",
+"k": 140,
+"p": 0,
+"cb": 36,
+"f": 0
+},
+{
+"n": "Iced tea",
+"c": "Beverages",
+"s": "1 glass (300 ml)",
+"k": 90,
+"p": 0,
+"cb": 22,
+"f": 0
+},
+{
+"n": "Kokum sharbat",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 90,
+"p": 0.2,
+"cb": 22,
+"f": 0.1
+},
+{
+"n": "Rose sharbat",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 100,
+"p": 0,
+"cb": 25,
+"f": 0
+},
+{
+"n": "Watermelon juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 75,
+"p": 1.5,
+"cb": 18,
+"f": 0.4
+},
+{
+"n": "Pineapple juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 130,
+"p": 0.9,
+"cb": 32,
+"f": 0.3
+},
+{
+"n": "Apple juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 115,
+"p": 0.2,
+"cb": 28,
+"f": 0.3
+},
+{
+"n": "Carrot juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 95,
+"p": 2.2,
+"cb": 22,
+"f": 0.4
+},
+{
+"n": "Pomegranate juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 135,
+"p": 0.4,
+"cb": 33,
+"f": 0.7
+},
+{
+"n": "ABC juice",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 110,
+"p": 1.8,
+"cb": 25,
+"f": 0.4
+},
+{
+"n": "Sattu drink",
+"c": "Beverages",
+"s": "1 glass (250 ml)",
+"k": 115,
+"p": 6.5,
+"cb": 18,
+"f": 1.8
+},
+{
+"n": "Cappuccino",
+"c": "Beverages",
+"s": "1 cup (240 ml)",
+"k": 110,
+"p": 6,
+"cb": 9.5,
+"f": 5.5
+},
+{
+"n": "Kadha (herbal)",
+"c": "Beverages",
+"s": "1 cup (150 ml)",
+"k": 30,
+"p": 0.2,
+"cb": 7,
+"f": 0.1
+},
+{
+"n": "Kesar milk",
+"c": "Beverages",
+"s": "1 glass (200 ml)",
+"k": 180,
+"p": 6.5,
+"cb": 24,
+"f": 6.5
+},
+{
+"n": "Sol kadhi",
+"c": "Beverages",
+"s": "1 glass (200 ml)",
+"k": 110,
+"p": 1.2,
+"cb": 6,
+"f": 9
+},
+{
+"n": "Ghee",
+"c": "Fats & spreads",
+"s": "1 tsp (5 g)",
+"k": 45,
+"p": 0,
+"cb": 0,
+"f": 5
+},
+{
+"n": "Butter",
+"c": "Fats & spreads",
+"s": "1 tsp (5 g)",
+"k": 36,
+"p": 0,
+"cb": 0,
+"f": 4.1
+},
+{
+"n": "Oil (1 tsp)",
+"c": "Fats & spreads",
+"s": "1 tsp (4.5 g)",
+"k": 40,
+"p": 0,
+"cb": 0,
+"f": 4.5
+},
+{
+"n": "Oil (1 tbsp)",
+"c": "Fats & spreads",
+"s": "1 tbsp (14 g)",
+"k": 124,
+"p": 0,
+"cb": 0,
+"f": 14
+},
+{
+"n": "Peanut butter",
+"c": "Fats & spreads",
+"s": "1 tbsp (16 g)",
+"k": 94,
+"p": 3.6,
+"cb": 3.5,
+"f": 8
+},
+{
+"n": "Jam",
+"c": "Fats & spreads",
+"s": "1 tbsp (20 g)",
+"k": 56,
+"p": 0.1,
+"cb": 14,
+"f": 0
+},
+{
+"n": "Honey",
+"c": "Fats & spreads",
+"s": "1 tbsp (21 g)",
+"k": 64,
+"p": 0.1,
+"cb": 17,
+"f": 0
+},
+{
+"n": "Sugar",
+"c": "Fats & spreads",
+"s": "1 tsp (5 g)",
+"k": 20,
+"p": 0,
+"cb": 5,
+"f": 0
+},
+{
+"n": "Jaggery",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 57,
+"p": 0.1,
+"cb": 14.5,
+"f": 0
+},
+{
+"n": "Mayonnaise",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 100,
+"p": 0.1,
+"cb": 0.4,
+"f": 11
+},
+{
+"n": "Ketchup",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 15,
+"p": 0.2,
+"cb": 4,
+"f": 0
+},
+{
+"n": "Cheese spread",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 45,
+"p": 1.5,
+"cb": 1.5,
+"f": 3.8
+},
+{
+"n": "Fresh cream",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 37,
+"p": 0.3,
+"cb": 0.5,
+"f": 3.8
+},
+{
+"n": "Malai",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 60,
+"p": 0.4,
+"cb": 0.5,
+"f": 6.2
+},
+{
+"n": "Chocolate hazelnut spread",
+"c": "Fats & spreads",
+"s": "1 tbsp (19 g)",
+"k": 100,
+"p": 1,
+"cb": 11,
+"f": 5.8
+},
+{
+"n": "Pickle (achar)",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 30,
+"p": 0.2,
+"cb": 1.5,
+"f": 2.7
+},
+{
+"n": "Papad roasted",
+"c": "Fats & spreads",
+"s": "1 piece (12 g)",
+"k": 40,
+"p": 2.5,
+"cb": 7,
+"f": 0.3
+},
+{
+"n": "Papad fried",
+"c": "Fats & spreads",
+"s": "1 piece (15 g)",
+"k": 75,
+"p": 2.7,
+"cb": 7.5,
+"f": 3.8
+},
+{
+"n": "Green chutney",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 10,
+"p": 0.4,
+"cb": 1.5,
+"f": 0.3
+},
+{
+"n": "Imli chutney",
+"c": "Fats & spreads",
+"s": "1 tbsp (20 g)",
+"k": 45,
+"p": 0.2,
+"cb": 11,
+"f": 0.1
+},
+{
+"n": "Coconut chutney",
+"c": "Fats & spreads",
+"s": "2 tbsp (30 g)",
+"k": 70,
+"p": 0.9,
+"cb": 3,
+"f": 6.2
+},
+{
+"n": "Mint mayonnaise",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 75,
+"p": 0.2,
+"cb": 1,
+"f": 8
+},
+{
+"n": "Margarine",
+"c": "Fats & spreads",
+"s": "1 tsp (5 g)",
+"k": 36,
+"p": 0,
+"cb": 0,
+"f": 4
+},
+{
+"n": "Schezwan chutney",
+"c": "Fats & spreads",
+"s": "1 tbsp (15 g)",
+"k": 45,
+"p": 0.3,
+"cb": 3,
+"f": 3.6
+},
+{
+"n": "Chocolate syrup",
+"c": "Fats & spreads",
+"s": "1 tbsp (20 g)",
+"k": 55,
+"p": 0.4,
+"cb": 13,
+"f": 0.2
+},
+{
+"n": "Veg sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 220,
+"p": 6,
+"cb": 32,
+"f": 7.5
+},
+{
+"n": "Cheese sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 290,
+"p": 11,
+"cb": 30,
+"f": 14
+},
+{
+"n": "Bread butter",
+"c": "Sandwiches & toast",
+"s": "2 slices with butter",
+"k": 220,
+"p": 4.5,
+"cb": 26,
+"f": 10.5
+},
+{
+"n": "Bread jam",
+"c": "Sandwiches & toast",
+"s": "2 slices with jam",
+"k": 190,
+"p": 4.2,
+"cb": 38,
+"f": 1.6
+},
+{
+"n": "Peanut butter toast",
+"c": "Sandwiches & toast",
+"s": "2 slices + 1 tbsp",
+"k": 230,
+"p": 8,
+"cb": 28,
+"f": 9.5
+},
+{
+"n": "Egg sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 280,
+"p": 13,
+"cb": 28,
+"f": 13
+},
+{
+"n": "Paneer sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 330,
+"p": 14,
+"cb": 30,
+"f": 17
+},
+{
+"n": "Bombay sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (3 slices)",
+"k": 300,
+"p": 8,
+"cb": 38,
+"f": 13
+},
+{
+"n": "Corn sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 290,
+"p": 8,
+"cb": 38,
+"f": 12
+},
+{
+"n": "Avocado toast",
+"c": "Sandwiches & toast",
+"s": "1 slice",
+"k": 190,
+"p": 5,
+"cb": 20,
+"f": 10
+},
+{
+"n": "Grilled cheese sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 350,
+"p": 13,
+"cb": 30,
+"f": 20
+},
+{
+"n": "Chicken sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 320,
+"p": 20,
+"cb": 30,
+"f": 13
+},
+{
+"n": "Egg mayo sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 340,
+"p": 13,
+"cb": 28,
+"f": 20
+},
+{
+"n": "Cheese toast",
+"c": "Sandwiches & toast",
+"s": "1 slice",
+"k": 160,
+"p": 7,
+"cb": 14,
+"f": 8.5
+},
+{
+"n": "Chilli cheese toast",
+"c": "Sandwiches & toast",
+"s": "1 slice (60 g)",
+"k": 180,
+"p": 7.5,
+"cb": 15,
+"f": 10
+},
+{
+"n": "French toast",
+"c": "Sandwiches & toast",
+"s": "2 slices",
+"k": 300,
+"p": 11,
+"cb": 30,
+"f": 15
+},
+{
+"n": "Garlic bread",
+"c": "Sandwiches & toast",
+"s": "2 slices (60 g)",
+"k": 210,
+"p": 5,
+"cb": 24,
+"f": 10.5
+},
+{
+"n": "Club sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (3 slices)",
+"k": 450,
+"p": 22,
+"cb": 42,
+"f": 21
+},
+{
+"n": "Bread omelette",
+"c": "Sandwiches & toast",
+"s": "2 slices + 2 eggs",
+"k": 330,
+"p": 16,
+"cb": 28,
+"f": 17
+},
+{
+"n": "Peanut butter banana sandwich",
+"c": "Sandwiches & toast",
+"s": "1 sandwich (2 slices)",
+"k": 340,
+"p": 10,
+"cb": 50,
+"f": 11
+},
+{
+"n": "Tomato soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 110,
+"p": 2.5,
+"cb": 16,
+"f": 4
+},
+{
+"n": "Sweet corn soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 120,
+"p": 3,
+"cb": 22,
+"f": 2.2
+},
+{
+"n": "Mixed veg soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 80,
+"p": 2.5,
+"cb": 12,
+"f": 2.5
+},
+{
+"n": "Dal soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 130,
+"p": 7.5,
+"cb": 18,
+"f": 3
+},
+{
+"n": "Lentil soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 160,
+"p": 10,
+"cb": 24,
+"f": 2.8
+},
+{
+"n": "Cream of mushroom soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 150,
+"p": 3.5,
+"cb": 12,
+"f": 9.5
+},
+{
+"n": "Clear veg soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 40,
+"p": 1.5,
+"cb": 7,
+"f": 0.5
+},
+{
+"n": "Chicken clear soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 60,
+"p": 8,
+"cb": 3,
+"f": 1.8
+},
+{
+"n": "Hot and sour soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 90,
+"p": 3,
+"cb": 13,
+"f": 2.8
+},
+{
+"n": "Manchow soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 110,
+"p": 3,
+"cb": 15,
+"f": 4
+},
+{
+"n": "Lemon coriander soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 60,
+"p": 2,
+"cb": 10,
+"f": 1.2
+},
+{
+"n": "Chicken sweet corn soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 150,
+"p": 9,
+"cb": 20,
+"f": 3.5
+},
+{
+"n": "Palak soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 90,
+"p": 3.5,
+"cb": 9,
+"f": 4.5
+},
+{
+"n": "Rasam",
+"c": "Soups",
+"s": "1 bowl (200 ml)",
+"k": 60,
+"p": 2,
+"cb": 9,
+"f": 1.8
+},
+{
+"n": "Pumpkin soup",
+"c": "Soups",
+"s": "1 bowl (250 ml)",
+"k": 110,
+"p": 2.5,
+"cb": 15,
+"f": 4.5
+}
+]

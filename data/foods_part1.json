@@ -1,0 +1,2252 @@
+[
+ {
+  "n": "Plain roti",
+  "c": "Breads",
+  "s": "1 medium (40 g)",
+  "k": 120,
+  "p": 3.5,
+  "cb": 20,
+  "f": 3
+ },
+ {
+  "n": "Roti with ghee",
+  "c": "Breads",
+  "s": "1 medium (45 g)",
+  "k": 150,
+  "p": 3.5,
+  "cb": 20,
+  "f": 6
+ },
+ {
+  "n": "Phulka",
+  "c": "Breads",
+  "s": "1 piece (30 g)",
+  "k": 85,
+  "p": 2.8,
+  "cb": 17,
+  "f": 0.6
+ },
+ {
+  "n": "Tandoori roti",
+  "c": "Breads",
+  "s": "1 piece (60 g)",
+  "k": 160,
+  "p": 5,
+  "cb": 32,
+  "f": 1.5
+ },
+ {
+  "n": "Butter tandoori roti",
+  "c": "Breads",
+  "s": "1 piece (65 g)",
+  "k": 200,
+  "p": 5,
+  "cb": 32,
+  "f": 6
+ },
+ {
+  "n": "Plain naan",
+  "c": "Breads",
+  "s": "1 piece (90 g)",
+  "k": 260,
+  "p": 8,
+  "cb": 45,
+  "f": 5
+ },
+ {
+  "n": "Butter naan",
+  "c": "Breads",
+  "s": "1 piece (100 g)",
+  "k": 320,
+  "p": 8,
+  "cb": 46,
+  "f": 11
+ },
+ {
+  "n": "Garlic naan",
+  "c": "Breads",
+  "s": "1 piece (100 g)",
+  "k": 310,
+  "p": 8.5,
+  "cb": 46,
+  "f": 10
+ },
+ {
+  "n": "Cheese naan",
+  "c": "Breads",
+  "s": "1 piece (120 g)",
+  "k": 400,
+  "p": 13,
+  "cb": 48,
+  "f": 17
+ },
+ {
+  "n": "Aloo kulcha",
+  "c": "Breads",
+  "s": "1 piece (120 g)",
+  "k": 330,
+  "p": 7.5,
+  "cb": 50,
+  "f": 11
+ },
+ {
+  "n": "Paneer kulcha",
+  "c": "Breads",
+  "s": "1 piece (120 g)",
+  "k": 350,
+  "p": 12,
+  "cb": 44,
+  "f": 14
+ },
+ {
+  "n": "Plain paratha",
+  "c": "Breads",
+  "s": "1 medium (60 g)",
+  "k": 200,
+  "p": 4.5,
+  "cb": 28,
+  "f": 8
+ },
+ {
+  "n": "Aloo paratha",
+  "c": "Breads",
+  "s": "1 medium (110 g)",
+  "k": 290,
+  "p": 6,
+  "cb": 40,
+  "f": 12
+ },
+ {
+  "n": "Gobi paratha",
+  "c": "Breads",
+  "s": "1 medium (110 g)",
+  "k": 260,
+  "p": 6.5,
+  "cb": 36,
+  "f": 10
+ },
+ {
+  "n": "Paneer paratha",
+  "c": "Breads",
+  "s": "1 medium (110 g)",
+  "k": 320,
+  "p": 11,
+  "cb": 34,
+  "f": 15.5
+ },
+ {
+  "n": "Methi paratha",
+  "c": "Breads",
+  "s": "1 medium (70 g)",
+  "k": 210,
+  "p": 5,
+  "cb": 28,
+  "f": 9
+ },
+ {
+  "n": "Lachha paratha",
+  "c": "Breads",
+  "s": "1 piece (80 g)",
+  "k": 290,
+  "p": 5.5,
+  "cb": 36,
+  "f": 14
+ },
+ {
+  "n": "Mooli paratha",
+  "c": "Breads",
+  "s": "1 medium (110 g)",
+  "k": 250,
+  "p": 5.5,
+  "cb": 35,
+  "f": 10
+ },
+ {
+  "n": "Onion paratha",
+  "c": "Breads",
+  "s": "1 medium (100 g)",
+  "k": 260,
+  "p": 5.5,
+  "cb": 36,
+  "f": 10.5
+ },
+ {
+  "n": "Puri",
+  "c": "Breads",
+  "s": "1 piece (25 g)",
+  "k": 100,
+  "p": 1.8,
+  "cb": 11,
+  "f": 5.5
+ },
+ {
+  "n": "Bhatura",
+  "c": "Breads",
+  "s": "1 piece (80 g)",
+  "k": 300,
+  "p": 6,
+  "cb": 38,
+  "f": 14
+ },
+ {
+  "n": "Methi thepla",
+  "c": "Breads",
+  "s": "1 piece (40 g)",
+  "k": 130,
+  "p": 3.2,
+  "cb": 17,
+  "f": 5.5
+ },
+ {
+  "n": "Missi roti",
+  "c": "Breads",
+  "s": "1 piece (60 g)",
+  "k": 180,
+  "p": 6.5,
+  "cb": 25,
+  "f": 6
+ },
+ {
+  "n": "Makki ki roti",
+  "c": "Breads",
+  "s": "1 piece (70 g)",
+  "k": 210,
+  "p": 3.5,
+  "cb": 30,
+  "f": 8.5
+ },
+ {
+  "n": "Bajra roti",
+  "c": "Breads",
+  "s": "1 piece (60 g)",
+  "k": 180,
+  "p": 4.5,
+  "cb": 28,
+  "f": 5.5
+ },
+ {
+  "n": "Jowar roti",
+  "c": "Breads",
+  "s": "1 piece (60 g)",
+  "k": 160,
+  "p": 4.5,
+  "cb": 30,
+  "f": 2.5
+ },
+ {
+  "n": "Ragi roti",
+  "c": "Breads",
+  "s": "1 piece (60 g)",
+  "k": 170,
+  "p": 3.5,
+  "cb": 30,
+  "f": 4
+ },
+ {
+  "n": "Rumali roti",
+  "c": "Breads",
+  "s": "1 piece (50 g)",
+  "k": 150,
+  "p": 4.5,
+  "cb": 26,
+  "f": 3
+ },
+ {
+  "n": "White bread slice",
+  "c": "Breads",
+  "s": "1 slice (25 g)",
+  "k": 67,
+  "p": 2.2,
+  "cb": 12.5,
+  "f": 0.8
+ },
+ {
+  "n": "Brown bread slice",
+  "c": "Breads",
+  "s": "1 slice (27 g)",
+  "k": 70,
+  "p": 2.8,
+  "cb": 12,
+  "f": 1
+ },
+ {
+  "n": "Multigrain bread slice",
+  "c": "Breads",
+  "s": "1 slice (30 g)",
+  "k": 80,
+  "p": 3.5,
+  "cb": 13,
+  "f": 1.2
+ },
+ {
+  "n": "Pav",
+  "c": "Breads",
+  "s": "1 piece (40 g)",
+  "k": 110,
+  "p": 3.5,
+  "cb": 20,
+  "f": 1.8
+ },
+ {
+  "n": "Butter pav",
+  "c": "Breads",
+  "s": "1 piece (45 g)",
+  "k": 150,
+  "p": 3.5,
+  "cb": 20,
+  "f": 6
+ },
+ {
+  "n": "Sattu paratha",
+  "c": "Breads",
+  "s": "1 medium (100 g)",
+  "k": 270,
+  "p": 9,
+  "cb": 36,
+  "f": 10
+ },
+ {
+  "n": "Palak puri",
+  "c": "Breads",
+  "s": "1 piece (25 g)",
+  "k": 95,
+  "p": 2,
+  "cb": 11,
+  "f": 5
+ },
+ {
+  "n": "Plain rice (small katori)",
+  "c": "Rice & grains",
+  "s": "1 katori (100 g cooked)",
+  "k": 130,
+  "p": 2.7,
+  "cb": 28,
+  "f": 0.3
+ },
+ {
+  "n": "Plain rice (mess plate)",
+  "c": "Rice & grains",
+  "s": "1 plate (250 g cooked)",
+  "k": 325,
+  "p": 6.8,
+  "cb": 70,
+  "f": 0.8
+ },
+ {
+  "n": "Jeera rice",
+  "c": "Rice & grains",
+  "s": "1 katori (150 g)",
+  "k": 230,
+  "p": 3.8,
+  "cb": 38,
+  "f": 7
+ },
+ {
+  "n": "Veg pulao",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 300,
+  "p": 6,
+  "cb": 46,
+  "f": 10
+ },
+ {
+  "n": "Veg biryani",
+  "c": "Rice & grains",
+  "s": "1 plate (250 g)",
+  "k": 400,
+  "p": 8.5,
+  "cb": 58,
+  "f": 15
+ },
+ {
+  "n": "Curd rice",
+  "c": "Rice & grains",
+  "s": "1 katori (200 g)",
+  "k": 260,
+  "p": 7,
+  "cb": 38,
+  "f": 8.5
+ },
+ {
+  "n": "Lemon rice",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 320,
+  "p": 5,
+  "cb": 50,
+  "f": 11
+ },
+ {
+  "n": "Tamarind rice (puliyogare)",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 340,
+  "p": 5.5,
+  "cb": 52,
+  "f": 12
+ },
+ {
+  "n": "Coconut rice",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 360,
+  "p": 5,
+  "cb": 48,
+  "f": 16.5
+ },
+ {
+  "n": "Tomato rice",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 310,
+  "p": 5,
+  "cb": 50,
+  "f": 10
+ },
+ {
+  "n": "Moong dal khichdi",
+  "c": "Rice & grains",
+  "s": "1 katori (200 g)",
+  "k": 240,
+  "p": 8.5,
+  "cb": 38,
+  "f": 6
+ },
+ {
+  "n": "Masala khichdi",
+  "c": "Rice & grains",
+  "s": "1 plate (250 g)",
+  "k": 320,
+  "p": 10,
+  "cb": 48,
+  "f": 10
+ },
+ {
+  "n": "Brown rice",
+  "c": "Rice & grains",
+  "s": "1 katori (150 g cooked)",
+  "k": 170,
+  "p": 3.8,
+  "cb": 35,
+  "f": 1.4
+ },
+ {
+  "n": "Veg fried rice",
+  "c": "Rice & grains",
+  "s": "1 plate (250 g)",
+  "k": 420,
+  "p": 8,
+  "cb": 62,
+  "f": 15
+ },
+ {
+  "n": "Veg schezwan fried rice",
+  "c": "Rice & grains",
+  "s": "1 plate (250 g)",
+  "k": 450,
+  "p": 8,
+  "cb": 64,
+  "f": 17.5
+ },
+ {
+  "n": "Ghee rice",
+  "c": "Rice & grains",
+  "s": "1 katori (150 g)",
+  "k": 270,
+  "p": 3.5,
+  "cb": 40,
+  "f": 10.5
+ },
+ {
+  "n": "Matar pulao",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 290,
+  "p": 6.5,
+  "cb": 46,
+  "f": 9
+ },
+ {
+  "n": "Kashmiri pulao",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 360,
+  "p": 6,
+  "cb": 54,
+  "f": 13
+ },
+ {
+  "n": "Dal chawal",
+  "c": "Rice & grains",
+  "s": "1 plate (300 g)",
+  "k": 380,
+  "p": 12,
+  "cb": 62,
+  "f": 9
+ },
+ {
+  "n": "Rajma chawal",
+  "c": "Rice & grains",
+  "s": "1 plate (350 g)",
+  "k": 480,
+  "p": 16,
+  "cb": 76,
+  "f": 12
+ },
+ {
+  "n": "Chole chawal",
+  "c": "Rice & grains",
+  "s": "1 plate (350 g)",
+  "k": 500,
+  "p": 15,
+  "cb": 76,
+  "f": 15
+ },
+ {
+  "n": "Dalia (salted, veg)",
+  "c": "Rice & grains",
+  "s": "1 katori (200 g)",
+  "k": 180,
+  "p": 6,
+  "cb": 32,
+  "f": 3
+ },
+ {
+  "n": "Sweet dalia with milk",
+  "c": "Rice & grains",
+  "s": "1 katori (200 g)",
+  "k": 230,
+  "p": 7,
+  "cb": 38,
+  "f": 5.5
+ },
+ {
+  "n": "Foxtail millet rice",
+  "c": "Rice & grains",
+  "s": "1 katori (150 g cooked)",
+  "k": 170,
+  "p": 4.5,
+  "cb": 33,
+  "f": 1.8
+ },
+ {
+  "n": "Quinoa pulao",
+  "c": "Rice & grains",
+  "s": "1 katori (150 g)",
+  "k": 210,
+  "p": 6,
+  "cb": 30,
+  "f": 7
+ },
+ {
+  "n": "Bajra khichdi",
+  "c": "Rice & grains",
+  "s": "1 katori (200 g)",
+  "k": 250,
+  "p": 8,
+  "cb": 38,
+  "f": 7
+ },
+ {
+  "n": "Vangi bath",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 330,
+  "p": 5.5,
+  "cb": 50,
+  "f": 12
+ },
+ {
+  "n": "Pudina rice",
+  "c": "Rice & grains",
+  "s": "1 plate (200 g)",
+  "k": 300,
+  "p": 5,
+  "cb": 48,
+  "f": 10
+ },
+ {
+  "n": "Boiled sweet corn",
+  "c": "Rice & grains",
+  "s": "1 cup (150 g)",
+  "k": 150,
+  "p": 5,
+  "cb": 30,
+  "f": 1.8
+ },
+ {
+  "n": "Veg tehri",
+  "c": "Rice & grains",
+  "s": "1 plate (250 g)",
+  "k": 370,
+  "p": 7,
+  "cb": 56,
+  "f": 13
+ },
+ {
+  "n": "Dal tadka",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 8,
+  "cb": 20,
+  "f": 6.5
+ },
+ {
+  "n": "Dal fry",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 8,
+  "cb": 20,
+  "f": 7.5
+ },
+ {
+  "n": "Dal makhani",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 280,
+  "p": 10,
+  "cb": 25,
+  "f": 15.5
+ },
+ {
+  "n": "Moong dal (yellow)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 8.5,
+  "cb": 19,
+  "f": 4.5
+ },
+ {
+  "n": "Masoor dal",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 9,
+  "cb": 20,
+  "f": 5
+ },
+ {
+  "n": "Toor dal (arhar)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 165,
+  "p": 8,
+  "cb": 21,
+  "f": 5.5
+ },
+ {
+  "n": "Chana dal",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 200,
+  "p": 10,
+  "cb": 26,
+  "f": 6.5
+ },
+ {
+  "n": "Mess dal (thin)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 100,
+  "p": 5,
+  "cb": 13,
+  "f": 3
+ },
+ {
+  "n": "Sambar",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 140,
+  "p": 6,
+  "cb": 18,
+  "f": 5
+ },
+ {
+  "n": "Rasam",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 ml)",
+  "k": 60,
+  "p": 2,
+  "cb": 8,
+  "f": 2.3
+ },
+ {
+  "n": "Rajma masala",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 220,
+  "p": 10,
+  "cb": 28,
+  "f": 7.5
+ },
+ {
+  "n": "Chole (chana masala)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 240,
+  "p": 10,
+  "cb": 30,
+  "f": 9
+ },
+ {
+  "n": "Kadhi pakoda",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 220,
+  "p": 7,
+  "cb": 18,
+  "f": 13.5
+ },
+ {
+  "n": "Gujarati kadhi",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 110,
+  "p": 4,
+  "cb": 10,
+  "f": 6
+ },
+ {
+  "n": "Lobia curry",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 190,
+  "p": 9,
+  "cb": 25,
+  "f": 6
+ },
+ {
+  "n": "Kala chana curry",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 210,
+  "p": 10,
+  "cb": 28,
+  "f": 6.5
+ },
+ {
+  "n": "Moong sprouts usal",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 10,
+  "cb": 20,
+  "f": 5.5
+ },
+ {
+  "n": "Panchmel dal",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 190,
+  "p": 10,
+  "cb": 24,
+  "f": 6
+ },
+ {
+  "n": "Misal (without pav)",
+  "c": "Dals & legumes",
+  "s": "1 bowl (250 g)",
+  "k": 350,
+  "p": 14,
+  "cb": 38,
+  "f": 16
+ },
+ {
+  "n": "Dal palak",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 8.5,
+  "cb": 19,
+  "f": 5.5
+ },
+ {
+  "n": "Whole moong dal (sabut)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 10,
+  "cb": 22,
+  "f": 4.5
+ },
+ {
+  "n": "Urad dal (dhuli)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 9.5,
+  "cb": 21,
+  "f": 6.5
+ },
+ {
+  "n": "Maa ki dal (kaali dal)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 230,
+  "p": 10,
+  "cb": 24,
+  "f": 10.5
+ },
+ {
+  "n": "Chana dal lauki",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 7,
+  "cb": 18,
+  "f": 5.5
+ },
+ {
+  "n": "Dal dhokli",
+  "c": "Dals & legumes",
+  "s": "1 bowl (250 g)",
+  "k": 320,
+  "p": 12,
+  "cb": 48,
+  "f": 9
+ },
+ {
+  "n": "Matki usal",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 10,
+  "cb": 22,
+  "f": 6
+ },
+ {
+  "n": "Ragda (white peas curry)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 200,
+  "p": 9,
+  "cb": 28,
+  "f": 6
+ },
+ {
+  "n": "Boiled chana",
+  "c": "Dals & legumes",
+  "s": "1 katori (100 g)",
+  "k": 165,
+  "p": 9,
+  "cb": 27,
+  "f": 2.6
+ },
+ {
+  "n": "Moong sprouts salad",
+  "c": "Dals & legumes",
+  "s": "1 katori (100 g)",
+  "k": 70,
+  "p": 5,
+  "cb": 11,
+  "f": 0.5
+ },
+ {
+  "n": "Gujarati toor dal (sweet)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 6.5,
+  "cb": 22,
+  "f": 4
+ },
+ {
+  "n": "Pindi chole (dry)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 260,
+  "p": 11,
+  "cb": 30,
+  "f": 11
+ },
+ {
+  "n": "Kulthi dal (horse gram)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 10,
+  "cb": 23,
+  "f": 4.5
+ },
+ {
+  "n": "Dal amritsari",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 220,
+  "p": 10,
+  "cb": 24,
+  "f": 9.5
+ },
+ {
+  "n": "Sukhi moong dal",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 11,
+  "cb": 24,
+  "f": 4.5
+ },
+ {
+  "n": "Pappu (Andhra dal)",
+  "c": "Dals & legumes",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 8,
+  "cb": 20,
+  "f": 6.5
+ },
+ {
+  "n": "Aloo gobi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 3.5,
+  "cb": 18,
+  "f": 9.5
+ },
+ {
+  "n": "Bhindi masala",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 3,
+  "cb": 12,
+  "f": 10
+ },
+ {
+  "n": "Baingan bharta",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 140,
+  "p": 3,
+  "cb": 12,
+  "f": 9
+ },
+ {
+  "n": "Mixed veg curry",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 4,
+  "cb": 16,
+  "f": 9
+ },
+ {
+  "n": "Palak sabzi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 110,
+  "p": 4,
+  "cb": 8,
+  "f": 7
+ },
+ {
+  "n": "Aloo matar",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 4.5,
+  "cb": 22,
+  "f": 8.5
+ },
+ {
+  "n": "Cabbage sabzi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 110,
+  "p": 2.5,
+  "cb": 10,
+  "f": 7
+ },
+ {
+  "n": "Lauki sabzi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 90,
+  "p": 1.5,
+  "cb": 9,
+  "f": 5.5
+ },
+ {
+  "n": "Tinda masala",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 100,
+  "p": 2,
+  "cb": 9,
+  "f": 6.5
+ },
+ {
+  "n": "Dum aloo",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 230,
+  "p": 3.5,
+  "cb": 24,
+  "f": 13.5
+ },
+ {
+  "n": "Malai kofta",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (200 g, 2 kofta)",
+  "k": 380,
+  "p": 8,
+  "cb": 24,
+  "f": 28
+ },
+ {
+  "n": "Veg kolhapuri",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 200,
+  "p": 4.5,
+  "cb": 16,
+  "f": 13.5
+ },
+ {
+  "n": "Mushroom masala",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 5,
+  "cb": 10,
+  "f": 10
+ },
+ {
+  "n": "Kadai veg",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 4,
+  "cb": 15,
+  "f": 11.5
+ },
+ {
+  "n": "Methi aloo",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 3.5,
+  "cb": 20,
+  "f": 8.5
+ },
+ {
+  "n": "Karela sabzi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 3,
+  "cb": 12,
+  "f": 10
+ },
+ {
+  "n": "Beans poriyal",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 110,
+  "p": 3,
+  "cb": 10,
+  "f": 6.5
+ },
+ {
+  "n": "Avial",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 3,
+  "cb": 12,
+  "f": 11
+ },
+ {
+  "n": "Kootu",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 140,
+  "p": 6,
+  "cb": 15,
+  "f": 6
+ },
+ {
+  "n": "Jeera aloo",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 190,
+  "p": 3,
+  "cb": 24,
+  "f": 9
+ },
+ {
+  "n": "Aloo baingan",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 3,
+  "cb": 16,
+  "f": 9.5
+ },
+ {
+  "n": "Aloo shimla mirch",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 2.8,
+  "cb": 15,
+  "f": 9
+ },
+ {
+  "n": "Gobi matar",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 140,
+  "p": 4.5,
+  "cb": 13,
+  "f": 8
+ },
+ {
+  "n": "Veg jalfrezi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 3.5,
+  "cb": 14,
+  "f": 10
+ },
+ {
+  "n": "Navratan korma",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 260,
+  "p": 6,
+  "cb": 20,
+  "f": 17.5
+ },
+ {
+  "n": "Matar mushroom",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 6.5,
+  "cb": 13,
+  "f": 9
+ },
+ {
+  "n": "Aloo tamatar (rasedar)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 2.5,
+  "cb": 20,
+  "f": 6.5
+ },
+ {
+  "n": "Sarson ka saag",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 5,
+  "cb": 10,
+  "f": 11
+ },
+ {
+  "n": "Lauki kofta curry",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (200 g, 2 kofta)",
+  "k": 260,
+  "p": 5,
+  "cb": 20,
+  "f": 18
+ },
+ {
+  "n": "Arbi masala",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 190,
+  "p": 3,
+  "cb": 24,
+  "f": 9
+ },
+ {
+  "n": "Sev tamatar",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 220,
+  "p": 5,
+  "cb": 20,
+  "f": 13.5
+ },
+ {
+  "n": "Undhiyu",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 230,
+  "p": 5.5,
+  "cb": 24,
+  "f": 12.5
+ },
+ {
+  "n": "Kaddu sabzi (khatta meetha)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 130,
+  "p": 1.5,
+  "cb": 16,
+  "f": 7
+ },
+ {
+  "n": "Kathal sabzi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 3,
+  "cb": 20,
+  "f": 9
+ },
+ {
+  "n": "Tori sabzi (ridge gourd)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 90,
+  "p": 1.8,
+  "cb": 8,
+  "f": 5.5
+ },
+ {
+  "n": "Parwal sabzi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 110,
+  "p": 2,
+  "cb": 9,
+  "f": 7
+ },
+ {
+  "n": "Besan shimla mirch",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 5,
+  "cb": 12,
+  "f": 10
+ },
+ {
+  "n": "Gatte ki sabzi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 250,
+  "p": 8,
+  "cb": 22,
+  "f": 14.5
+ },
+ {
+  "n": "Kadhai mushroom",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 5,
+  "cb": 10,
+  "f": 12.5
+ },
+ {
+  "n": "Bharwa baingan",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 3.5,
+  "cb": 13,
+  "f": 13
+ },
+ {
+  "n": "Beetroot poriyal",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 110,
+  "p": 2,
+  "cb": 13,
+  "f": 5.5
+ },
+ {
+  "n": "Cabbage thoran",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 120,
+  "p": 2.5,
+  "cb": 10,
+  "f": 8
+ },
+ {
+  "n": "Gajar beans sabzi",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 110,
+  "p": 2,
+  "cb": 12,
+  "f": 6
+ },
+ {
+  "n": "Gajar matar",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 130,
+  "p": 3.5,
+  "cb": 15,
+  "f": 6.5
+ },
+ {
+  "n": "Drumstick curry (sahjan)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 120,
+  "p": 3,
+  "cb": 10,
+  "f": 7.5
+ },
+ {
+  "n": "Corn palak",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 170,
+  "p": 5,
+  "cb": 14,
+  "f": 10.5
+ },
+ {
+  "n": "Bhindi fry (crispy)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (120 g)",
+  "k": 200,
+  "p": 3,
+  "cb": 14,
+  "f": 15
+ },
+ {
+  "n": "Aloo sabzi (puri wali)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 160,
+  "p": 2.5,
+  "cb": 22,
+  "f": 7
+ },
+ {
+  "n": "Aloo fry",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 210,
+  "p": 3,
+  "cb": 26,
+  "f": 10.5
+ },
+ {
+  "n": "Veg korma",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 200,
+  "p": 4,
+  "cb": 14,
+  "f": 14.5
+ },
+ {
+  "n": "Kerala vegetable stew",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 2.5,
+  "cb": 12,
+  "f": 10.5
+ },
+ {
+  "n": "Mirchi ka salan",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 220,
+  "p": 4,
+  "cb": 12,
+  "f": 17.5
+ },
+ {
+  "n": "Veg makhanwala",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 230,
+  "p": 5,
+  "cb": 16,
+  "f": 16.5
+ },
+ {
+  "n": "Methi matar malai",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 250,
+  "p": 7,
+  "cb": 14,
+  "f": 18.5
+ },
+ {
+  "n": "Kaju masala",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 320,
+  "p": 8,
+  "cb": 18,
+  "f": 24.5
+ },
+ {
+  "n": "Mix veg dry (sukhi sabzi)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 130,
+  "p": 3,
+  "cb": 13,
+  "f": 7.5
+ },
+ {
+  "n": "Gobi manchurian (gravy)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 260,
+  "p": 4.5,
+  "cb": 26,
+  "f": 15.5
+ },
+ {
+  "n": "Veg manchurian (dry)",
+  "c": "Veg curries & sabzi",
+  "s": "1 plate (150 g, 6 balls)",
+  "k": 280,
+  "p": 5,
+  "cb": 28,
+  "f": 16.5
+ },
+ {
+  "n": "Aloo palak",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 3.5,
+  "cb": 15,
+  "f": 8.5
+ },
+ {
+  "n": "Tindora fry (kundru)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 140,
+  "p": 2,
+  "cb": 10,
+  "f": 10
+ },
+ {
+  "n": "Paneer butter masala",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 350,
+  "p": 13,
+  "cb": 12,
+  "f": 28
+ },
+ {
+  "n": "Palak paneer",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 260,
+  "p": 12,
+  "cb": 9,
+  "f": 20
+ },
+ {
+  "n": "Kadai paneer",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 310,
+  "p": 14,
+  "cb": 11,
+  "f": 24
+ },
+ {
+  "n": "Matar paneer",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 270,
+  "p": 12,
+  "cb": 14,
+  "f": 18.5
+ },
+ {
+  "n": "Shahi paneer",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 360,
+  "p": 13,
+  "cb": 13,
+  "f": 28.5
+ },
+ {
+  "n": "Paneer bhurji",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 300,
+  "p": 17,
+  "cb": 8,
+  "f": 22
+ },
+ {
+  "n": "Paneer tikka",
+  "c": "Paneer & soya",
+  "s": "6 pieces (150 g)",
+  "k": 330,
+  "p": 22,
+  "cb": 8,
+  "f": 23.5
+ },
+ {
+  "n": "Paneer tikka masala",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 340,
+  "p": 15,
+  "cb": 12,
+  "f": 26
+ },
+ {
+  "n": "Paneer do pyaza",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 300,
+  "p": 13,
+  "cb": 12,
+  "f": 22.5
+ },
+ {
+  "n": "Chilli paneer (dry)",
+  "c": "Paneer & soya",
+  "s": "1 plate (150 g)",
+  "k": 330,
+  "p": 14,
+  "cb": 18,
+  "f": 22.5
+ },
+ {
+  "n": "Paneer (raw, full fat)",
+  "c": "Paneer & soya",
+  "s": "100 g",
+  "k": 265,
+  "p": 18,
+  "cb": 3.5,
+  "f": 20
+ },
+ {
+  "n": "Paneer (raw, low fat)",
+  "c": "Paneer & soya",
+  "s": "100 g",
+  "k": 190,
+  "p": 20,
+  "cb": 4,
+  "f": 10.5
+ },
+ {
+  "n": "Paneer lababdar",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 340,
+  "p": 13,
+  "cb": 12,
+  "f": 27
+ },
+ {
+  "n": "Achari paneer",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 310,
+  "p": 13,
+  "cb": 10,
+  "f": 24.5
+ },
+ {
+  "n": "Paneer kofta curry",
+  "c": "Paneer & soya",
+  "s": "1 katori (200 g, 2 kofta)",
+  "k": 390,
+  "p": 13,
+  "cb": 18,
+  "f": 30
+ },
+ {
+  "n": "Soya chunks curry",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 200,
+  "p": 15,
+  "cb": 14,
+  "f": 9.5
+ },
+ {
+  "n": "Soya keema matar",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 220,
+  "p": 17,
+  "cb": 14,
+  "f": 10.5
+ },
+ {
+  "n": "Soya chunks (boiled)",
+  "c": "Paneer & soya",
+  "s": "30 g dry (~90 g boiled)",
+  "k": 104,
+  "p": 15.6,
+  "cb": 10,
+  "f": 0.2
+ },
+ {
+  "n": "Soya chunks pulao",
+  "c": "Paneer & soya",
+  "s": "1 plate (250 g)",
+  "k": 380,
+  "p": 16,
+  "cb": 56,
+  "f": 10
+ },
+ {
+  "n": "Chilli soya (dry)",
+  "c": "Paneer & soya",
+  "s": "1 plate (150 g)",
+  "k": 250,
+  "p": 16,
+  "cb": 18,
+  "f": 12.5
+ },
+ {
+  "n": "Tofu bhurji",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 200,
+  "p": 15,
+  "cb": 6,
+  "f": 13
+ },
+ {
+  "n": "Tofu masala curry",
+  "c": "Paneer & soya",
+  "s": "1 katori (150 g)",
+  "k": 210,
+  "p": 13,
+  "cb": 10,
+  "f": 13.5
+ },
+ {
+  "n": "Tofu (plain, firm)",
+  "c": "Paneer & soya",
+  "s": "100 g",
+  "k": 145,
+  "p": 15.5,
+  "cb": 3,
+  "f": 8.5
+ },
+ {
+  "n": "Soya tikka",
+  "c": "Paneer & soya",
+  "s": "6 pieces (150 g)",
+  "k": 230,
+  "p": 20,
+  "cb": 12,
+  "f": 11
+ },
+ {
+  "n": "Paneer grilled sandwich",
+  "c": "Paneer & soya",
+  "s": "1 sandwich (150 g)",
+  "k": 380,
+  "p": 16,
+  "cb": 36,
+  "f": 19
+ },
+ {
+  "n": "Idli",
+  "c": "South Indian",
+  "s": "1 piece (40 g)",
+  "k": 58,
+  "p": 2,
+  "cb": 12,
+  "f": 0.2
+ },
+ {
+  "n": "Plain dosa",
+  "c": "South Indian",
+  "s": "1 medium (80 g)",
+  "k": 170,
+  "p": 4,
+  "cb": 28,
+  "f": 4.5
+ },
+ {
+  "n": "Masala dosa",
+  "c": "South Indian",
+  "s": "1 piece (180 g)",
+  "k": 360,
+  "p": 7,
+  "cb": 50,
+  "f": 14.5
+ },
+ {
+  "n": "Rava dosa",
+  "c": "South Indian",
+  "s": "1 piece (90 g)",
+  "k": 230,
+  "p": 4,
+  "cb": 30,
+  "f": 10.5
+ },
+ {
+  "n": "Onion dosa",
+  "c": "South Indian",
+  "s": "1 piece (110 g)",
+  "k": 220,
+  "p": 4.5,
+  "cb": 32,
+  "f": 8
+ },
+ {
+  "n": "Set dosa",
+  "c": "South Indian",
+  "s": "2 pieces (120 g)",
+  "k": 250,
+  "p": 6,
+  "cb": 44,
+  "f": 5.5
+ },
+ {
+  "n": "Pesarattu",
+  "c": "South Indian",
+  "s": "1 piece (100 g)",
+  "k": 200,
+  "p": 9,
+  "cb": 26,
+  "f": 6.5
+ },
+ {
+  "n": "Mysore masala dosa",
+  "c": "South Indian",
+  "s": "1 piece (200 g)",
+  "k": 420,
+  "p": 8,
+  "cb": 54,
+  "f": 19
+ },
+ {
+  "n": "Ghee roast dosa",
+  "c": "South Indian",
+  "s": "1 piece (100 g)",
+  "k": 280,
+  "p": 4.5,
+  "cb": 32,
+  "f": 15
+ },
+ {
+  "n": "Neer dosa",
+  "c": "South Indian",
+  "s": "1 piece (50 g)",
+  "k": 80,
+  "p": 1.3,
+  "cb": 16,
+  "f": 1.2
+ },
+ {
+  "n": "Ragi dosa",
+  "c": "South Indian",
+  "s": "1 piece (80 g)",
+  "k": 160,
+  "p": 3.5,
+  "cb": 26,
+  "f": 4.5
+ },
+ {
+  "n": "Onion uttapam",
+  "c": "South Indian",
+  "s": "1 piece (150 g)",
+  "k": 250,
+  "p": 6,
+  "cb": 40,
+  "f": 7
+ },
+ {
+  "n": "Mixed veg uttapam",
+  "c": "South Indian",
+  "s": "1 piece (160 g)",
+  "k": 270,
+  "p": 7,
+  "cb": 42,
+  "f": 8
+ },
+ {
+  "n": "Medu vada",
+  "c": "South Indian",
+  "s": "1 piece (50 g)",
+  "k": 140,
+  "p": 4.5,
+  "cb": 13,
+  "f": 8
+ },
+ {
+  "n": "Sambar vada",
+  "c": "South Indian",
+  "s": "2 vada + sambar (200 g)",
+  "k": 350,
+  "p": 12,
+  "cb": 36,
+  "f": 17.5
+ },
+ {
+  "n": "Appam",
+  "c": "South Indian",
+  "s": "1 piece (60 g)",
+  "k": 110,
+  "p": 2,
+  "cb": 22,
+  "f": 1.5
+ },
+ {
+  "n": "Ven pongal",
+  "c": "South Indian",
+  "s": "1 katori (200 g)",
+  "k": 300,
+  "p": 8,
+  "cb": 40,
+  "f": 12
+ },
+ {
+  "n": "Rava upma",
+  "c": "South Indian",
+  "s": "1 katori (200 g)",
+  "k": 290,
+  "p": 7,
+  "cb": 42,
+  "f": 10
+ },
+ {
+  "n": "Bisi bele bath",
+  "c": "South Indian",
+  "s": "1 plate (250 g)",
+  "k": 380,
+  "p": 11,
+  "cb": 56,
+  "f": 12.5
+ },
+ {
+  "n": "Coconut chutney",
+  "c": "South Indian",
+  "s": "2 tbsp (40 g)",
+  "k": 90,
+  "p": 1.2,
+  "cb": 3.5,
+  "f": 8
+ },
+ {
+  "n": "Tomato chutney",
+  "c": "South Indian",
+  "s": "2 tbsp (40 g)",
+  "k": 50,
+  "p": 0.8,
+  "cb": 5,
+  "f": 3
+ },
+ {
+  "n": "Peanut chutney",
+  "c": "South Indian",
+  "s": "2 tbsp (40 g)",
+  "k": 120,
+  "p": 4.5,
+  "cb": 5,
+  "f": 9.5
+ },
+ {
+  "n": "Puttu",
+  "c": "South Indian",
+  "s": "1 piece (100 g)",
+  "k": 170,
+  "p": 3.5,
+  "cb": 36,
+  "f": 1
+ },
+ {
+  "n": "Idiyappam",
+  "c": "South Indian",
+  "s": "2 pieces (100 g)",
+  "k": 150,
+  "p": 2.5,
+  "cb": 33,
+  "f": 0.5
+ },
+ {
+  "n": "Kadala curry",
+  "c": "South Indian",
+  "s": "1 katori (150 g)",
+  "k": 220,
+  "p": 9,
+  "cb": 24,
+  "f": 10
+ },
+ {
+  "n": "Rava idli",
+  "c": "South Indian",
+  "s": "1 piece (50 g)",
+  "k": 95,
+  "p": 2.5,
+  "cb": 13,
+  "f": 3.5
+ },
+ {
+  "n": "Idli sambar",
+  "c": "South Indian",
+  "s": "2 idli + sambar (250 g)",
+  "k": 260,
+  "p": 9,
+  "cb": 48,
+  "f": 3.5
+ },
+ {
+  "n": "Masala vada (paruppu vada)",
+  "c": "South Indian",
+  "s": "1 piece (40 g)",
+  "k": 130,
+  "p": 4.5,
+  "cb": 12,
+  "f": 7
+ },
+ {
+  "n": "Mysore bonda",
+  "c": "South Indian",
+  "s": "1 piece (40 g)",
+  "k": 130,
+  "p": 2.5,
+  "cb": 15,
+  "f": 6.5
+ },
+ {
+  "n": "Kuzhi paniyaram",
+  "c": "South Indian",
+  "s": "4 pieces (100 g)",
+  "k": 200,
+  "p": 4.5,
+  "cb": 28,
+  "f": 8
+ },
+ {
+  "n": "Adai",
+  "c": "South Indian",
+  "s": "1 piece (100 g)",
+  "k": 230,
+  "p": 9,
+  "cb": 30,
+  "f": 8
+ },
+ {
+  "n": "Gunpowder (podi) with oil",
+  "c": "South Indian",
+  "s": "1 tbsp (15 g)",
+  "k": 80,
+  "p": 2.5,
+  "cb": 5,
+  "f": 5.5
+ },
+ {
+  "n": "Sakkarai pongal",
+  "c": "South Indian",
+  "s": "1 katori (150 g)",
+  "k": 320,
+  "p": 5,
+  "cb": 52,
+  "f": 10.5
+ },
+ {
+  "n": "Plain uttapam",
+  "c": "South Indian",
+  "s": "1 piece (130 g)",
+  "k": 210,
+  "p": 5.5,
+  "cb": 36,
+  "f": 4.5
+ },
+ {
+  "n": "Ragi mudde",
+  "c": "South Indian",
+  "s": "1 ball (150 g)",
+  "k": 200,
+  "p": 4.5,
+  "cb": 42,
+  "f": 1
+ },
+ {
+  "n": "Aloo paratha with curd",
+  "c": "Breakfast",
+  "s": "1 paratha + 1 katori curd (210 g)",
+  "k": 380,
+  "p": 10,
+  "cb": 46,
+  "f": 17
+ },
+ {
+  "n": "Poha",
+  "c": "Breakfast",
+  "s": "1 plate (200 g)",
+  "k": 280,
+  "p": 5,
+  "cb": 44,
+  "f": 9
+ },
+ {
+  "n": "Poha with sev and peanuts",
+  "c": "Breakfast",
+  "s": "1 plate (220 g)",
+  "k": 360,
+  "p": 8,
+  "cb": 50,
+  "f": 14
+ },
+ {
+  "n": "Sabudana khichdi",
+  "c": "Breakfast",
+  "s": "1 plate (200 g)",
+  "k": 400,
+  "p": 4.5,
+  "cb": 60,
+  "f": 16
+ },
+ {
+  "n": "Besan chilla",
+  "c": "Breakfast",
+  "s": "1 piece (80 g)",
+  "k": 160,
+  "p": 7,
+  "cb": 14,
+  "f": 8.5
+ },
+ {
+  "n": "Moong dal chilla",
+  "c": "Breakfast",
+  "s": "1 piece (80 g)",
+  "k": 140,
+  "p": 8,
+  "cb": 15,
+  "f": 5
+ },
+ {
+  "n": "Khaman dhokla",
+  "c": "Breakfast",
+  "s": "4 pieces (100 g)",
+  "k": 160,
+  "p": 6,
+  "cb": 22,
+  "f": 5.5
+ },
+ {
+  "n": "Sooji sheera",
+  "c": "Breakfast",
+  "s": "1 katori (150 g)",
+  "k": 380,
+  "p": 4.5,
+  "cb": 50,
+  "f": 18
+ },
+ {
+  "n": "Oats upma",
+  "c": "Breakfast",
+  "s": "1 katori (200 g)",
+  "k": 220,
+  "p": 7,
+  "cb": 30,
+  "f": 8
+ },
+ {
+  "n": "Semiya upma (vermicelli)",
+  "c": "Breakfast",
+  "s": "1 katori (200 g)",
+  "k": 280,
+  "p": 6,
+  "cb": 44,
+  "f": 9
+ },
+ {
+  "n": "Bread butter",
+  "c": "Breakfast",
+  "s": "2 slices (60 g)",
+  "k": 220,
+  "p": 4.5,
+  "cb": 25,
+  "f": 11
+ },
+ {
+  "n": "Bread jam",
+  "c": "Breakfast",
+  "s": "2 slices (70 g)",
+  "k": 200,
+  "p": 4.5,
+  "cb": 40,
+  "f": 2
+ },
+ {
+  "n": "Cornflakes with milk",
+  "c": "Breakfast",
+  "s": "1 bowl (30 g + 200 ml milk)",
+  "k": 250,
+  "p": 8.6,
+  "cb": 39,
+  "f": 6.3
+ },
+ {
+  "n": "Oats porridge with milk",
+  "c": "Breakfast",
+  "s": "1 bowl (40 g oats + 200 ml milk)",
+  "k": 280,
+  "p": 12,
+  "cb": 37,
+  "f": 9.5
+ },
+ {
+  "n": "Masala oats",
+  "c": "Breakfast",
+  "s": "1 bowl (250 g)",
+  "k": 220,
+  "p": 7,
+  "cb": 32,
+  "f": 7
+ },
+ {
+  "n": "Veg sandwich",
+  "c": "Breakfast",
+  "s": "1 sandwich (150 g)",
+  "k": 250,
+  "p": 6.5,
+  "cb": 36,
+  "f": 9
+ },
+ {
+  "n": "Veg cheese grilled sandwich",
+  "c": "Breakfast",
+  "s": "1 sandwich (160 g)",
+  "k": 340,
+  "p": 12,
+  "cb": 36,
+  "f": 16.5
+ },
+ {
+  "n": "Bread pakora",
+  "c": "Breakfast",
+  "s": "1 piece (90 g)",
+  "k": 260,
+  "p": 6,
+  "cb": 28,
+  "f": 14
+ },
+ {
+  "n": "Vada pav",
+  "c": "Breakfast",
+  "s": "1 piece (150 g)",
+  "k": 300,
+  "p": 7,
+  "cb": 40,
+  "f": 12.5
+ },
+ {
+  "n": "Pav bhaji",
+  "c": "Breakfast",
+  "s": "2 pav + bhaji (300 g)",
+  "k": 520,
+  "p": 12,
+  "cb": 66,
+  "f": 23
+ },
+ {
+  "n": "Chole bhature",
+  "c": "Breakfast",
+  "s": "2 bhature + chole (350 g)",
+  "k": 750,
+  "p": 20,
+  "cb": 90,
+  "f": 35
+ },
+ {
+  "n": "Puri bhaji",
+  "c": "Breakfast",
+  "s": "4 puri + aloo (250 g)",
+  "k": 550,
+  "p": 9,
+  "cb": 62,
+  "f": 29.5
+ },
+ {
+  "n": "Khandvi",
+  "c": "Breakfast",
+  "s": "6 pieces (100 g)",
+  "k": 170,
+  "p": 6.5,
+  "cb": 16,
+  "f": 9
+ },
+ {
+  "n": "Handvo",
+  "c": "Breakfast",
+  "s": "1 piece (100 g)",
+  "k": 210,
+  "p": 7,
+  "cb": 26,
+  "f": 8.5
+ },
+ {
+  "n": "Sabudana vada",
+  "c": "Breakfast",
+  "s": "1 piece (50 g)",
+  "k": 140,
+  "p": 1.5,
+  "cb": 18,
+  "f": 7
+ },
+ {
+  "n": "Muesli with milk",
+  "c": "Breakfast",
+  "s": "1 bowl (40 g + 200 ml milk)",
+  "k": 290,
+  "p": 11,
+  "cb": 45,
+  "f": 7.5
+ },
+ {
+  "n": "Peanut butter toast",
+  "c": "Breakfast",
+  "s": "2 slices + 1 tbsp (66 g)",
+  "k": 260,
+  "p": 9.5,
+  "cb": 28,
+  "f": 12.5
+ },
+ {
+  "n": "Sprouts chaat",
+  "c": "Breakfast",
+  "s": "1 bowl (150 g)",
+  "k": 140,
+  "p": 9,
+  "cb": 22,
+  "f": 2
+ },
+ {
+  "n": "Thalipeeth",
+  "c": "Breakfast",
+  "s": "1 piece (80 g)",
+  "k": 200,
+  "p": 6,
+  "cb": 26,
+  "f": 8
+ },
+ {
+  "n": "Besan toast (veg French toast)",
+  "c": "Breakfast",
+  "s": "2 slices (100 g)",
+  "k": 260,
+  "p": 9,
+  "cb": 30,
+  "f": 11.5
+ }
+]

@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import Svg, { Circle, Defs, Line, Path, Pattern, Rect } from 'react-native-svg';
 import { AnimSpec, Ink, Prim, scene } from '../lib/anim';
 import { useClock } from '../lib/hooks';
+import { nice } from './ui';
 import { C, F } from '../lib/theme';
 
 const INK: Record<Ink, string> = {
@@ -44,7 +45,7 @@ function Frame({ spec, sec, width, labels = true, grid = true }: { spec: AnimSpe
         <>
           <View style={{ position: 'absolute', left: 10, top: 10, flexDirection: 'row', gap: 6 }}>
             {lab.map((l, i) => (
-              <Text key={i} style={{ paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: 'rgba(13,14,11,0.85)', fontFamily: F.monoBold, fontSize: 10, letterSpacing: 0.8, color: i === lab.length - 1 && lab.length > 1 ? C.lime : C.text, opacity: spec.hold || phase === i ? 1 : 0.3 }}>{l}</Text>
+              <Text key={i} style={{ paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: 'rgba(13,14,11,0.85)', fontFamily: F.monoBold, fontSize: 12, color: i === lab.length - 1 && lab.length > 1 ? C.lime : C.text, opacity: spec.hold || phase === i ? 1 : 0.3 }}>{nice(l)}</Text>
             ))}
           </View>
           <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 3, backgroundColor: '#1A1B16' }}>

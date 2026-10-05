@@ -1,0 +1,992 @@
+[
+ {
+  "n": "Veg crispy (dry)",
+  "c": "Indo-Chinese",
+  "s": "1 plate (200 g)",
+  "k": 420,
+  "p": 6,
+  "cb": 45,
+  "f": 24
+ },
+ {
+  "n": "Paneer manchurian (dry)",
+  "c": "Indo-Chinese",
+  "s": "1 plate (200 g)",
+  "k": 410,
+  "p": 18,
+  "cb": 20,
+  "f": 28
+ },
+ {
+  "n": "Dragon chicken",
+  "c": "Indo-Chinese",
+  "s": "1 plate (200 g)",
+  "k": 400,
+  "p": 28,
+  "cb": 22,
+  "f": 22
+ },
+ {
+  "n": "Veg triple schezwan rice",
+  "c": "Indo-Chinese",
+  "s": "1 plate (400 g)",
+  "k": 670,
+  "p": 14,
+  "cb": 95,
+  "f": 26
+ },
+ {
+  "n": "Veg Singapore noodles",
+  "c": "Indo-Chinese",
+  "s": "1 plate (300 g)",
+  "k": 460,
+  "p": 9,
+  "cb": 70,
+  "f": 16
+ },
+ {
+  "n": "Mushroom chilli (dry)",
+  "c": "Indo-Chinese",
+  "s": "1 plate (200 g)",
+  "k": 250,
+  "p": 7,
+  "cb": 18,
+  "f": 16
+ },
+ {
+  "n": "Baby corn chilli (dry)",
+  "c": "Indo-Chinese",
+  "s": "1 plate (200 g)",
+  "k": 280,
+  "p": 5,
+  "cb": 30,
+  "f": 15
+ },
+ {
+  "n": "Chicken spring roll",
+  "c": "Indo-Chinese",
+  "s": "2 pieces (120 g)",
+  "k": 300,
+  "p": 12,
+  "cb": 28,
+  "f": 16
+ },
+ {
+  "n": "Burnt garlic fried rice",
+  "c": "Indo-Chinese",
+  "s": "1 plate (300 g)",
+  "k": 460,
+  "p": 8,
+  "cb": 75,
+  "f": 14
+ },
+ {
+  "n": "Chicken in hot garlic sauce",
+  "c": "Indo-Chinese",
+  "s": "1 katori (200 g)",
+  "k": 300,
+  "p": 24,
+  "cb": 14,
+  "f": 16
+ },
+ {
+  "n": "Paneer fried rice",
+  "c": "Indo-Chinese",
+  "s": "1 plate (300 g)",
+  "k": 500,
+  "p": 16,
+  "cb": 70,
+  "f": 18
+ },
+ {
+  "n": "Crispy corn salt and pepper",
+  "c": "Indo-Chinese",
+  "s": "1 plate (150 g)",
+  "k": 350,
+  "p": 6,
+  "cb": 40,
+  "f": 18
+ },
+ {
+  "n": "Brazil nuts",
+  "c": "Nuts & seeds",
+  "s": "3 nuts (15 g)",
+  "k": 99,
+  "p": 2.1,
+  "cb": 1.8,
+  "f": 10
+ },
+ {
+  "n": "Macadamia nuts",
+  "c": "Nuts & seeds",
+  "s": "1 handful (28 g)",
+  "k": 204,
+  "p": 2.2,
+  "cb": 3.9,
+  "f": 21.5
+ },
+ {
+  "n": "Pecans",
+  "c": "Nuts & seeds",
+  "s": "1 handful (28 g)",
+  "k": 196,
+  "p": 2.6,
+  "cb": 3.9,
+  "f": 20.4
+ },
+ {
+  "n": "Watermelon seeds (dried)",
+  "c": "Nuts & seeds",
+  "s": "2 tbsp (28 g)",
+  "k": 158,
+  "p": 8,
+  "cb": 4.3,
+  "f": 13.4
+ },
+ {
+  "n": "Hemp seeds (hulled)",
+  "c": "Nuts & seeds",
+  "s": "3 tbsp (30 g)",
+  "k": 166,
+  "p": 9.5,
+  "cb": 2.6,
+  "f": 14.6
+ },
+ {
+  "n": "Chironji (charoli)",
+  "c": "Nuts & seeds",
+  "s": "1 tbsp (10 g)",
+  "k": 66,
+  "p": 1.9,
+  "cb": 1.2,
+  "f": 5.9
+ },
+ {
+  "n": "Honey roasted cashews",
+  "c": "Nuts & seeds",
+  "s": "1 handful (28 g)",
+  "k": 160,
+  "p": 4.5,
+  "cb": 10,
+  "f": 12
+ },
+ {
+  "n": "Seed mix (pumpkin, sunflower, flax)",
+  "c": "Nuts & seeds",
+  "s": "1 tbsp (15 g)",
+  "k": 85,
+  "p": 3.8,
+  "cb": 2.5,
+  "f": 7
+ },
+ {
+  "n": "Halim seeds (garden cress)",
+  "c": "Nuts & seeds",
+  "s": "1 tbsp (12 g)",
+  "k": 55,
+  "p": 3,
+  "cb": 4,
+  "f": 2.9
+ },
+ {
+  "n": "Toasted coconut chips",
+  "c": "Nuts & seeds",
+  "s": "1 small pack (20 g)",
+  "k": 132,
+  "p": 1.4,
+  "cb": 5,
+  "f": 12.5
+ },
+ {
+  "n": "Mutton shorba",
+  "c": "Soups",
+  "s": "1 bowl (250 ml)",
+  "k": 180,
+  "p": 14,
+  "cb": 6,
+  "f": 11
+ },
+ {
+  "n": "Chicken yakhni shorba",
+  "c": "Soups",
+  "s": "1 bowl (250 ml)",
+  "k": 150,
+  "p": 15,
+  "cb": 5,
+  "f": 8
+ },
+ {
+  "n": "Veg thukpa",
+  "c": "Soups",
+  "s": "1 bowl (350 g)",
+  "k": 280,
+  "p": 9,
+  "cb": 45,
+  "f": 7
+ },
+ {
+  "n": "Chicken thukpa",
+  "c": "Soups",
+  "s": "1 bowl (350 g)",
+  "k": 340,
+  "p": 22,
+  "cb": 42,
+  "f": 9
+ },
+ {
+  "n": "Broccoli almond soup",
+  "c": "Soups",
+  "s": "1 bowl (250 ml)",
+  "k": 160,
+  "p": 6,
+  "cb": 12,
+  "f": 10
+ },
+ {
+  "n": "Minestrone soup",
+  "c": "Soups",
+  "s": "1 bowl (250 ml)",
+  "k": 140,
+  "p": 5,
+  "cb": 22,
+  "f": 3.5
+ },
+ {
+  "n": "Cream of chicken soup",
+  "c": "Soups",
+  "s": "1 bowl (250 ml)",
+  "k": 220,
+  "p": 12,
+  "cb": 14,
+  "f": 13
+ },
+ {
+  "n": "Egg drop soup",
+  "c": "Soups",
+  "s": "1 bowl (250 ml)",
+  "k": 90,
+  "p": 6,
+  "cb": 6,
+  "f": 4.5
+ },
+ {
+  "n": "Carrot ginger soup",
+  "c": "Soups",
+  "s": "1 bowl (250 ml)",
+  "k": 110,
+  "p": 2,
+  "cb": 16,
+  "f": 4.5
+ },
+ {
+  "n": "Chicken wonton soup",
+  "c": "Soups",
+  "s": "1 bowl (300 ml, 6 wontons)",
+  "k": 220,
+  "p": 14,
+  "cb": 26,
+  "f": 6
+ },
+ {
+  "n": "Chicken mayo sandwich",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (150 g)",
+  "k": 340,
+  "p": 18,
+  "cb": 30,
+  "f": 16
+ },
+ {
+  "n": "Aloo masala sandwich",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (150 g)",
+  "k": 290,
+  "p": 7,
+  "cb": 42,
+  "f": 10
+ },
+ {
+  "n": "Coleslaw sandwich",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (140 g)",
+  "k": 270,
+  "p": 6,
+  "cb": 30,
+  "f": 14
+ },
+ {
+  "n": "Chutney sandwich (Mumbai style)",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (80 g)",
+  "k": 185,
+  "p": 5,
+  "cb": 28,
+  "f": 6
+ },
+ {
+  "n": "Mushroom cheese toast",
+  "c": "Sandwiches & toast",
+  "s": "2 slices (130 g)",
+  "k": 270,
+  "p": 10,
+  "cb": 28,
+  "f": 13
+ },
+ {
+  "n": "Hummus veggie sandwich (brown bread)",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (160 g)",
+  "k": 270,
+  "p": 9,
+  "cb": 36,
+  "f": 10
+ },
+ {
+  "n": "Tuna sandwich",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (150 g)",
+  "k": 285,
+  "p": 20,
+  "cb": 28,
+  "f": 10
+ },
+ {
+  "n": "Chicken salami sandwich",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (120 g)",
+  "k": 270,
+  "p": 12,
+  "cb": 28,
+  "f": 12
+ },
+ {
+  "n": "Paneer bhurji toast",
+  "c": "Sandwiches & toast",
+  "s": "2 slices (140 g)",
+  "k": 290,
+  "p": 14,
+  "cb": 26,
+  "f": 14
+ },
+ {
+  "n": "Sprouts sandwich (brown bread)",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (150 g)",
+  "k": 220,
+  "p": 10,
+  "cb": 34,
+  "f": 5
+ },
+ {
+  "n": "Pesto veg sandwich",
+  "c": "Sandwiches & toast",
+  "s": "1 sandwich (150 g)",
+  "k": 285,
+  "p": 8,
+  "cb": 32,
+  "f": 14
+ },
+ {
+  "n": "Baked beans on toast",
+  "c": "Sandwiches & toast",
+  "s": "2 slices (200 g)",
+  "k": 290,
+  "p": 12,
+  "cb": 48,
+  "f": 5
+ },
+ {
+  "n": "Almond butter",
+  "c": "Fats & spreads",
+  "s": "1 tbsp (16 g)",
+  "k": 98,
+  "p": 3.4,
+  "cb": 3,
+  "f": 8.9
+ },
+ {
+  "n": "Dry garlic chutney (Maharashtrian)",
+  "c": "Fats & spreads",
+  "s": "1 tbsp (10 g)",
+  "k": 45,
+  "p": 1.5,
+  "cb": 3,
+  "f": 3
+ },
+ {
+  "n": "Tahini",
+  "c": "Fats & spreads",
+  "s": "1 tbsp (15 g)",
+  "k": 89,
+  "p": 2.6,
+  "cb": 3.2,
+  "f": 8
+ },
+ {
+  "n": "Sweet mango chutney",
+  "c": "Fats & spreads",
+  "s": "1 tbsp (20 g)",
+  "k": 50,
+  "p": 0.1,
+  "cb": 12.5,
+  "f": 0
+ },
+ {
+  "n": "Kasundi (mustard sauce)",
+  "c": "Fats & spreads",
+  "s": "1 tbsp (15 g)",
+  "k": 25,
+  "p": 0.8,
+  "cb": 2,
+  "f": 1.5
+ },
+ {
+  "n": "Thousand island dressing",
+  "c": "Fats & spreads",
+  "s": "1 tbsp (16 g)",
+  "k": 60,
+  "p": 0.2,
+  "cb": 2.4,
+  "f": 5.6
+ },
+ {
+  "n": "Maple syrup",
+  "c": "Fats & spreads",
+  "s": "1 tbsp (20 g)",
+  "k": 52,
+  "p": 0,
+  "cb": 13.4,
+  "f": 0
+ },
+ {
+  "n": "Cream cheese",
+  "c": "Fats & spreads",
+  "s": "1 tbsp (15 g)",
+  "k": 51,
+  "p": 0.9,
+  "cb": 0.8,
+  "f": 5
+ },
+ {
+  "n": "Raj kachori",
+  "c": "Street food & chaat",
+  "s": "1 plate (200 g)",
+  "k": 420,
+  "p": 10,
+  "cb": 55,
+  "f": 18
+ },
+ {
+  "n": "Chana jor garam",
+  "c": "Street food & chaat",
+  "s": "1 plate (80 g)",
+  "k": 250,
+  "p": 10,
+  "cb": 30,
+  "f": 10
+ },
+ {
+  "n": "Tokri chaat",
+  "c": "Street food & chaat",
+  "s": "1 basket (200 g)",
+  "k": 450,
+  "p": 10,
+  "cb": 58,
+  "f": 20
+ },
+ {
+  "n": "Jhal muri",
+  "c": "Street food & chaat",
+  "s": "1 cone (100 g)",
+  "k": 300,
+  "p": 6,
+  "cb": 50,
+  "f": 8
+ },
+ {
+  "n": "Aloo chaat (Delhi style)",
+  "c": "Street food & chaat",
+  "s": "1 plate (180 g)",
+  "k": 300,
+  "p": 4,
+  "cb": 40,
+  "f": 14
+ },
+ {
+  "n": "Bread roll (potato stuffed)",
+  "c": "Street food & chaat",
+  "s": "1 piece (80 g)",
+  "k": 220,
+  "p": 4,
+  "cb": 28,
+  "f": 10
+ },
+ {
+  "n": "Ghugni chaat",
+  "c": "Street food & chaat",
+  "s": "1 plate (200 g)",
+  "k": 245,
+  "p": 11,
+  "cb": 34,
+  "f": 7
+ },
+ {
+  "n": "Kothimbir vadi",
+  "c": "Street food & chaat",
+  "s": "2 pieces (80 g)",
+  "k": 200,
+  "p": 6,
+  "cb": 20,
+  "f": 10
+ },
+ {
+  "n": "Matar kulcha (Delhi)",
+  "c": "Street food & chaat",
+  "s": "1 plate (2 kulcha + matar, 300 g)",
+  "k": 450,
+  "p": 14,
+  "cb": 70,
+  "f": 12
+ },
+ {
+  "n": "Masala pav",
+  "c": "Street food & chaat",
+  "s": "1 plate (2 pav, 150 g)",
+  "k": 330,
+  "p": 7,
+  "cb": 48,
+  "f": 12
+ },
+ {
+  "n": "Fafda with chutney",
+  "c": "Street food & chaat",
+  "s": "1 serving (50 g)",
+  "k": 240,
+  "p": 6,
+  "cb": 22,
+  "f": 14
+ },
+ {
+  "n": "Veg cutlet",
+  "c": "Street food & chaat",
+  "s": "2 pieces (100 g)",
+  "k": 200,
+  "p": 4,
+  "cb": 24,
+  "f": 10
+ },
+ {
+  "n": "Raw banana bajji",
+  "c": "Street food & chaat",
+  "s": "3 pieces (90 g)",
+  "k": 230,
+  "p": 3,
+  "cb": 28,
+  "f": 12
+ },
+ {
+  "n": "Khichu (papdi no lot)",
+  "c": "Street food & chaat",
+  "s": "1 plate (200 g)",
+  "k": 230,
+  "p": 5,
+  "cb": 40,
+  "f": 6
+ },
+ {
+  "n": "Amaranth (rajgira) cooked",
+  "c": "Cereals & grains",
+  "s": "1 katori (150 g)",
+  "k": 153,
+  "p": 5.7,
+  "cb": 28,
+  "f": 2.4
+ },
+ {
+  "n": "Kodo millet cooked",
+  "c": "Cereals & grains",
+  "s": "1 katori (150 g)",
+  "k": 150,
+  "p": 3.5,
+  "cb": 32,
+  "f": 1
+ },
+ {
+  "n": "Little millet (kutki) cooked",
+  "c": "Cereals & grains",
+  "s": "1 katori (150 g)",
+  "k": 155,
+  "p": 3.5,
+  "cb": 32,
+  "f": 1.5
+ },
+ {
+  "n": "Bulgur wheat cooked",
+  "c": "Cereals & grains",
+  "s": "1 katori (150 g)",
+  "k": 125,
+  "p": 4.6,
+  "cb": 28,
+  "f": 0.4
+ },
+ {
+  "n": "Couscous cooked",
+  "c": "Cereals & grains",
+  "s": "1 katori (150 g)",
+  "k": 168,
+  "p": 5.7,
+  "cb": 35,
+  "f": 0.2
+ },
+ {
+  "n": "Barnyard millet (samak) cooked",
+  "c": "Cereals & grains",
+  "s": "1 katori (150 g)",
+  "k": 140,
+  "p": 3,
+  "cb": 30,
+  "f": 1
+ },
+ {
+  "n": "Banana whey shake (with toned milk)",
+  "c": "Protein & supplements",
+  "s": "1 glass (1 scoop + 1 banana + 250 ml milk)",
+  "k": 390,
+  "p": 33,
+  "cb": 45,
+  "f": 9
+ },
+ {
+  "n": "Soy protein isolate scoop",
+  "c": "Protein & supplements",
+  "s": "1 scoop (30 g)",
+  "k": 110,
+  "p": 25,
+  "cb": 1,
+  "f": 1
+ },
+ {
+  "n": "Collagen peptides scoop",
+  "c": "Protein & supplements",
+  "s": "1 scoop (10 g)",
+  "k": 36,
+  "p": 9,
+  "cb": 0,
+  "f": 0
+ },
+ {
+  "n": "Protein pancakes (oats, egg, whey)",
+  "c": "Protein & supplements",
+  "s": "2 pancakes (150 g)",
+  "k": 275,
+  "p": 25,
+  "cb": 28,
+  "f": 7
+ },
+ {
+  "n": "Egg white bhurji (4 whites)",
+  "c": "Protein & supplements",
+  "s": "1 katori (150 g)",
+  "k": 120,
+  "p": 15,
+  "cb": 3,
+  "f": 5
+ },
+ {
+  "n": "Chicken salami slices",
+  "c": "Protein & supplements",
+  "s": "3 slices (45 g)",
+  "k": 100,
+  "p": 7,
+  "cb": 1.5,
+  "f": 7
+ },
+ {
+  "n": "Protein lassi (curd + whey)",
+  "c": "Protein & supplements",
+  "s": "1 glass (300 ml)",
+  "k": 255,
+  "p": 32,
+  "cb": 18,
+  "f": 6
+ },
+ {
+  "n": "High protein curd",
+  "c": "Protein & supplements",
+  "s": "1 cup (150 g)",
+  "k": 110,
+  "p": 15,
+  "cb": 6,
+  "f": 3
+ },
+ {
+  "n": "Protein cold coffee (whey + milk)",
+  "c": "Protein & supplements",
+  "s": "1 glass (250 ml)",
+  "k": 200,
+  "p": 29,
+  "cb": 10,
+  "f": 5
+ },
+ {
+  "n": "Tuna salad bowl",
+  "c": "Protein & supplements",
+  "s": "1 bowl (200 g)",
+  "k": 225,
+  "p": 26,
+  "cb": 8,
+  "f": 10
+ },
+ {
+  "n": "Shukto (Bengali)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 130,
+  "p": 3,
+  "cb": 14,
+  "f": 7
+ },
+ {
+  "n": "Aloo posto (Bengali)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 220,
+  "p": 4,
+  "cb": 24,
+  "f": 12
+ },
+ {
+  "n": "Bateta nu shaak (Gujarati)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 3,
+  "cb": 26,
+  "f": 7
+ },
+ {
+  "n": "Bharela bhinda (Gujarati stuffed okra)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 180,
+  "p": 4,
+  "cb": 14,
+  "f": 12
+ },
+ {
+  "n": "Pithla (Maharashtrian)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 155,
+  "p": 7,
+  "cb": 14,
+  "f": 8
+ },
+ {
+  "n": "Zunka (Maharashtrian)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 195,
+  "p": 8,
+  "cb": 18,
+  "f": 10
+ },
+ {
+  "n": "Aloo wadiyan (Punjabi)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 175,
+  "p": 6,
+  "cb": 20,
+  "f": 8
+ },
+ {
+  "n": "Shalgam masala (Punjabi turnip)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 120,
+  "p": 2.5,
+  "cb": 12,
+  "f": 7
+ },
+ {
+  "n": "Olan (Kerala)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 120,
+  "p": 2.5,
+  "cb": 10,
+  "f": 8
+ },
+ {
+  "n": "Erissery (Kerala)",
+  "c": "Veg curries & sabzi",
+  "s": "1 katori (150 g)",
+  "k": 165,
+  "p": 5,
+  "cb": 18,
+  "f": 8
+ },
+ {
+  "n": "Laal maas",
+  "c": "Mutton & fish",
+  "s": "1 katori (200 g)",
+  "k": 330,
+  "p": 26,
+  "cb": 6,
+  "f": 22
+ },
+ {
+  "n": "Mutton nihari",
+  "c": "Mutton & fish",
+  "s": "1 katori (200 g)",
+  "k": 310,
+  "p": 24,
+  "cb": 8,
+  "f": 20
+ },
+ {
+  "n": "Shorshe ilish (hilsa in mustard)",
+  "c": "Mutton & fish",
+  "s": "1 piece with gravy (150 g)",
+  "k": 300,
+  "p": 22,
+  "cb": 4,
+  "f": 22
+ },
+ {
+  "n": "Karimeen pollichathu",
+  "c": "Mutton & fish",
+  "s": "1 fish (200 g)",
+  "k": 290,
+  "p": 30,
+  "cb": 6,
+  "f": 16
+ },
+ {
+  "n": "Mutton sukka (Mangalorean)",
+  "c": "Mutton & fish",
+  "s": "1 katori (150 g)",
+  "k": 290,
+  "p": 25,
+  "cb": 6,
+  "f": 18
+ },
+ {
+  "n": "Crab curry",
+  "c": "Mutton & fish",
+  "s": "1 katori (200 g)",
+  "k": 200,
+  "p": 20,
+  "cb": 8,
+  "f": 10
+ },
+ {
+  "n": "Squid masala fry",
+  "c": "Mutton & fish",
+  "s": "1 plate (150 g)",
+  "k": 230,
+  "p": 22,
+  "cb": 8,
+  "f": 12
+ },
+ {
+  "n": "Galouti kebab (mutton)",
+  "c": "Mutton & fish",
+  "s": "2 pieces (80 g)",
+  "k": 220,
+  "p": 14,
+  "cb": 5,
+  "f": 16
+ },
+ {
+  "n": "Kashmiri kahwa",
+  "c": "Beverages",
+  "s": "1 cup (150 ml)",
+  "k": 50,
+  "p": 0.8,
+  "cb": 8,
+  "f": 1.5
+ },
+ {
+  "n": "Noon chai (pink tea)",
+  "c": "Beverages",
+  "s": "1 cup (200 ml)",
+  "k": 110,
+  "p": 5,
+  "cb": 7,
+  "f": 7
+ },
+ {
+  "n": "Irani chai",
+  "c": "Beverages",
+  "s": "1 cup (150 ml)",
+  "k": 130,
+  "p": 4,
+  "cb": 16,
+  "f": 5.5
+ },
+ {
+  "n": "Ginger lemon honey tea",
+  "c": "Beverages",
+  "s": "1 cup (200 ml)",
+  "k": 35,
+  "p": 0,
+  "cb": 9,
+  "f": 0
+ },
+ {
+  "n": "Guava juice",
+  "c": "Beverages",
+  "s": "1 glass (250 ml)",
+  "k": 125,
+  "p": 0.5,
+  "cb": 30,
+  "f": 0.2
+ },
+ {
+  "n": "Falooda",
+  "c": "Beverages",
+  "s": "1 glass (300 ml)",
+  "k": 390,
+  "p": 9,
+  "cb": 62,
+  "f": 12
+ },
+ {
+  "n": "Nannari sarbath",
+  "c": "Beverages",
+  "s": "1 glass (250 ml)",
+  "k": 120,
+  "p": 0,
+  "cb": 30,
+  "f": 0
+ },
+ {
+  "n": "Virgin mint mojito",
+  "c": "Beverages",
+  "s": "1 glass (300 ml)",
+  "k": 112,
+  "p": 0.2,
+  "cb": 28,
+  "f": 0
+ },
+ {
+  "n": "Masala doodh",
+  "c": "Beverages",
+  "s": "1 glass (200 ml)",
+  "k": 190,
+  "p": 7,
+  "cb": 22,
+  "f": 8
+ },
+ {
+  "n": "Ragi malt with milk",
+  "c": "Beverages",
+  "s": "1 glass (250 ml)",
+  "k": 190,
+  "p": 7,
+  "cb": 30,
+  "f": 5
+ }
+]

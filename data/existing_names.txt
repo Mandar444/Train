@@ -1,0 +1,930 @@
+ABC juice
+Aam panna
+Achari paneer
+Adai
+Almonds
+Aloo baingan
+Aloo bhujia (30 g)
+Aloo bonda
+Aloo fry
+Aloo gobi
+Aloo kulcha
+Aloo matar
+Aloo palak
+Aloo paratha
+Aloo paratha + curd
+Aloo paratha with curd
+Aloo sabzi (puri wali)
+Aloo shimla mirch
+Aloo tamatar (rasedar)
+Aloo tikki
+Aloo tikki burger
+Aloo tikki chaat
+American chopsuey
+Amla
+Anda paratha
+Appam
+Apple
+Apple juice
+Arbi masala
+Atta instant noodles
+Atta sheera
+Avial
+Avocado
+Avocado toast
+Baby corn
+Badam milk
+Bael (wood apple)
+Baingan bharta
+Bajra khichdi
+Bajra roti
+Baked whole wheat crackers
+Balushahi
+Banana
+Banana chips
+Banana milkshake
+Banana shake
+Bangda curry
+Bangda fry
+Barley (jau) cooked
+Basundi
+Batata vada
+Beans poriyal
+Beer
+Beetroot boiled
+Beetroot poriyal
+Besan chilla
+Besan ladoo
+Besan shimla mirch
+Besan toast (veg French toast)
+Bharwa baingan
+Bhatura
+Bhel puri
+Bhindi boiled
+Bhindi fry (crispy)
+Bhindi masala
+Bhutta (roasted corn)
+Bisi bele bath
+Black coffee
+Black forest pastry
+Blueberries
+Blueberry muffin
+Boiled chana
+Boiled chicken breast
+Boiled chicken salad
+Boiled egg
+Boiled eggs (2)
+Boiled eggs + brown bread breakfast
+Boiled peanuts
+Boiled potato
+Boiled sweet corn
+Bombay masala toast sandwich
+Bombay sandwich
+Boondi ladoo
+Boondi raita
+Bread butter
+Bread jam
+Bread omelette
+Bread pakora
+Broccoli steamed
+Brown bread slice
+Brown bread toast
+Brown rice
+Brown rice cooked
+Brownie with ice cream
+Buffalo milk
+Bun maska
+Butter
+Butter chicken
+Butter chicken + 2 butter naan
+Butter cookies
+Butter croissant
+Butter naan
+Butter pav
+Butter popcorn (microwave)
+Butter tandoori roti
+Butter toast
+Buttermilk (chaas)
+Butterscotch ice cream scoop
+Cabbage raw
+Cabbage sabzi
+Cabbage thoran
+Canned tuna in oil
+Canned tuna in water
+Cappuccino
+Capsicum
+Carrot
+Carrot juice
+Casein protein scoop
+Cashews
+Cauliflower steamed
+Chaas (buttermilk)
+Chai without sugar
+Cham cham
+Chana dal
+Chana dal lauki
+Cheddar cheese
+Cheese burger
+Cheese burst pizza slice
+Cheese cube
+Cheese garlic bread
+Cheese naan
+Cheese omelette (2 egg)
+Cheese sandwich
+Cheese slice
+Cheese spread
+Cheese toast
+Cherries
+Cherry tomatoes
+Chhena
+Chia seeds
+Chicken 65
+Chicken Caesar salad
+Chicken Chettinad
+Chicken Manchurian gravy
+Chicken bhuna masala (dry)
+Chicken biryani (mess)
+Chicken biryani (restaurant)
+Chicken biryani + raita
+Chicken breast (raw)
+Chicken burger
+Chicken burrito
+Chicken clear soup
+Chicken curry (mess, 2 pieces)
+Chicken curry (restaurant)
+Chicken curry + 3 roti
+Chicken curry + rice plate
+Chicken curry gravy only
+Chicken curry leg piece
+Chicken do pyaza
+Chicken frankie
+Chicken fried rice
+Chicken hakka noodles
+Chicken handi
+Chicken kathi roll
+Chicken keema
+Chicken keema + 2 pav
+Chicken korma
+Chicken lasagna
+Chicken lollipop
+Chicken malai tikka
+Chicken manchow soup
+Chicken momos (fried)
+Chicken momos (steamed)
+Chicken momos + soup combo
+Chicken momos fried
+Chicken momos steamed
+Chicken nuggets
+Chicken pizza (2 slices)
+Chicken pizza slice
+Chicken popcorn
+Chicken puff
+Chicken pulao
+Chicken quesadilla
+Chicken ramen
+Chicken reshmi kebab
+Chicken rice protein bowl
+Chicken sandwich
+Chicken sausage
+Chicken schezwan noodles
+Chicken seekh kebab
+Chicken shami kebab
+Chicken shawarma
+Chicken stew (Kerala)
+Chicken strips
+Chicken sub 6 inch
+Chicken sub sandwich (6 inch)
+Chicken sweet corn soup
+Chicken tacos
+Chicken thali (mess)
+Chicken thigh boneless (cooked)
+Chicken tikka
+Chicken tikka + 2 roti + salad
+Chicken tikka masala
+Chicken wrap
+Chicken wrap (grilled)
+Chickpea salad
+Chickpeas (boiled)
+Chikoo
+Chilli cheese toast
+Chilli chicken dry
+Chilli chicken gravy
+Chilli paneer (dry)
+Chilli paneer dry
+Chilli paneer gravy
+Chilli soya (dry)
+Choco pie type cake
+Chocolate bar milk
+Chocolate brownie
+Chocolate cake slice
+Chocolate chip cookies (3 pieces)
+Chocolate donut
+Chocolate flakes cereal
+Chocolate flavored milk
+Chocolate hazelnut spread
+Chocolate ice cream scoop
+Chocolate milkshake
+Chocolate mousse
+Chocolate muffin
+Chocolate syrup
+Chocolate truffle pastry
+Chocolate wafer bar
+Chole (chana masala)
+Chole + rice plate
+Chole bhature
+Chole bhature plate
+Chole chawal
+Chole kulche
+Clear veg soup
+Club sandwich
+Coconut biscuit (bakery)
+Coconut chutney
+Coconut ladoo
+Coconut rice
+Coconut water
+Coffee with milk
+Coffee with milk, no sugar
+Cola
+Cold coffee
+Cold coffee with ice cream
+Coleslaw
+Corn chaat
+Corn palak
+Corn puffs
+Corn salad
+Corn sandwich
+Cornflakes
+Cornflakes with milk
+Cow milk
+Cream biscuits (3 pieces)
+Cream bun
+Cream of mushroom soup
+Cream roll
+Crispy chicken burger
+Cucumber
+Cucumber raita
+Cup noodles
+Curd (full cream)
+Curd (toned milk)
+Curd rice
+Custard apple
+Dabeli
+Dahi bhalla
+Dahi puri
+Dal + rice + sabzi plate
+Dal amritsari
+Dal chawal
+Dal dhokli
+Dal fry
+Dal khichdi + curd
+Dal makhani
+Dal makhani + 2 roti
+Dal palak
+Dal soup
+Dal tadka
+Dalia (salted, veg)
+Daliya with milk
+Dark chocolate
+Dates
+Diet cola
+Digestive biscuits (2 pieces)
+Dilkhush
+Double egg roll
+Double patty chicken burger
+Double toned milk
+Dragon fruit
+Dried apricots
+Dried cranberries
+Dried figs
+Drumstick curry (sahjan)
+Dry coconut (copra)
+Dum aloo
+Edamame
+Egg bhurji (2 egg)
+Egg bhurji (mess, 3 egg)
+Egg bhurji pav
+Egg biryani
+Egg chaat
+Egg curry (2 eggs)
+Egg curry (restaurant)
+Egg curry + 2 roti
+Egg frankie
+Egg fried rice
+Egg hakka noodles
+Egg half fry
+Egg maggi
+Egg masala (dry)
+Egg mayo sandwich
+Egg noodles
+Egg pakoda
+Egg puff
+Egg rice bowl
+Egg roll
+Egg sandwich
+Egg thali (mess)
+Egg white (boiled)
+Egg white omelette (3 whites)
+Egg white protein powder
+Egg whites (3 boiled)
+Egg yolk
+Elaichi banana
+Energy drink
+Falafel
+Falafel wrap
+Filter coffee
+Fish biryani
+Fish curry (coconut, Goan/Kerala)
+Fish curry (mess)
+Fish fingers
+Fish fry (rava coated)
+Fish fry (tawa)
+Fish thali
+Fish tikka
+Flax seeds (alsi)
+Flaxseed
+Foxtail millet cooked
+Foxtail millet rice
+French beans boiled
+French fries large
+French fries medium
+French fries small
+French toast
+Fresh coconut
+Fresh cream
+Fresh orange juice
+Fried chicken (crispy)
+Fried chicken piece
+Fried egg (fully cooked)
+Fried modak
+Fruit bun
+Fruit cake slice packaged
+Fruit chaat
+Full cream milk
+Gajar beans sabzi
+Gajar halwa
+Gajar matar
+Garlic bread
+Garlic bread stick
+Garlic naan
+Gatte ki sabzi
+Ghee
+Ghee rice
+Ghee roast dosa
+Glazed donut
+Glucose biscuits (4 pieces)
+Gobi manchurian (gravy)
+Gobi manchurian dry
+Gobi matar
+Gobi paratha
+Granola
+Granola energy bar
+Grapefruit
+Grapes
+Greek salad
+Greek yogurt (low fat)
+Greek yogurt (plain)
+Green chutney
+Green peas boiled
+Green salad
+Green tea
+Grilled basa fillet
+Grilled cheese sandwich
+Grilled chicken + boiled veggies
+Grilled chicken breast
+Grilled chicken salad
+Grilled chicken sandwich (brown bread)
+Grilled chicken with mashed potato
+Grilled salmon
+Grilled vegetables
+Guava
+Gujarati kadhi
+Gujarati toor dal (sweet)
+Gujiya
+Gulab jamun
+Gunpowder (podi) with oil
+Haldi doodh
+Haldi doodh (turmeric milk)
+Handvo
+Hazelnuts
+Honey
+Honey chilli potato
+Hot and sour soup
+Hot chocolate
+Hot dog
+Hummus with pita
+Hung curd
+Ice cream cone
+Iced tea
+Idiyappam
+Idli
+Idli sambar
+Idli sambar (3 idli)
+Imarti
+Imli chutney
+Instant noodles (1 packet)
+Instant noodles masala small
+Jackfruit
+Jaggery
+Jalebi
+Jaljeera
+Jam
+Jamun
+Jeera aloo
+Jeera rice
+Jowar roti
+Kachori
+Kachumber salad
+Kadai chicken
+Kadai paneer
+Kadai veg
+Kadala curry
+Kaddu sabzi (khatta meetha)
+Kadha (herbal)
+Kadhai mushroom
+Kadhi chawal plate
+Kadhi pakoda
+Kaju katli
+Kaju masala
+Kala chana curry
+Kala chana sprouts
+Kalakand
+Kanda poha (street)
+Karela sabzi
+Kashmiri pulao
+Kathal sabzi
+Kathi kebab roll (mutton)
+Keema pav
+Kerala vegetable stew
+Kesar flavored milk
+Kesar milk
+Ketchup
+Khakhra (plain)
+Khaman dhokla
+Khandvi
+Khari biscuit
+Khatta meetha namkeen
+Khoa (mawa)
+Kinnow
+Kiwi
+Kokum sharbat
+Kootu
+Kulfi
+Kulthi dal (horse gram)
+Kuzhi paniyaram
+Lachha paratha
+Lauki boiled
+Lauki kofta curry
+Lauki sabzi
+Lemon coriander soup
+Lemon rice
+Lemon soda
+Lemon tea
+Lemon-lime soft drink
+Lentil soup
+Lettuce
+Litchi
+Litti chokha
+Lobia curry
+Low fat curd
+Low fat paneer
+Maa ki dal (kaali dal)
+Mac and cheese
+Makhana plain
+Makki ki roti
+Malai
+Malai kofta
+Malpua
+Manchow soup
+Mango
+Mango lassi
+Mango milkshake
+Mango shake
+Margarine
+Margherita pizza slice
+Marie biscuits (4 pieces)
+Masala chaas
+Masala chai with sugar
+Masala dosa
+Masala dosa (street)
+Masala dosa + sambar
+Masala khakhra
+Masala khichdi
+Masala oats
+Masala omelette (2 egg)
+Masala peanuts
+Masala peanuts coated
+Masala potato chips
+Masala puri chaat
+Masala vada (paruppu vada)
+Masoor dal
+Mass gainer (in milk)
+Mass gainer (in water)
+Matar mushroom
+Matar paneer
+Matar pulao
+Matka kulfi
+Matki usal
+Mayonnaise
+Medu vada
+Melon seeds (magaz)
+Mess dal (thin)
+Methi aloo
+Methi matar malai
+Methi paratha
+Methi thepla
+Milk barfi
+Mini samosa
+Mint mayonnaise
+Mirchi bhajji
+Mirchi ka salan
+Misal (without pav)
+Misal pav
+Mishti doi
+Missi roti
+Mix veg dry (sukhi sabzi)
+Mixed fruit bowl
+Mixed nuts
+Mixed veg curry
+Mixed veg pakora
+Mixed veg raita
+Mixed veg soup
+Mixed veg uttapam
+Modak steamed
+Mooli paratha
+Moong dal (yellow)
+Moong dal chilla
+Moong dal halwa
+Moong dal khichdi
+Moong dal namkeen
+Moong dal pakoda
+Moong sprouts (raw)
+Moong sprouts raw
+Moong sprouts salad
+Moong sprouts usal
+Mosambi
+Mosambi juice
+Motichoor ladoo
+Mozzarella cheese
+Muesli
+Muesli with milk
+Mulberries (shahtoot)
+Multigrain bread slice
+Multigrain toast
+Murmura (puffed rice)
+Mushroom masala
+Mushroom risotto
+Mushrooms sauteed
+Muskmelon
+Mutton biryani
+Mutton chops (fried)
+Mutton curry (mess)
+Mutton curry (restaurant)
+Mutton keema
+Mutton korma
+Mutton liver fry (kaleji)
+Mutton paya soup
+Mutton seekh kebab
+Mutton thali
+Mysore bonda
+Mysore masala dosa
+Mysore pak
+Nachos chips plain
+Nachos with cheese
+Namkeen daliya
+Namkeen mixture (30 g)
+Nankhatai
+Navratan korma
+Neer dosa
+Nimbu pani (salted)
+Nimbu pani (sweet)
+Oats porridge with milk
+Oats upma
+Oats with milk
+Oats with water
+Oil (1 tbsp)
+Oil (1 tsp)
+Omelette (1 egg)
+Omelette (2 egg)
+Onion bhajji
+Onion dosa
+Onion paratha
+Onion salad
+Onion tomato raita
+Onion uttapam
+Orange
+Orange soda
+Overnight oats
+Packaged cake slice
+Packaged fruit juice
+Pad thai chicken
+Palak paneer
+Palak paneer + 2 roti
+Palak puri
+Palak sabzi
+Palak soup
+Panchmel dal
+Paneer (raw)
+Paneer (raw, full fat)
+Paneer (raw, low fat)
+Paneer bhurji
+Paneer burger
+Paneer butter masala
+Paneer butter masala + 2 roti
+Paneer do pyaza
+Paneer grilled sandwich
+Paneer kathi roll
+Paneer kofta curry
+Paneer kulcha
+Paneer lababdar
+Paneer momos steamed
+Paneer pakora
+Paneer paratha
+Paneer paratha + curd
+Paneer pizza slice
+Paneer puff
+Paneer sandwich
+Paneer thali
+Paneer tikka
+Paneer tikka masala
+Paneer tikka plate
+Paneer tikka sub 6 inch
+Paneer tikka wrap
+Pani puri
+Papad fried
+Papad roasted
+Papaya
+Papdi chaat
+Pappu (Andhra dal)
+Parwal sabzi
+Pav
+Pav bhaji
+Pav bhaji plate
+Peach
+Peanut butter
+Peanut butter banana sandwich
+Peanut butter on toast
+Peanut butter toast
+Peanut chikki
+Peanut chutney
+Pear
+Peda
+Penne alfredo with chicken
+Pepperoni pizza slice
+Peri peri fries
+Personal veg pizza
+Pesarattu
+Phulka
+Pickle (achar)
+Pindi chole (dry)
+Pine nuts (chilgoza)
+Pineapple
+Pineapple juice
+Pineapple pastry
+Pink sauce pasta
+Pistachios
+Plain bun
+Plain dosa
+Plain naan
+Plain paratha
+Plain rice (mess plate)
+Plain rice (small katori)
+Plain roti
+Plain uttapam
+Plant protein scoop (pea)
+Plum
+Poached egg
+Poha
+Poha + 2 boiled eggs
+Poha flakes (dry)
+Poha with sev and peanuts
+Pomegranate
+Pomegranate juice
+Pomfret curry
+Pomfret fry
+Popcorn chicken
+Popcorn salted (packaged)
+Potato chips large packet
+Potato chips small packet
+Potato salad
+Potato wedges
+Prawn biryani
+Prawn fry
+Prawns curry
+Prawns masala (dry)
+Protein bar
+Protein bar (generic, 60 g)
+Protein oats (oats + whey + milk)
+Prunes
+Pudina rice
+Pumpkin (kaddu) boiled
+Pumpkin seeds
+Pumpkin soup
+Puri
+Puri bhaji
+Puttu
+Pyaaz kachori
+Quinoa (cooked)
+Quinoa cooked
+Quinoa pulao
+Rabri
+Rabri malpua
+Radish (mooli)
+Ragda (white peas curry)
+Ragda pattice
+Ragi dosa
+Ragi mudde
+Ragi porridge
+Ragi roti
+Raisins
+Rajma (boiled)
+Rajma + 2 roti
+Rajma chawal
+Rajma chawal plate
+Rajma masala
+Rasam
+Rasgulla
+Rasmalai
+Rava dosa
+Rava idli
+Rava upma
+Raw mango
+Red sauce pasta
+Rice kheer
+Roasted chana
+Roasted makhana (30 g)
+Roasted makhana with ghee
+Roasted peanuts
+Roasted peanuts salted
+Roasted soybean
+Rogan josh
+Rohu fish curry (Bengali)
+Rohu fish fry
+Rolled oats (dry)
+Rose milk
+Rose sharbat
+Roti with ghee
+Rumali roti
+Rusk
+Rusk (2 pieces)
+Russian salad
+Sabja seeds
+Sabudana khichdi
+Sabudana vada
+Sakkarai pongal
+Salad with dressing
+Salmon sushi roll
+Salted cashews
+Salted cracker biscuits (4 pieces)
+Salted lassi
+Sambar
+Sambar vada
+Samosa
+Sandesh
+Sandwich dhokla
+Sarson ka saag
+Sattu
+Sattu (dry)
+Sattu drink
+Sattu drink (salted)
+Sattu paratha
+Schezwan chutney
+Schezwan fried rice
+Scrambled eggs (butter)
+Seitan
+Semiya payasam
+Semiya upma (vermicelli)
+Sesame seeds (til)
+Set dosa
+Sev puri
+Sev tamatar
+Seviyan kheer
+Shahi paneer
+Shakarkandi chaat
+Shrikhand
+Singhara (water chestnut)
+Skimmed milk
+Skimmed milk powder
+Soan papdi
+Sol kadhi
+Sooji halwa
+Sooji sheera
+Soya chunks (boiled)
+Soya chunks (dry)
+Soya chunks curry
+Soya chunks curry + rice
+Soya chunks pulao
+Soya keema matar
+Soya milk (unsweetened)
+Soya sticks
+Soya tikka
+Spaghetti aglio olio
+Spinach cooked
+Sports drink
+Sprouts chaat
+Sprouts chaat (moong)
+Sprouts salad
+Starfruit (kamrakh)
+Steamed mixed vegetables
+Stir-fried vegetables
+Strawberries
+Strawberry milkshake
+Sugar
+Sugarcane juice
+Sukhi moong dal
+Sunflower seeds
+Surmai curry
+Surmai fry
+Sweet corn soup
+Sweet corn veg soup
+Sweet dalia with milk
+Sweet lassi
+Sweet potato boiled
+Sweet potato roasted
+Tamarind rice (puliyogare)
+Tandoori chicken (half)
+Tandoori chicken (quarter)
+Tandoori chicken + 2 rumali roti
+Tandoori chicken breast piece
+Tandoori chicken leg piece
+Tandoori fish
+Tandoori roti
+Tawa pulao (street)
+Tempeh
+Tender coconut malai
+Thai green curry with rice (veg)
+Thai red curry with rice (chicken)
+Thalipeeth
+Thandai
+Til chikki
+Tinda masala
+Tindora fry (kundru)
+Tofu (firm)
+Tofu (plain, firm)
+Tofu bhurji
+Tofu masala curry
+Tomato
+Tomato chutney
+Tomato rice
+Tomato soup
+Toned milk
+Toor dal (arhar)
+Tori sabzi (ridge gourd)
+Trail mix
+Undhiyu
+Upma + boiled egg
+Urad dal (dhuli)
+Vada pav
+Vangi bath
+Vanilla ice cream scoop
+Veg Caesar salad
+Veg biryani
+Veg burger
+Veg burrito
+Veg cheese grilled sandwich
+Veg frankie
+Veg fried rice
+Veg grilled sandwich
+Veg hakka noodles
+Veg hot and sour soup
+Veg jalfrezi
+Veg kolhapuri
+Veg korma
+Veg lasagna
+Veg makhanwala
+Veg manchow soup
+Veg manchurian (dry)
+Veg manchurian dry
+Veg manchurian gravy
+Veg momos fried
+Veg momos steamed
+Veg nuggets
+Veg patties burger bun (bakery)
+Veg pizza slice
+Veg puff
+Veg pulao
+Veg ramen
+Veg sandwich
+Veg schezwan fried rice
+Veg schezwan noodles
+Veg shawarma
+Veg spring roll
+Veg sub 6 inch
+Veg sushi roll
+Veg tacos
+Veg tehri
+Veg thali (mess)
+Veg wrap
+Ven pongal
+Wafer biscuits (5 pieces)
+Walnuts
+Watermelon
+Watermelon juice
+Wheat flakes
+Whey isolate scoop
+Whey protein scoop (in toned milk)
+Whey protein scoop (in water)
+White bread slice
+White bread toast
+White sauce pasta
+Whole moong dal (sabut)
+Zucchini sauteed

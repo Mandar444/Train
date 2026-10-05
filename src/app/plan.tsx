@@ -1,12 +1,12 @@
 import { Text, View } from 'react-native';
 import { router } from 'expo-router';
-import { Card, Enter, Row, Screen, T } from '../../components/ui';
-import { useQuery } from '../../lib/hooks';
-import * as repo from '../../lib/repo';
-import { addDays, dayMonth, dowShort, mondayOf, today, weekday } from '../../lib/dates';
-import { isLiftDay, weekNumber } from '../../lib/logic';
-import { EXERCISES, RULES, stepTargetLabel, WorkoutType } from '../../lib/plan';
-import { C, F } from '../../lib/theme';
+import { Card, Enter, Header, Row, Screen, T } from '../components/ui';
+import { useQuery } from '../lib/hooks';
+import * as repo from '../lib/repo';
+import { addDays, dayMonth, dowShort, mondayOf, today, weekday } from '../lib/dates';
+import { isLiftDay, weekNumber } from '../lib/logic';
+import { EXERCISES, RULES, stepTargetLabel, WorkoutType } from '../lib/plan';
+import { C, F } from '../lib/theme';
 
 export default function Plan() {
   const date = today();
@@ -19,7 +19,7 @@ export default function Plan() {
     const plan = await repo.getWorkouts();
     return { p, mon, sess, last, specials, plan };
   }, [date]);
-  if (!data?.p) return <Screen><View /></Screen>;
+  if (!data?.p) return <Screen bottomPad={40}><View /></Screen>;
   const { p, mon, sess, specials } = data;
   const week = weekNumber(p, date);
   const end = addDays(p.start_date, 83);
@@ -46,18 +46,13 @@ export default function Plan() {
 
   return (
     <Screen>
-      <Enter>
-        <View style={{ gap: 6 }}>
-          <T.Label>{`CUT + MUSCLE · ${dayMonth(p.start_date).toUpperCase()} – ${dayMonth(end).toUpperCase()}`}</T.Label>
-          <T.Display>The plan</T.Display>
-        </View>
-      </Enter>
+      <Header title="12-week plan" kicker={`${dayMonth(p.start_date)} – ${dayMonth(end)}`} />
 
       <Row gap={4}>
         {Array.from({ length: 12 }, (_, i) => i + 1).map((w) => (
           <View key={w} style={{ flex: 1, alignItems: 'center', gap: 6 }}>
             <View style={{ width: '100%', height: 44, borderRadius: 8, backgroundColor: w < week ? C.lime : w === week ? 'rgba(212,255,79,0.18)' : C.card, borderWidth: w === week ? 2 : 1, borderColor: w === week ? C.lime : C.line }} />
-            <Text style={{ fontFamily: F.mono, fontSize: 10, color: w === week ? C.text : C.dim }}>{w}</Text>
+            <Text style={{ fontFamily: F.mono, fontSize: 12, color: w === week ? C.text : C.dim }}>{w}</Text>
           </View>
         ))}
       </Row>
@@ -77,7 +72,7 @@ export default function Plan() {
               <T.Body style={{ fontFamily: F.semibold, fontSize: 14 }}>{x.title}</T.Body>
               <T.Small style={{ color: C.dim }} numberOfLines={1}>{x.sub}</T.Small>
             </View>
-            <Text style={{ fontFamily: F.mono, fontSize: 11, color: x.now ? C.lime : C.dim }}>{x.done ? 'DONE' : x.now ? 'TODAY' : ''}</Text>
+            <Text style={{ fontFamily: F.mono, fontSize: 12.5, color: x.now ? C.lime : C.dim }}>{x.done ? 'Done' : x.now ? 'Today' : ''}</Text>
           </Row>
         ))}
       </Card>
@@ -85,13 +80,13 @@ export default function Plan() {
       <T.Label>{"THIS WEEK'S TARGETS"}</T.Label>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
         {[
-          ['CALORIES', `${p.kcal_target.toLocaleString('en-US')} kcal`],
-          ['PROTEIN', `${p.protein_min}–${p.protein_max} g`],
-          ['STEPS / DAY', stepTargetLabel(week)],
-          ['SLEEP', '7–9 h'],
+          ['Calories', `${p.kcal_target.toLocaleString('en-US')} kcal`],
+          ['Protein', `${p.protein_min}–${p.protein_max} g`],
+          ['Steps / day', stepTargetLabel(week)],
+          ['Sleep', '7–9 h'],
         ].map(([l, v]) => (
           <Card key={l} style={{ width: '48.6%', padding: 14, gap: 4 }}>
-            <T.Label style={{ fontSize: 10 }}>{l}</T.Label>
+            <T.Label style={{ fontSize: 12 }}>{l}</T.Label>
             <T.Num style={{ fontSize: 24 }}>{v}</T.Num>
           </Card>
         ))}
@@ -104,7 +99,7 @@ export default function Plan() {
           const on = weekday(date) === wd;
           return (
             <Card key={wd} tone={on ? 'orange' : 'base'} style={{ flex: 1, padding: 14, gap: 6, borderColor: on ? C.orange : C.line }}>
-              <Text style={{ fontFamily: F.mono, fontSize: 11, color: on ? C.orange : C.muted }}>{['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][wd]}</Text>
+              <Text style={{ fontFamily: F.mono, fontSize: 12.5, color: on ? C.orange : C.muted }}>{['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][wd]}</Text>
               <T.Strong>{sp === 'chicken' ? 'Chicken' : sp === 'eggs' ? 'Eggs' : '—'}</T.Strong>
             </Card>
           );

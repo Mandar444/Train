@@ -4,7 +4,7 @@ import Svg, { Circle, G, Line, Rect } from 'react-native-svg';
 import { C, F } from '../lib/theme';
 
 /**
- * Opening sequence (~2.6 s): a fast sporty montage of stick-figure scenes with
+ * Opening sequence (~5.5 s): a fast sporty montage of stick-figure scenes with
  * colour cuts — jumping jacks, a basketball jump shot, a barbell clean & press,
  * a sprint — then a lime wipe that reveals the GOAL wordmark "by Mandar".
  * Tap anywhere to skip.
@@ -13,10 +13,10 @@ import { C, F } from '../lib/theme';
 type P = [number, number];
 type Body = { head: P; sh: P; hip: P; eL: P; hL: P; eR: P; hR: P; kL: P; fL: P; kR: P; fR: P };
 
-const SCENE = 0.42; // seconds per sport
+const SCENE = 0.95; // seconds per sport
 const LOGO_AT = SCENE * 4; // 1.68 s
-const END = LOGO_AT + 0.85; // hold the logo
-const FADE = 0.28;
+const END = LOGO_AT + 1.6; // hold the logo
+const FADE = 0.4;
 
 const lerp = (a: P, b: P, t: number): P => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
 const mix = (A: Body, B: Body, t: number): Body => {
@@ -78,14 +78,14 @@ export function Intro({ onDone }: { onDone: () => void }) {
 
   const scene = Math.min(4, Math.floor(t / SCENE));
   const st = clamp((t - scene * SCENE) / SCENE); // 0..1 inside scene
-  const punch = 1 + 0.1 * Math.max(0, 1 - st * 5); // camera punch-in on each cut
+  const punch = 1 + 0.08 * Math.max(0, 1 - st * 4); // camera punch-in on each cut
   const size = Math.min(width, height) * 0.92;
 
   // ---- per-scene look ----
   let bg = C.lime, fg = C.bg, body: Body = JJ_A, extra: React.ReactNode = null, label = '';
   if (scene === 0) {
     // jumping jacks on lime, 1.5 reps
-    const ph = (st * 1.5) % 1;
+    const ph = (st * 2) % 1;
     body = mix(JJ_A, JJ_B, ease(ph < 0.5 ? ph * 2 : 2 - ph * 2));
     bg = C.lime; fg = C.bg; label = 'JUMP';
     extra = <Rect x={60} y={171} width={80} height={3} rx={1.5} fill={C.bg} opacity={0.25} />;
@@ -123,9 +123,9 @@ export function Intro({ onDone }: { onDone: () => void }) {
     );
   } else if (scene === 3) {
     // sprint on dark, lime runner with speed lines
-    const ph = (st * 3) % 1;
+    const ph = (st * 4) % 1;
     body = mix(RN_A, RN_B, ease(ph < 0.5 ? ph * 2 : 2 - ph * 2));
-    const bob = Math.sin(st * Math.PI * 6) * 2;
+    const bob = Math.sin(st * Math.PI * 8) * 2;
     body = Object.fromEntries(Object.entries(body).map(([k, v]) => [k, [v[0] + st * 40, v[1] + bob]])) as unknown as Body;
     bg = C.bg; fg = C.lime; label = 'RUN';
     extra = (
@@ -141,7 +141,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
 
   // ---- logo phase ----
   const lt = t - LOGO_AT;
-  const wipe = clamp(lt / 0.28);
+  const wipe = clamp(lt / 0.45);
   const letters = ['G', 'O', 'A', 'L'];
   const fade = clamp((t - END) / FADE);
   const R = Math.hypot(width, height);
@@ -149,36 +149,37 @@ export function Intro({ onDone }: { onDone: () => void }) {
   return (
     <Pressable onPress={finish} style={[StyleSheet.absoluteFill, { opacity: 1 - fade, zIndex: 999 }]} accessibilityLabel="Skip intro">
       <View style={[StyleSheet.absoluteFill, { backgroundColor: lt >= 0 && wipe >= 1 ? C.lime : bg, alignItems: 'center', justifyContent: 'center' }]}>
-        {lt < 0.3 ? (
+        {lt < 0.45 ? (
           <View style={{ transform: [{ scale: punch }] }}>
             <Svg width={size} height={size} viewBox="0 0 200 200">
               {extra}
               <Figure b={body} color={fg} />
             </Svg>
-            <Text style={{ position: 'absolute', left: 0, right: 0, bottom: size * 0.02, textAlign: 'center', fontFamily: F.display, fontSize: 30, letterSpacing: 6, color: fg, opacity: 0.9 * clamp(st * 4) }}>{label}</Text>
+            <Text style={{ position: 'absolute', left: 0, right: 0, bottom: size * 0.02, textAlign: 'center', fontFamily: F.display, fontSize: 32, letterSpacing: 4, color: fg, opacity: 0.9 * clamp(st * 4) }}>{label}</Text>
           </View>
         ) : null}
 
         {lt >= 0 ? (
           <View style={[StyleSheet.absoluteFill, { alignItems: 'center', justifyContent: 'center' }]} pointerEvents="none">
             <View style={{ position: 'absolute', width: R * 2 * wipe, height: R * 2 * wipe, borderRadius: R * wipe, backgroundColor: C.lime }} />
-            {lt > 0.12 ? (
+            {lt > 0.2 ? (
               <View style={{ alignItems: 'center' }}>
                 <View style={{ flexDirection: 'row', transform: [{ skewX: '-12deg' }] }}>
                   {letters.map((ch, i) => {
-                    const p = clamp((lt - 0.14 - i * 0.07) / 0.26);
+                    const p = clamp((lt - 0.25 - i * 0.13) / 0.35);
                     const s = p === 0 ? 0 : back(p);
                     return (
                       <Text key={ch} style={{ fontFamily: 'Anton_400Regular', fontSize: Math.min(width * 0.34, 170), lineHeight: Math.min(width * 0.34, 170) * 1.25, includeFontPadding: false, color: C.bg, opacity: p > 0 ? 1 : 0, transform: [{ translateY: (1 - p) * 40 }, { scale: 0.6 + 0.4 * s }] }}>{ch}</Text>
                     );
                   })}
                 </View>
-                <Text style={{ marginTop: 4, fontFamily: F.monoBold, fontSize: 14, letterSpacing: 5, color: C.bg, opacity: clamp((lt - 0.5) / 0.2), transform: [{ translateY: (1 - clamp((lt - 0.5) / 0.2)) * 10 }] }}>BY MANDAR</Text>
+                <Text style={{ marginTop: 4, fontFamily: F.bold, fontSize: 16, letterSpacing: 4, color: C.bg, opacity: clamp((lt - 0.95) / 0.3), transform: [{ translateY: (1 - clamp((lt - 0.95) / 0.3)) * 10 }] }}>BY MANDAR</Text>
               </View>
             ) : null}
           </View>
         ) : null}
       </View>
+      {lt < 0 ? <Text style={{ position: 'absolute', bottom: 48, left: 0, right: 0, textAlign: 'center', fontFamily: F.semibold, fontSize: 13, color: fg, opacity: 0.55 }}>Tap to skip</Text> : null}
     </Pressable>
   );
 }
