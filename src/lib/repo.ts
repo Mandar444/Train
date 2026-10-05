@@ -1,5 +1,5 @@
 import { db, emitChange } from './db';
-import { DEFAULT_PRESETS, DEFAULT_SPECIALS, MealKey, Special, WorkoutType } from './plan';
+import { DEFAULT_PRESETS, DEFAULT_SPECIALS, EXERCISES, MealKey, PlanItem, Special, WORKOUTS, WorkoutPlan, WorkoutType } from './plan';
 import { today } from './dates';
 
 // ---------- types ----------
@@ -151,6 +151,21 @@ export async function nutritionByDay(from: string, to: string): Promise<{ date: 
 }
 export async function getSpecials(): Promise<Record<number, Special>> {
   return getKV('mess_specials', DEFAULT_SPECIALS);
+}
+
+// ---------- workout plan (editable) ----------
+export function defaultPlan(): WorkoutPlan {
+  const mk = (keys: string[]): PlanItem[] => keys.map((k) => ({ key: k, sets: EXERCISES[k].sets, repMin: EXERCISES[k].repMin, repMax: EXERCISES[k].repMax }));
+  return { A: mk(WORKOUTS.A), B: mk(WORKOUTS.B) };
+}
+export async function getWorkouts(): Promise<WorkoutPlan> {
+  const p = await getKV<WorkoutPlan | null>('workouts', null);
+  if (!p) return defaultPlan();
+  // drop anything no longer in the library
+  return { A: p.A.filter((i) => EXERCISES[i.key]), B: p.B.filter((i) => EXERCISES[i.key]) };
+}
+export async function saveWorkouts(p: WorkoutPlan): Promise<void> {
+  await setKV('workouts', p);
 }
 
 // ---------- workouts ----------

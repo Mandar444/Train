@@ -1,5 +1,5 @@
 import { addDays, diffDays, weekday } from './dates';
-import { EXERCISES, ExerciseDef, LIFT_DAYS, MILESTONES, WorkoutType } from './plan';
+import { EXERCISES, ExerciseDef, LIFT_DAYS, MILESTONES, PlanItem, WorkoutType } from './plan';
 import type { ExSet, Profile, Session } from './repo';
 import { C } from './theme';
 
@@ -96,4 +96,16 @@ export function fmt(n: number, digits = 0): string {
 
 export function exName(key: string): string {
   return EXERCISES[key]?.name ?? key;
+}
+
+/** Library definition with the user's sets / rep range applied. */
+export function itemDef(item: PlanItem | string): ExerciseDef {
+  if (typeof item === 'string') return EXERCISES[item];
+  const d = EXERCISES[item.key];
+  return { ...d, sets: item.sets, repMin: item.repMin, repMax: item.repMax };
+}
+
+export function scheme(d: { sets: number; repMin: number; repMax: number; unit?: string }): string {
+  const u = d.unit === 'sec' ? ' s' : d.unit === 'min' ? ' min' : '';
+  return `${d.sets} × ${d.repMin === d.repMax ? d.repMin : `${d.repMin}–${d.repMax}`}${u}`;
 }

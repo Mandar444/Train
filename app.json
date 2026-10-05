@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Mandar Cut",
+    "name": "GOAL",
     "slug": "mandar-cut",
     "scheme": "mandarcut",
     "version": "1.0.0",
@@ -12,7 +12,7 @@
       "package": "com.mandar.cut",
       "versionCode": 1,
       "adaptiveIcon": {
-        "backgroundColor": "#0D0E0B",
+        "backgroundColor": "#D4FF4F",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -33,9 +33,9 @@
         "expo-splash-screen",
         {
           "image": "./assets/splash-icon.png",
-          "imageWidth": 160,
+          "imageWidth": 220,
           "resizeMode": "contain",
-          "backgroundColor": "#0D0E0B"
+          "backgroundColor": "#D4FF4F"
         }
       ],
       [

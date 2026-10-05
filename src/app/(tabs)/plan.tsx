@@ -1,10 +1,11 @@
 import { Text, View } from 'react-native';
+import { router } from 'expo-router';
 import { Card, Enter, Row, Screen, T } from '../../components/ui';
 import { useQuery } from '../../lib/hooks';
 import * as repo from '../../lib/repo';
 import { addDays, dayMonth, dowShort, mondayOf, today, weekday } from '../../lib/dates';
 import { isLiftDay, weekNumber } from '../../lib/logic';
-import { EXERCISES, RULES, stepTargetLabel, WORKOUTS, WorkoutType } from '../../lib/plan';
+import { EXERCISES, RULES, stepTargetLabel, WorkoutType } from '../../lib/plan';
 import { C, F } from '../../lib/theme';
 
 export default function Plan() {
@@ -15,7 +16,8 @@ export default function Plan() {
     const sess = await repo.sessionsBetween(mon, addDays(mon, 6));
     const last = await repo.lastCompletedSession();
     const specials = await repo.getSpecials();
-    return { p, mon, sess, last, specials };
+    const plan = await repo.getWorkouts();
+    return { p, mon, sess, last, specials, plan };
   }, [date]);
   if (!data?.p) return <Screen><View /></Screen>;
   const { p, mon, sess, specials } = data;
@@ -38,7 +40,7 @@ export default function Plan() {
     return {
       d, type, done: !!done, now: d === date, past: d < date,
       title: type ? `Full Body ${type}` : isSun ? 'Rest / walk' : weekday(d) === 6 ? 'Walk' : 'Walk + recovery',
-      sub: type ? WORKOUTS[type].slice(1, 4).map((k) => EXERCISES[k].name.split(' ')[0]).join(' · ') + (sp ? ` · ${sp} night` : '') : weekday(d) === 6 ? 'Optional easy rowing or cycling' : isSun ? `Weekly review${sp ? ` · ${sp} night` : ''}` : `${stepTargetLabel(week)} steps${sp ? ` · ${sp} night` : ''}`,
+      sub: type ? data.plan[type].slice(0, 3).map((i) => EXERCISES[i.key].name.split(' ').slice(-1)[0]).join(' · ') + (sp ? ` · ${sp} night` : '') : weekday(d) === 6 ? 'Optional easy rowing or cycling' : isSun ? `Weekly review${sp ? ` · ${sp} night` : ''}` : `${stepTargetLabel(week)} steps${sp ? ` · ${sp} night` : ''}`,
     };
   });
 
@@ -63,7 +65,7 @@ export default function Plan() {
       <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
         <Row style={{ justifyContent: 'space-between', padding: 16, paddingBottom: 10 }}>
           <T.Strong>{`Week ${week}`}</T.Strong>
-          <T.Small>Workouts alternate A / B</T.Small>
+          <Text onPress={() => router.push('/workout-edit')} style={{ fontFamily: F.semibold, fontSize: 13, color: C.lime }}>Edit workouts</Text>
         </Row>
         {days.map((x) => (
           <Row key={x.d} gap={12} style={{ minHeight: 56, paddingHorizontal: 16, paddingVertical: 6, borderTopWidth: 1, borderTopColor: '#21221C', backgroundColor: x.now ? 'rgba(212,255,79,0.06)' : 'transparent' }}>

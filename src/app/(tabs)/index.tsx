@@ -8,15 +8,16 @@ import { loadSummary } from '../../lib/summary';
 import { avgSeries, fmt } from '../../lib/logic';
 import { greeting, headerDate, today } from '../../lib/dates';
 import { C, F } from '../../lib/theme';
-import { DAY1_CHECKLIST, EXERCISES, WORKOUTS } from '../../lib/plan';
+import { DAY1_CHECKLIST, EXERCISES } from '../../lib/plan';
 import { syncHealth } from '../../lib/health';
 import { refreshStepNudge } from '../../lib/notify';
-import { getKV, setKV } from '../../lib/repo';
+import { getKV, getWorkouts, setKV } from '../../lib/repo';
 
 export default function Today() {
   const date = today();
   const { data: s } = useQuery(() => loadSummary(date), [date]);
   const { data: checklist } = useQuery(() => getKV<Record<string, boolean>>('day1_checklist', {}), []);
+  const { data: plan } = useQuery(getWorkouts, []);
   const { width } = useWindowDimensions();
   const [refreshing, setRefreshing] = useState(false);
   const p = useProgress(1200, s ? 1 : 0);
@@ -183,11 +184,11 @@ export default function Today() {
               <T.Label>{session?.completed ? 'DONE TODAY' : s.liftDay ? "TODAY'S SESSION" : 'NEXT SESSION · RECOVERY DAY'}</T.Label>
               <T.Display style={{ fontSize: 32 }}>{`Full Body ${workoutType}`}</T.Display>
             </View>
-            <T.Small style={{ textAlign: 'right' }}>6 lifts{'\n'}~55 min</T.Small>
+            <T.Small style={{ textAlign: 'right' }}>{plan?.[workoutType].length ?? 0} lifts{'\n'}~{Math.round((plan?.[workoutType].reduce((s, i) => s + i.sets, 0) ?? 16) * 3.2)} min</T.Small>
           </Row>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
-            {WORKOUTS[workoutType].slice(0, 4).map((k) => <Pill key={k} text={EXERCISES[k].name} />)}
-            <Pill text="+2" />
+            {(plan?.[workoutType] ?? []).slice(0, 4).map((i) => <Pill key={i.key} text={EXERCISES[i.key].name} />)}
+            {(plan?.[workoutType].length ?? 0) > 4 ? <Pill text={`+${(plan?.[workoutType].length ?? 0) - 4}`} /> : null}
           </View>
           {session?.completed ? (
             <Btn title="View session" kind="ghost" onPress={() => router.push('/train')} />

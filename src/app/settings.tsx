@@ -69,6 +69,12 @@ export default function Settings() {
         <ListRow title="Goal weight" right={<T.Mono>{p.target_weight_kg} kg</T.Mono>} onPress={() => setSheet('profile')} />
       </Card>
 
+      <T.Label>TRAINING</T.Label>
+      <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
+        <ListRow first title="Edit Full Body A & B" sub="Add, remove, reorder, sets and reps" onPress={() => router.push('/workout-edit')} right={<Icon name="chevron" color={C.dim} />} />
+        <ListRow title="Exercise library" sub="Every exercise has an animated form guide" onPress={() => router.push('/library')} right={<Icon name="chevron" color={C.dim} />} />
+      </Card>
+
       <T.Label>REMINDERS</T.Label>
       <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
         {remRow('weigh', 'Morning weigh-in', 'Daily')}

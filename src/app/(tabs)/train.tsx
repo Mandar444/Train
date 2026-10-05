@@ -6,8 +6,8 @@ import { Btn, Card, Enter, haptic, Icon, Pill, Row, Screen, Segmented, T } from 
 import { ExerciseAnim } from '../../components/ExerciseAnim';
 import { useInterval, useQuery } from '../../lib/hooks';
 import * as repo from '../../lib/repo';
-import { EXERCISES, WORKOUTS, WorkoutType } from '../../lib/plan';
-import { isLiftDay, nextType, suggest, Suggestion } from '../../lib/logic';
+import { ExerciseDef, WorkoutType } from '../../lib/plan';
+import { isLiftDay, itemDef, nextType, scheme, suggest, Suggestion } from '../../lib/logic';
 import { today } from '../../lib/dates';
 import { C, F } from '../../lib/theme';
 
@@ -15,18 +15,24 @@ async function loadTrain() {
   const open = await repo.openSession();
   const last = await repo.lastCompletedSession();
   const todays = await repo.sessionOn(today());
+  const plan = await repo.getWorkouts();
   const sess = open ?? (todays?.completed ? todays : null);
   const sets = sess ? await repo.setsFor(sess.id) : [];
   const type: WorkoutType = sess?.type ?? nextType(last);
-  const exKeys = sess ? Array.from(new Set(sets.map((x) => x.exercise))) : WORKOUTS[type];
+  const keysFor = (t: WorkoutType) => plan[t].map((i) => i.key);
+  const exKeys = sess ? Array.from(new Set(sets.map((x) => x.exercise))) : keysFor(type);
+  const defs: Record<string, ExerciseDef> = {};
+  for (const t of ['A', 'B'] as WorkoutType[]) for (const i of plan[t]) defs[i.key] ??= itemDef(i);
+  if (sess) for (const i of plan[sess.type]) defs[i.key] = itemDef(i);
+  for (const k of [...exKeys, 'squat', 'leg_press']) defs[k] ??= itemDef(k);
   const prev: Record<string, repo.ExSet[]> = {};
   const sug: Record<string, Suggestion> = {};
-  for (const k of new Set([...WORKOUTS.A, ...WORKOUTS.B, 'squat', ...exKeys])) {
+  for (const k of Object.keys(defs)) {
     prev[k] = await repo.lastSetsFor(k, sess?.id);
-    sug[k] = suggest(EXERCISES[k], prev[k]);
+    sug[k] = suggest(defs[k], prev[k]);
   }
   const count = (await repo.sessions()).filter((x) => x.completed).length;
-  return { open, sess, sets, type, exKeys, prev, sug, count };
+  return { open, sess, sets, type, exKeys, prev, sug, count, plan, defs };
 }
 
 export default function Train() {
@@ -48,11 +54,17 @@ export default function Train() {
       </Enter>
       <Segmented options={[{ key: 'A', label: 'Full Body A' }, { key: 'B', label: 'Full Body B' }]} value={type} onChange={(k) => setPick(k as WorkoutType)} />
       {!lift ? <Card tone="green"><T.Small style={{ color: C.text2 }}>Today is a walking / recovery day. Lifting is Mon, Wed, Fri. You can still train if you moved a session.</T.Small></Card> : null}
+      <Row gap={8}>
+        <Btn small kind="ghost" icon="edit" title={`Edit workout ${type}`} style={{ flex: 1 }} onPress={() => router.push({ pathname: '/workout-edit', params: { type } })} />
+        <Btn small kind="ghost" icon="dumbbell" title="Exercise library" style={{ flex: 1 }} onPress={() => router.push('/library')} />
+      </Row>
       <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
-        {WORKOUTS[type].map((k, i) => {
-          const d = EXERCISES[k];
-          const sg = data.sug[k];
-          const prev = data.prev[k];
+        {data.plan[type].length === 0 ? <T.Small style={{ padding: 16 }}>No exercises in this workout yet. Tap “Edit workout” to add some.</T.Small> : null}
+        {data.plan[type].map((it, i) => {
+          const k = it.key;
+          const d = data.defs[k] ?? itemDef(it);
+          const sg = data.sug[k] ?? { weight: null, up: false, note: '' };
+          const prev = data.prev[k] ?? [];
           return (
             <Enter key={k} delay={i * 60}>
               <Row style={{ minHeight: 70, paddingHorizontal: 16, paddingVertical: 10, borderTopWidth: i ? 1 : 0, borderTopColor: '#21221C' }} gap={12}>
@@ -61,7 +73,7 @@ export default function Train() {
                 </View>
                 <Pressable style={{ flex: 1, gap: 3 }} onPress={() => router.push({ pathname: '/history', params: { exercise: k } })}>
                   <T.Strong>{d.name}</T.Strong>
-                  <T.Small>{`${d.sets} × ${d.repMin}–${d.repMax}`}{prev.length ? ` · last ${prev[0].weight_kg} kg × ${prev.map((x) => x.reps).join(', ')}` : ' · first time'}</T.Small>
+                  <T.Small>{scheme(d)}{prev.length ? ` · last ${prev[0].weight_kg} kg × ${prev.map((x) => x.reps).join(', ')}` : ' · first time'}</T.Small>
                 </Pressable>
                 {sg.up ? <Pill tone="lime" text={`+${d.increment} → ${sg.weight}`} /> : sg.weight ? <Pill text={`${sg.weight} kg`} /> : null}
               </Row>
@@ -69,9 +81,9 @@ export default function Train() {
           );
         })}
       </Card>
-      <Btn title={`Start Full Body ${type}`} icon="play" kind="light" onPress={async () => {
+      <Btn title={`Start Full Body ${type}`} icon="play" kind="light" disabled={!data.plan[type].length} onPress={async () => {
         haptic('success');
-        await repo.startSession(today(), type, WORKOUTS[type].map((k) => ({ exercise: k, sets: EXERCISES[k].sets, weight: data.sug[k].weight })));
+        await repo.startSession(today(), type, data.plan[type].map((it) => ({ exercise: it.key, sets: it.sets, weight: data.sug[it.key]?.weight ?? null })));
       }} />
       <T.Small style={{ color: C.dim }}>Most working sets should finish with 1–3 good reps left. Train for repeatable progress, not exhaustion.</T.Small>
     </Screen>
@@ -139,13 +151,13 @@ function Live({ data }: { data: TD }) {
         <RestRing left={restLeft} total={restLen} active={restLeft > 0} label={restLeft > 0 ? mm(restLeft) : 'GO'} />
         <View style={{ flex: 1, gap: 2 }}>
           <Text style={{ fontFamily: F.monoBold, fontSize: 11, letterSpacing: 1.1, color: restLeft > 0 ? C.bg : C.muted }}>{restLeft > 0 ? 'REST' : 'READY'}</Text>
-          <Text style={{ fontFamily: F.semibold, fontSize: 14, color: restLeft > 0 ? C.bg : C.text }}>{`Next: ${EXERCISES[current]?.name ?? 'finish'}`}</Text>
+          <Text style={{ fontFamily: F.semibold, fontSize: 14, color: restLeft > 0 ? C.bg : C.text }}>{`Next: ${data.defs[current]?.name ?? 'finish'}`}</Text>
         </View>
         <Text style={{ fontFamily: F.semibold, fontSize: 13, color: restLeft > 0 ? C.bg : C.lime }}>{restLeft > 0 ? 'Skip' : '+30s'}</Text>
       </Pressable>
 
       {data.exKeys.map((k, idx) => {
-        const def = EXERCISES[k];
+        const def = data.defs[k] ?? itemDef(k);
         const sets = byEx[k] ?? [];
         const isOpen = k === expanded;
         const allDone = sets.length > 0 && sets.every((s) => s.done);
@@ -171,14 +183,14 @@ function Live({ data }: { data: TD }) {
               <View style={{ gap: 4, flex: 1 }}>
                 <Text style={{ fontFamily: F.monoBold, fontSize: 11, letterSpacing: 1.1, color: C.lime }}>{`EXERCISE ${idx + 1} OF ${data.exKeys.length}`}</Text>
                 <T.Display style={{ fontSize: 30 }}>{def.name}</T.Display>
-                <T.Small>{`${def.sets} × ${def.repMin}–${def.repMax} · leave 1–3 reps in reserve`}</T.Small>
+                <T.Small>{`${scheme(def)} · ${def.unit === 'reps' ? 'leave 1–3 reps in reserve' : def.group}`}</T.Small>
               </View>
               <Pressable accessibilityLabel="History" onPress={() => router.push({ pathname: '/history', params: { exercise: k } })} style={{ width: 44, height: 44, borderRadius: 14, backgroundColor: C.card2, alignItems: 'center', justifyContent: 'center' }}>
                 <Icon name="trend" size={18} />
               </Pressable>
             </Row>
 
-            <ExerciseAnim kind={def.anim} width={width - 40 - 38} />
+            <ExerciseAnim spec={def.anim} width={width - 40 - 38} />
 
             <Row gap={6} style={{ alignItems: 'stretch' }}>
               {def.cues.map((c) => (
@@ -193,7 +205,7 @@ function Live({ data }: { data: TD }) {
               <Text style={[hdr, { width: 26 }]}>SET</Text>
               <Text style={[hdr, { flex: 1 }]}>LAST</Text>
               <Text style={[hdr, { width: 64, textAlign: 'center' }]}>KG</Text>
-              <Text style={[hdr, { width: 52, textAlign: 'center' }]}>REPS</Text>
+              <Text style={[hdr, { width: 52, textAlign: 'center' }]}>{def.unit === 'sec' ? 'SEC' : def.unit === 'min' ? 'MIN' : 'REPS'}</Text>
               <Text style={[hdr, { width: 36, textAlign: 'center' }]}>RIR</Text>
               <View style={{ width: 44 }} />
             </Row>
@@ -214,7 +226,7 @@ function Live({ data }: { data: TD }) {
               <Btn small kind="danger" title={sets.some((s) => s.pain) ? 'Pain flagged' : 'Flag pain / form'} style={{ flex: 1 }}
                 onPress={async () => { const v = sets.some((s) => s.pain) ? 0 : 1; for (const s of sets) await repo.updateSet(s.id, { pain: v }); if (v) haptic('warn'); }} />
             </Row>
-            {sess.type === 'A' && (k === 'leg_press' || k === 'squat') ? (
+            {k === 'leg_press' || k === 'squat' ? (
               <Btn small kind="ghost" title={k === 'leg_press' ? 'Swap to squat today' : 'Swap to leg press today'} onPress={() => repo.swapExercise(sess.id, k, k === 'leg_press' ? 'squat' : 'leg_press')} />
             ) : null}
           </Card>
@@ -316,7 +328,7 @@ function Done({ data }: { data: TD }) {
         {Object.entries(byEx).map(([k, sets], i) => (
           <Pressable key={k} onPress={() => router.push({ pathname: '/history', params: { exercise: k } })}>
             <Row style={{ minHeight: 58, paddingHorizontal: 16, borderTopWidth: i ? 1 : 0, borderTopColor: '#21221C' }}>
-              <T.Strong style={{ flex: 1 }}>{EXERCISES[k]?.name ?? k}</T.Strong>
+              <T.Strong style={{ flex: 1 }}>{data.defs[k]?.name ?? k}</T.Strong>
               <T.Mono>{`${sets[0].weight_kg ?? '—'} × ${sets.map((s) => s.reps).join(', ')}`}</T.Mono>
             </Row>
           </Pressable>
