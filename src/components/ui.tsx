@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import {
   Animated, Easing, KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, StyleProp, StyleSheet, Text, TextInput,
   TextInputProps, TextStyle, View, ViewStyle,
@@ -79,6 +79,8 @@ export function Screen({ children, scroll = true, bottomPad = 110, refresh }: { 
         style={{ flex: 1 }}
         contentContainerStyle={{ paddingTop: ins.top + 16, paddingHorizontal: 20, paddingBottom: bottomPad + ins.bottom, gap: 14 }}
         keyboardShouldPersistTaps="handled"
+        overScrollMode="always"
+        scrollEventThrottle={16}
         refreshControl={refresh as React.ReactElement<any> | undefined}
       >
         {children}
@@ -92,13 +94,36 @@ export function Enter({ delay = 0, children, style }: { delay?: number; children
   return <Animated.View style={[a, style]}>{children}</Animated.View>;
 }
 
+const OUTER_KEYS = new Set(['flex', 'flexGrow', 'flexShrink', 'flexBasis', 'alignSelf', 'margin', 'marginTop', 'marginBottom', 'marginLeft', 'marginRight', 'marginHorizontal', 'marginVertical', 'position', 'left', 'right', 'top', 'bottom', 'zIndex', 'width', 'minWidth', 'maxWidth']);
+
+/** Pressable with a native-driver spring: shrinks on touch, springs back on release (UI thread, no JS per frame). */
+export function Press({ onPress, onLongPress, style, children, scaleTo = 0.965, disabled, accessibilityLabel, accessibilityRole = 'button', hitSlop }: {
+  onPress?: () => void; onLongPress?: () => void; style?: StyleProp<ViewStyle>; children: ReactNode; scaleTo?: number; disabled?: boolean;
+  accessibilityLabel?: string; accessibilityRole?: 'button' | 'tab' | 'switch' | 'link'; hitSlop?: number;
+}) {
+  const v = useRef(new Animated.Value(1)).current;
+  const to = (x: number) => Animated.spring(v, { toValue: x, useNativeDriver: true, speed: x === 1 ? 22 : 60, bounciness: x === 1 ? 7 : 0 }).start();
+  // layout props belong on the outer touch target so flex/width/margins behave like a plain View
+  const flat = (StyleSheet.flatten(style) ?? {}) as Record<string, unknown>;
+  const outer: Record<string, unknown> = {};
+  const inner: Record<string, unknown> = {};
+  for (const [k, val] of Object.entries(flat)) (OUTER_KEYS.has(k) ? outer : inner)[k] = val;
+  if (outer.flex != null || outer.flexGrow != null) inner.flexGrow = 1;
+  return (
+    <Pressable onPress={onPress} onLongPress={onLongPress} disabled={disabled} onPressIn={() => to(scaleTo)} onPressOut={() => to(1)}
+      accessibilityRole={accessibilityRole} accessibilityLabel={accessibilityLabel} hitSlop={hitSlop} style={outer as ViewStyle}>
+      <Animated.View style={[inner as ViewStyle, { transform: [{ scale: v }] }]}>{children}</Animated.View>
+    </Pressable>
+  );
+}
+
 export function Card({ children, style, onPress, tone = 'base' }: { children: ReactNode; style?: StyleProp<ViewStyle>; onPress?: () => void; tone?: 'base' | 'orange' | 'lime' | 'green' }) {
   const toneStyle = tone === 'orange' ? s.cardOrange : tone === 'lime' ? s.cardLime : tone === 'green' ? s.cardGreen : null;
   if (onPress) {
     return (
-      <Pressable onPress={onPress} style={({ pressed }) => [s.card, toneStyle, style, pressed && { opacity: 0.85, transform: [{ scale: 0.99 }] }]}>
+      <Press onPress={() => { haptic(); onPress(); }} scaleTo={0.98} style={[s.card, toneStyle, style]}>
         {children}
-      </Pressable>
+      </Press>
     );
   }
   return <View style={[s.card, toneStyle, style]}>{children}</View>;
@@ -137,28 +162,27 @@ export function Btn({ title, onPress, kind = 'primary', icon, style, disabled, s
   const fg = { primary: C.bg, light: C.bg, ghost: C.text, orange: C.bg, danger: C.danger }[kind];
   const border = kind === 'ghost' ? C.line2 : kind === 'danger' ? '#4A2420' : 'transparent';
   return (
-    <Pressable
-      accessibilityRole="button"
+    <Press
       disabled={disabled}
       onPress={() => { haptic(); onPress(); }}
-      style={({ pressed }) => [{
+      style={[{
         height: small ? 44 : 54, borderRadius: small ? 12 : 16, backgroundColor: bg, borderWidth: 1, borderColor: border,
         flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingHorizontal: 16,
-        opacity: disabled ? 0.4 : pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }],
+        opacity: disabled ? 0.4 : 1,
       }, style]}
     >
       {icon ? <Icon name={icon} size={18} color={fg} width={2.2} /> : null}
       <Text style={{ color: fg, fontFamily: F.bold, fontSize: small ? 13 : 15 }}>{title}</Text>
-    </Pressable>
+    </Press>
   );
 }
 
 export function IconBtn({ name, onPress, label, size = 44, color = C.text, bg = '#1C1D18' }: { name: IconName; onPress: () => void; label: string; size?: number; color?: string; bg?: string }) {
   return (
-    <Pressable accessibilityRole="button" accessibilityLabel={label} onPress={() => { haptic(); onPress(); }}
-      style={({ pressed }) => ({ width: size, height: size, borderRadius: size / 2, backgroundColor: bg, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.7 : 1 })}>
+    <Press accessibilityLabel={label} onPress={() => { haptic(); onPress(); }} scaleTo={0.88}
+      style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}>
       <Icon name={name} size={20} color={color} />
-    </Pressable>
+    </Press>
   );
 }
 
@@ -201,12 +225,20 @@ export function Field(props: TextInputProps & { label?: string }) {
 }
 
 export function Segmented<K extends string>({ options, value, onChange }: { options: { key: K; label: string }[]; value: K; onChange: (k: K) => void }) {
+  const [w, setW] = useState(0);
+  const idx = Math.max(0, options.findIndex((o) => o.key === value));
+  const x = useRef(new Animated.Value(idx)).current;
+  useEffect(() => { Animated.spring(x, { toValue: idx, useNativeDriver: true, speed: 24, bounciness: 4 }).start(); }, [idx, x]);
+  const seg = w > 0 ? (w - 8 - 4 * (options.length - 1)) / options.length : 0;
   return (
-    <View style={{ flexDirection: 'row', padding: 4, gap: 4, borderRadius: 16, backgroundColor: C.card, borderWidth: 1, borderColor: C.line }}>
+    <View onLayout={(e) => setW(e.nativeEvent.layout.width)} style={{ flexDirection: 'row', padding: 4, gap: 4, borderRadius: 16, backgroundColor: C.card, borderWidth: 1, borderColor: C.line }}>
+      {seg > 0 ? (
+        <Animated.View pointerEvents="none" style={{ position: 'absolute', left: 4, top: 4, bottom: 4, width: seg, borderRadius: 12, backgroundColor: C.text, transform: [{ translateX: Animated.multiply(x, seg + 4) }] }} />
+      ) : null}
       {options.map((o) => {
         const on = o.key === value;
         return (
-          <Pressable key={o.key} onPress={() => { haptic(); onChange(o.key); }} style={{ flex: 1, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? C.text : 'transparent' }}>
+          <Pressable key={o.key} onPress={() => { if (!on) { haptic(); onChange(o.key); } }} style={{ flex: 1, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: on && seg === 0 ? C.text : 'transparent' }}>
             <Text style={{ fontFamily: F.semibold, fontSize: 14, color: on ? C.bg : C.muted }}>{o.label}</Text>
           </Pressable>
         );

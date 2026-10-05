@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Svg, { Circle, Ellipse, Line, Path, Rect } from 'react-native-svg';
-import { FADE, END, introFrame, IPrim, IText } from '../lib/introScene';
+import { FADE, END, LOGO_AT, introFrame, IPrim, IText } from '../lib/introScene';
 import { F } from '../lib/theme';
 
-/** Opening animation (~6.5 s): four sport scenes, then the GOAL logo. Tap anywhere to skip. */
+/** Opening animation (~9 s): seven sport scenes, then the GOAL logo. Tap anywhere to skip. */
 export function Intro({ onDone }: { onDone: () => void }) {
   const { width, height } = useWindowDimensions();
   const [t, setT] = useState(0);
@@ -13,9 +13,10 @@ export function Intro({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     let raf = 0;
-    const t0 = Date.now();
-    const tick = () => {
-      const s = (Date.now() - t0) / 1000;
+    let t0: number | null = null;
+    const tick = (now: number) => {
+      if (t0 === null) t0 = now;
+      const s = (now - t0) / 1000;
       setT(s);
       if (s < END + FADE) raf = requestAnimationFrame(tick);
       else finish();
@@ -38,7 +39,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
         {f.prims.map((p, i) => <Prim key={i} p={p} />)}
       </Svg>
       {f.texts.map((tx, i) => <Label key={i} t={tx} s={s} ox={ox} oy={oy} />)}
-      {t < 4.4 ? <Text style={{ position: 'absolute', bottom: 40, left: 0, right: 0, textAlign: 'center', fontFamily: F.semibold, fontSize: 13, color: f.bg === '#D4FF4F' || f.bg === '#FF8A3D' ? '#0D0E0B' : '#F2F1EA', opacity: 0.5 }}>Tap to skip</Text> : null}
+      {t < LOGO_AT - 0.2 ? <Text style={{ position: 'absolute', bottom: 40, left: 0, right: 0, textAlign: 'center', fontFamily: F.semibold, fontSize: 13, color: f.light ? '#0D0E0B' : '#F2F1EA', opacity: 0.5 }}>Tap to skip</Text> : null}
     </Pressable>
   );
 }

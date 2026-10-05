@@ -85,7 +85,11 @@ export function FoodPicker({ visible, onClose, onAdd, meal, setMeal, recents }: 
           data={results}
           keyExtractor={(f) => String(f.id)}
           keyboardShouldPersistTaps="handled"
-          initialNumToRender={20}
+          initialNumToRender={14}
+          maxToRenderPerBatch={12}
+          windowSize={9}
+          updateCellsBatchingPeriod={30}
+          removeClippedSubviews
           contentContainerStyle={{ padding: 20, paddingBottom: ins.bottom + 40, gap: 8 }}
           ListHeaderComponent={!q && !cat && recents.length ? (
             <View style={{ gap: 8, marginBottom: 12 }}>
