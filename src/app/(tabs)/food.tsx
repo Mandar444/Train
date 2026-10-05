@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Alert, Pressable, ScrollView, Text, View } from 'react-native';
 import { Bar, Btn, Card, haptic, Icon, IconBtn, Row, Screen, T } from '../../components/ui';
 import { FoodPicker } from '../../components/FoodPicker';
+import { CalendarSheet } from '../../components/Calendar';
 import { useQuery } from '../../lib/hooks';
 import * as repo from '../../lib/repo';
 import { addDays, dayMonth, dowShort, today, weekday } from '../../lib/dates';
@@ -21,6 +22,7 @@ export default function Food() {
   const [date, setDate] = useState(today());
   const [meal, setMeal] = useState<MealKey>(defaultMeal());
   const [open, setOpen] = useState(false);
+  const [cal, setCal] = useState(false);
 
   const { data } = useQuery(async () => ({
     profile: await repo.getProfile(),
@@ -49,7 +51,8 @@ export default function Food() {
         <T.Display>Food</T.Display>
         <Row gap={6}>
           <IconBtn name="back" label="Previous day" onPress={() => setDate(addDays(date, -1))} />
-          <Pressable onPress={() => setDate(today())} style={{ minWidth: 92, height: 44, borderRadius: 22, backgroundColor: C.card2, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 12 }}>
+          <Pressable accessibilityLabel="Pick a day" onPress={() => setCal(true)} style={{ minWidth: 104, height: 44, borderRadius: 22, backgroundColor: C.card2, borderWidth: 1, borderColor: C.line2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, paddingHorizontal: 12 }}>
+            <Icon name="calendar" size={16} color={C.lime} />
             <Text style={{ fontFamily: F.semibold, fontSize: 14, color: C.text }}>{dayLabel}</Text>
           </Pressable>
           <IconBtn name="chevron" label="Next day" onPress={() => !isToday && setDate(addDays(date, 1))} color={isToday ? C.faint : C.text} />
@@ -132,6 +135,7 @@ export default function Food() {
 
       <T.Small style={{ textAlign: 'center' }}>Calories are estimates for typical portions. Close enough is good enough — just log honestly.</T.Small>
 
+      <CalendarSheet visible={cal} value={date} onPick={setDate} onClose={() => setCal(false)} target={target} startDate={data.profile.start_date} />
       <FoodPicker visible={open} onClose={() => setOpen(false)} meal={meal} setMeal={setMeal} recents={data.recents} onAdd={add} />
     </Screen>
   );

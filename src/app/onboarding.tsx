@@ -20,8 +20,7 @@ export default function Onboarding() {
       kcal_target: Math.round(n(f.kcal, 2150)), protein_min: Math.round(n(f.pmin, 130)), protein_max: Math.round(n(f.pmax, 160)),
     });
     scheduleAll().catch(() => {});
-    router.replace('/');
-    setTimeout(() => router.push('/weight'), 400);
+    router.replace({ pathname: '/connect-steps', params: { next: 'weight' } });
   };
 
   return (

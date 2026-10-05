@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Pressable, RefreshControl, Text, useWindowDimensions, View } from 'react-native';
 import { Redirect, router } from 'expo-router';
 import { Bar, Card, Enter, Icon, IconName, Row, Screen, T } from '../../components/ui';
-import { TrendChart } from '../../components/charts';
+import { MultiRing, TrendChart } from '../../components/charts';
 import { useQuery } from '../../lib/hooks';
 import { loadSummary } from '../../lib/summary';
 import { avgSeries, fmt } from '../../lib/logic';
@@ -25,6 +25,15 @@ export default function Home() {
     if (s) refreshStepNudge(s.steps, s.stepTarget);
   }, [s?.steps, s?.stepTarget]);
 
+  // Existing installs that never linked steps: ask once.
+  useEffect(() => {
+    if (!s) return;
+    (async () => {
+      const [prompted, connected] = await Promise.all([getKV('hc_prompted', false), getKV('health_connected', false)]);
+      if (!prompted && !connected) router.push('/connect-steps');
+    })();
+  }, [!!s]);
+
   if (s === null) return <Redirect href="/onboarding" />;
   if (!s) return <Screen><View /></Screen>;
 
@@ -45,28 +54,28 @@ export default function Home() {
         ? { value: `Full Body ${wType}`, sub: `${lifts.length} exercises · about ${Math.round(lifts.reduce((a, i) => a + i.sets, 0) * 3.2)} min`, action: 'Start', done: false }
         : { value: 'Rest day', sub: `Next: Full Body ${wType}. Walk and recover today.`, action: 'Open', done: true };
 
-  const rows: { key: string; icon: IconName; title: string; value: string; sub: string; pct?: number; color?: string; action: string; done: boolean; to: string }[] = [
+  const rows: { key: string; icon: IconName; title: string; value: string; sub: string; pct?: number; color?: string; tint: string; action: string; done: boolean; to: string }[] = [
     {
-      key: 'weight', icon: 'scale', title: 'Morning weight',
+      key: 'weight', icon: 'scale', title: 'Morning weight', tint: C.lime,
       value: s.todayWeight != null ? `${s.todayWeight.toFixed(1)} kg` : 'Not logged yet',
       sub: s.todayWeight != null ? 'Logged today' : 'After the bathroom, before food',
       action: s.todayWeight != null ? 'Edit' : 'Log', done: s.todayWeight != null, to: '/weight',
     },
     {
-      key: 'food', icon: 'bowl', title: 'Food',
+      key: 'food', icon: 'bowl', title: 'Food', tint: C.orange,
       value: `${fmt(s.kcal)} / ${fmt(s.profile.kcal_target)} kcal`,
       sub: `${Math.round(s.protein)} g protein of ${s.profile.protein_min}+ g · ${kcalLeft >= 0 ? `${fmt(kcalLeft)} kcal left` : `${fmt(-kcalLeft)} over`}`,
-      pct: s.kcal / s.profile.kcal_target, color: kcalLeft >= 0 ? C.lime : C.orange,
+      pct: s.kcal / s.profile.kcal_target, color: C.orange,
       action: 'Add', done: false, to: '/food',
     },
     {
-      key: 'steps', icon: 'steps', title: 'Steps',
+      key: 'steps', icon: 'steps', title: 'Steps', tint: C.cyan,
       value: `${fmt(s.steps)} / ${fmt(s.stepTarget)}`,
       sub: s.steps >= s.stepTarget ? 'Goal done' : `${fmt(s.stepTarget - s.steps)} to go${s.stepsSource === 'health' ? ' · synced' : ''}`,
-      pct: s.steps / s.stepTarget, color: C.lime,
+      pct: s.steps / s.stepTarget, color: C.cyan,
       action: 'Open', done: s.steps >= s.stepTarget, to: '/steps',
     },
-    { key: 'workout', icon: 'dumbbell', title: 'Workout', ...workoutRow, to: '/train' },
+    { key: 'workout', icon: 'dumbbell', title: 'Workout', tint: C.violet, ...workoutRow, to: '/train' },
   ];
 
   const onRefresh = async () => { setRefreshing(true); await syncHealth(7); setRefreshing(false); };
@@ -83,6 +92,37 @@ export default function Home() {
             <Icon name="settings" size={22} color={C.text} />
           </Pressable>
         </Row>
+      </Enter>
+
+      <Enter delay={40}>
+        <View style={{ borderRadius: 26, padding: 18, backgroundColor: '#14150F', borderWidth: 1, borderColor: '#2A2C22', flexDirection: 'row', alignItems: 'center', gap: 18, overflow: 'hidden' }}>
+          <View style={{ position: 'absolute', right: -60, top: -60, width: 200, height: 200, borderRadius: 100, backgroundColor: C.lime, opacity: 0.06 }} />
+          <View style={{ width: 132, height: 132, alignItems: 'center', justifyContent: 'center' }}>
+            <MultiRing size={132} stroke={12} gap={4} rings={[
+              { pct: s.kcal / s.profile.kcal_target, color: C.orange },
+              { pct: s.steps / s.stepTarget, color: C.cyan },
+              { pct: session?.completed || !s.liftDay ? 1 : s.openSession ? 0.5 : 0, color: C.violet },
+              { pct: s.todayWeight != null ? 1 : 0, color: C.lime },
+            ]} />
+            <View style={{ position: 'absolute', alignItems: 'center' }}>
+              <Text style={{ fontFamily: F.display, fontSize: 24, color: C.text }}>{`${doneCount}/4`}</Text>
+            </View>
+          </View>
+          <View style={{ flex: 1, gap: 9 }}>
+            {[
+              { c: C.orange, l: 'Food', v: `${fmt(s.kcal)} kcal` },
+              { c: C.cyan, l: 'Steps', v: fmt(s.steps) },
+              { c: C.violet, l: 'Workout', v: session?.completed ? 'Done' : s.liftDay ? 'To do' : 'Rest' },
+              { c: C.lime, l: 'Weight', v: s.todayWeight != null ? `${s.todayWeight.toFixed(1)}` : '—' },
+            ].map((x) => (
+              <Row key={x.l} gap={8}>
+                <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: x.c }} />
+                <Text style={{ flex: 1, fontFamily: F.medium, fontSize: 14, color: C.muted }}>{x.l}</Text>
+                <Text style={{ fontFamily: F.bold, fontSize: 15, color: C.text }}>{x.v}</Text>
+              </Row>
+            ))}
+          </View>
+        </View>
       </Enter>
 
       <Enter delay={60}>
@@ -117,17 +157,17 @@ export default function Home() {
 
       <Enter delay={120}>
         <Row style={{ justifyContent: 'space-between', marginTop: 4 }}>
-          <T.Strong style={{ fontSize: 18 }}>Today</T.Strong>
+          <Text style={{ fontFamily: F.display, fontSize: 20, color: C.text }}>Today's moves</Text>
           <T.Small>{`${doneCount} of 4 done`}</T.Small>
         </Row>
       </Enter>
 
       {rows.map((r, i) => (
         <Enter key={r.key} delay={160 + i * 60}>
-          <Pressable onPress={() => router.push(r.to as never)} style={({ pressed }) => ({ backgroundColor: C.card, borderRadius: 20, borderWidth: 1, borderColor: r.done ? '#3A4A1C' : C.line, padding: 16, gap: 10, opacity: pressed ? 0.85 : 1 })}>
+          <Pressable onPress={() => router.push(r.to as never)} style={({ pressed }) => ({ backgroundColor: C.card, borderRadius: 20, borderWidth: 1, borderColor: r.done ? r.tint + '55' : C.line, padding: 16, gap: 10, opacity: pressed ? 0.85 : 1 })}>
             <Row gap={14}>
-              <View style={{ width: 46, height: 46, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: r.done ? C.lime : C.card2 }}>
-                <Icon name={r.done ? 'check' : r.icon} size={22} color={r.done ? C.bg : C.text} width={r.done ? 2.8 : 2} />
+              <View style={{ width: 48, height: 48, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: r.done ? r.tint : r.tint + '22', borderWidth: 1, borderColor: r.tint + '55' }}>
+                <Icon name={r.done ? 'check' : r.icon} size={22} color={r.done ? C.bg : r.tint} width={r.done ? 2.8 : 2.1} />
               </View>
               <View style={{ flex: 1, gap: 2 }}>
                 <T.Small>{r.title}</T.Small>

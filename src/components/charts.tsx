@@ -146,3 +146,24 @@ export function LineChart({ values, width, height = 150, color = C.lime }: { val
     </Svg>
   );
 }
+
+/** Concentric activity rings (outer → inner). */
+export function MultiRing({ size, stroke = 12, gap = 4, rings }: { size: number; stroke?: number; gap?: number; rings: { pct: number; color: string }[] }) {
+  const p = useProgress(1300, rings.map((r) => r.pct.toFixed(2)).join(','));
+  return (
+    <Svg width={size} height={size} style={{ transform: [{ rotate: '-90deg' }] }}>
+      {rings.map((rg, i) => {
+        const r = size / 2 - stroke / 2 - i * (stroke + gap);
+        if (r <= 0) return null;
+        const circ = 2 * Math.PI * r;
+        const v = Math.max(0, Math.min(1, rg.pct)) * p;
+        return (
+          <React.Fragment key={i}>
+            <Circle cx={size / 2} cy={size / 2} r={r} stroke={rg.color} strokeOpacity={0.16} strokeWidth={stroke} fill="none" />
+            {v > 0.001 ? <Circle cx={size / 2} cy={size / 2} r={r} stroke={rg.color} strokeWidth={stroke} fill="none" strokeLinecap="round" strokeDasharray={`${circ * v} ${circ}`} /> : null}
+          </React.Fragment>
+        );
+      })}
+    </Svg>
+  );
+}

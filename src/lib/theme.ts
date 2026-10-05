@@ -18,10 +18,12 @@ export const C = {
   orangeLine: '#3A2A1C',
   orangeText: '#E9D7C4',
   danger: '#FF6B5B',
+  cyan: '#5CE1E6',
+  violet: '#B69CFF',
 };
 
 export const F = {
-  display: 'PlusJakartaSans_800ExtraBold',
+  display: 'PlusJakartaSans_800ExtraBold_Italic',
   displayBold: 'PlusJakartaSans_800ExtraBold',
   body: 'PlusJakartaSans_400Regular',
   medium: 'PlusJakartaSans_500Medium',
