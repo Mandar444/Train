@@ -9,7 +9,7 @@ import { C, F } from '../lib/theme';
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const DOW = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
-/** Month calendar sheet. Dots show days with food logged (green = within target, orange = over). */
+/** Month calendar sheet. Dots show days with food logged (lime = within target, grey = over). */
 export function CalendarSheet({ visible, value, onPick, onClose, target, startDate }: {
   visible: boolean; value: string; onPick: (d: string) => void; onClose: () => void; target: number; startDate?: string;
 }) {
@@ -60,7 +60,7 @@ export function CalendarSheet({ visible, value, onPick, onClose, target, startDa
                 <Pressable key={i} disabled={future} onPress={() => { haptic(); onPick(d); onClose(); }} style={{ width: `${100 / 7}%`, height: 50, alignItems: 'center', justifyContent: 'center' }}>
                   <View style={{ width: 42, height: 42, borderRadius: 21, alignItems: 'center', justifyContent: 'center', backgroundColor: sel ? C.lime : 'transparent', borderWidth: isT && !sel ? 1.5 : 0, borderColor: C.lime }}>
                     <Text style={{ fontFamily: sel || isT ? F.bold : F.medium, fontSize: 15, color: sel ? C.bg : future || beforeStart ? C.faint : C.text }}>{parse(d).getDate()}</Text>
-                    {k !== undefined && !sel ? <View style={{ position: 'absolute', bottom: 4, width: 6, height: 6, borderRadius: 3, backgroundColor: k <= target ? C.lime : C.orange }} /> : null}
+                    {k !== undefined && !sel ? <View style={{ position: 'absolute', bottom: 4, width: 6, height: 6, borderRadius: 3, backgroundColor: k <= target ? C.lime : C.dim }} /> : null}
                   </View>
                 </Pressable>
               );
@@ -68,7 +68,7 @@ export function CalendarSheet({ visible, value, onPick, onClose, target, startDa
           </View>
           <Row gap={16} style={{ justifyContent: 'center' }}>
             <Row gap={6}><View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: C.lime }} /><T.Small style={{ fontSize: 13 }}>Within target</T.Small></Row>
-            <Row gap={6}><View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: C.orange }} /><T.Small style={{ fontSize: 13 }}>Over target</T.Small></Row>
+            <Row gap={6}><View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: C.dim }} /><T.Small style={{ fontSize: 13 }}>Over target</T.Small></Row>
           </Row>
           <Btn title="Go to today" kind="ghost" small onPress={() => { onPick(t); onClose(); }} />
         </Pressable>

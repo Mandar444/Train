@@ -1,4 +1,4 @@
-// Exercise library — every entry has default sets/reps, cues and a posture animation.
+// Exercise library: every entry has default sets/reps, cues and a posture animation.
 import type { AnimSpec, Gear, Pose, Static } from './anim';
 
 export type Group = 'Legs' | 'Glutes' | 'Chest' | 'Back' | 'Shoulders' | 'Biceps' | 'Triceps' | 'Forearms' | 'Core' | 'Cardio' | 'Full body';

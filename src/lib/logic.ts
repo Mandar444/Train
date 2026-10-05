@@ -1,6 +1,6 @@
 import { addDays, diffDays, weekday } from './dates';
-import { EXERCISES, ExerciseDef, LIFT_DAYS, MILESTONES, PlanItem, WorkoutType } from './plan';
-import type { ExSet, Profile, Session } from './repo';
+import { DayKey, EXERCISES, ExerciseDef, LIFT_DAYS, MILESTONES, PlanItem, restFor, rirFor, SCHEDULE } from './plan';
+import type { ExSet, Profile } from './repo';
 import { C } from './theme';
 
 export type Weigh = { date: string; weight_kg: number };
@@ -50,8 +50,8 @@ export function status(ws: Weigh[], date: string, strengthUp: number): Status {
   const pct = (-wk / now.avg) * 100;
   const prevPct = (-prevWk / now.avg) * 100;
   const loss = -wk;
-  if (two > -0.3) return { key: 'AUDIT', tag: 'Audit', line: 'Almost no change for 2 weeks.', detail: 'Check portions, snacks, drinks, steps and logging first. Then cut ~150–200 kcal or add steps — one change only.', color: C.orange, ink: C.bg };
-  if (pct > 1 && prevPct > 1) return { key: 'REVIEW', tag: 'Review', line: 'Losing fast two weeks running.', detail: 'If you feel drained or lifts are dropping, add a little food and reassess.', color: C.orange, ink: C.bg };
+  if (two > -0.3) return { key: 'AUDIT', tag: 'Audit', line: 'Almost no change for 2 weeks.', detail: 'Check portions, snacks, drinks, steps and logging first. Then cut about 150–200 kcal or add steps. Change one thing only.', color: C.text, ink: C.bg };
+  if (pct > 1 && prevPct > 1) return { key: 'REVIEW', tag: 'Review', line: 'Losing fast two weeks running.', detail: 'If you feel drained or lifts are dropping, add a little food and reassess.', color: C.text, ink: C.bg };
   if (loss >= 0.35 && loss <= 0.85) return { key: 'ON_TRACK', tag: 'On track', line: 'Keep the plan unchanged.', detail: `−${loss.toFixed(1)} kg this week, inside the 0.4–0.8 kg range.`, color: C.lime, ink: C.bg };
   if (loss < 0.35 && strengthUp > 0) return { key: 'RECOMP', tag: 'Recomp', line: 'Strength up, weight slow. Don’t panic.', detail: 'Recomposition may be happening. Watch the waist.', color: C.lime, ink: C.bg };
   if (loss < 0.35) return { key: 'SLOW', tag: 'Slow week', line: 'Slower than planned. Stay the course.', detail: 'One slow week is noise. Re-check next week before changing anything.', color: C.text, ink: C.bg };
@@ -70,20 +70,30 @@ export function isLiftDay(date: string): boolean {
   return LIFT_DAYS.includes(weekday(date));
 }
 
-export function nextType(last: Session | null): WorkoutType {
-  if (!last) return 'A';
-  return last.type === 'A' ? 'B' : 'A';
+/** The workout scheduled on a date, or null on Sunday (rest). */
+export function scheduledDay(date: string): DayKey | null {
+  return SCHEDULE[weekday(date)];
+}
+
+/** The first training day after `date` (or from `date` itself when includeToday is set). */
+export function nextTrainingDay(date: string, includeToday = false): { date: string; key: DayKey; daysAway: number } {
+  for (let i = includeToday ? 0 : 1; i <= 7; i++) {
+    const d = addDays(date, i);
+    const k = SCHEDULE[weekday(d)];
+    if (k) return { date: d, key: k, daysAway: i };
+  }
+  return { date: addDays(date, 1), key: 'push_a', daysAway: 1 };
 }
 
 export type Suggestion = { weight: number | null; up: boolean; note: string };
 export function suggest(def: ExerciseDef, last: ExSet[]): Suggestion {
-  if (!last.length) return { weight: null, up: false, note: 'First time: pick a weight you can do for ' + def.repMax + ' with 2–3 reps left.' };
+  if (!last.length) return { weight: null, up: false, note: `First time: pick a weight you could lift ${def.repMax} times with 2 reps left. Write it down and build from there.` };
   const w = Math.max(...last.map((s) => s.weight_kg ?? 0));
   const pain = last.some((s) => s.pain);
   const top = last.length >= def.sets && last.every((s) => (s.reps ?? 0) >= def.repMax);
   if (pain) return { weight: w, up: false, note: 'Pain or form was flagged last time. Same weight, focus on clean reps.' };
   if (top) return { weight: +(w + def.increment).toFixed(2), up: true, note: `All sets hit ${def.repMax} last time. Add ${def.increment} kg.` };
-  return { weight: w, up: false, note: `Hit ${def.repMax} on all ${def.sets} sets with good form and next time adds ${def.increment} kg.` };
+  return { weight: w, up: false, note: def.increment > 0 ? `Same weight. Once all ${def.sets} sets reach ${def.repMax} reps with good form, add ${def.increment} kg.` : `Same as last time. Try to add a rep or two across your sets.` };
 }
 
 export function e1rm(w: number, reps: number): number {
@@ -103,6 +113,17 @@ export function itemDef(item: PlanItem | string): ExerciseDef {
   if (typeof item === 'string') return EXERCISES[item];
   const d = EXERCISES[item.key];
   return { ...d, sets: item.sets, repMin: item.repMin, repMax: item.repMax };
+}
+
+/** Rest seconds and target RIR for a plan item (falls back to the program rule when not set). */
+export function restOf(item: PlanItem | ExerciseDef): number {
+  return ('rest' in item && item.rest) ? item.rest : restFor(item.key, item.repMax);
+}
+export function rirOf(key: string): number {
+  return rirFor(key);
+}
+export function restLabel(sec: number): string {
+  return sec % 60 === 0 ? `${sec / 60} min` : sec > 60 ? `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')} min` : `${sec} s`;
 }
 
 export function scheme(d: { sets: number; repMin: number; repMax: number; unit?: string }): string {

@@ -8,7 +8,7 @@ import { today } from '../lib/dates';
 import { C, F } from '../lib/theme';
 
 export default function Onboarding() {
-  const [f, setF] = useState({ name: 'Mandar', age: '20', height: '174', start: '94', target: '85', kcal: '2150', pmin: '130', pmax: '160' });
+  const [f, setF] = useState({ name: 'Mandar', age: '20', height: '174', start: '94', target: '85', kcal: '2150', pmin: '150', pmax: '180' });
   const [busy, setBusy] = useState(false);
   const n = (s: string, d: number) => { const v = parseFloat(s.replace(',', '.')); return isNaN(v) ? d : v; };
 
@@ -17,7 +17,7 @@ export default function Onboarding() {
     await saveProfile({
       name: f.name.trim() || 'Mandar', age: n(f.age, 20), sex: 'Male', height_cm: n(f.height, 174),
       start_weight_kg: n(f.start, 94), target_weight_kg: n(f.target, 85), start_date: today(),
-      kcal_target: Math.round(n(f.kcal, 2150)), protein_min: Math.round(n(f.pmin, 130)), protein_max: Math.round(n(f.pmax, 160)),
+      kcal_target: Math.round(n(f.kcal, 2150)), protein_min: Math.round(n(f.pmin, 150)), protein_max: Math.round(n(f.pmax, 180)),
     });
     scheduleAll().catch(() => {});
     router.replace({ pathname: '/connect-steps', params: { next: 'weight' } });
@@ -37,7 +37,7 @@ export default function Onboarding() {
 
       <Enter delay={120}>
         <Row gap={8}>
-          {[['2,150', 'kcal'], ['130+', 'g protein'], ['7k→10k', 'steps'], ['3×', 'lifts / wk']].map(([v, l]) => (
+          {[['2,150', 'kcal'], ['150+', 'g protein'], ['7k to 10k', 'steps'], ['6', 'gym days / wk']].map(([v, l]) => (
             <Card key={l} style={{ flex: 1, padding: 12, gap: 2 }}>
               <Text style={{ fontFamily: F.displayBold, fontSize: 20, color: C.text }}>{v}</Text>
               <T.Small style={{ fontSize: 12.5 }}>{l}</T.Small>

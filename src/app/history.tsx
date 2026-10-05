@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Text, useWindowDimensions, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { Btn, Card, haptic, Header, Pill, Row, Screen, Segmented, Stat, T } from '../components/ui';
+import { Card, haptic, Header, Pill, Row, Screen, Segmented, Stat, T } from '../components/ui';
+import { DayChips } from '../components/workout';
 import { Bars, LineChart } from '../components/charts';
 import { ExerciseAnim } from '../components/ExerciseAnim';
 import { useQuery } from '../lib/hooks';
 import { exerciseHistory, getWorkouts, saveWorkouts } from '../lib/repo';
-import { EXERCISES, WorkoutType } from '../lib/plan';
+import { DAY_KEYS, DayKey, EXERCISES, PROGRAM, restFor, workoutName } from '../lib/plan';
 import { dayMonth } from '../lib/dates';
 import { e1rm, scheme } from '../lib/logic';
 import { C, F } from '../lib/theme';
@@ -34,10 +35,11 @@ export default function ExerciseDetail() {
   const series = mode === 'w' ? top : mode === 'v' ? vol : est;
   const w = width - 40 - 38;
 
-  const inPlan = (t: WorkoutType) => !!plan?.[t].some((i) => i.key === key);
-  const toggle = async (t: WorkoutType) => {
+  const inPlan = (t: DayKey) => !!plan?.[t].some((i) => i.key === key);
+  const inDays = DAY_KEYS.filter(inPlan);
+  const toggle = async (t: DayKey) => {
     if (!plan) return;
-    const next = { ...plan, [t]: inPlan(t) ? plan[t].filter((i) => i.key !== key) : [...plan[t], { key, sets: def.sets, repMin: def.repMin, repMax: def.repMax }] };
+    const next = { ...plan, [t]: inPlan(t) ? plan[t].filter((i) => i.key !== key) : [...plan[t], { key, sets: def.sets, repMin: def.repMin, repMax: def.repMax, rest: restFor(key, def.repMax) }] };
     await saveWorkouts(next);
     haptic('success');
   };
@@ -50,7 +52,7 @@ export default function ExerciseDetail() {
 
       <Card style={{ gap: 8 }}>
         <Row style={{ justifyContent: 'space-between' }}>
-          <T.Label>POSTURE CUES</T.Label>
+          <T.Label>Posture cues</T.Label>
           <Pill text={scheme(def)} />
         </Row>
         {def.cues.map((c, i) => (
@@ -62,18 +64,17 @@ export default function ExerciseDetail() {
         {def.unit === 'reps' && def.increment > 0 ? <T.Small>{`When every set reaches the top of the range with good form, add ${def.increment} kg.`}</T.Small> : null}
       </Card>
 
-      <T.Label>IN YOUR PLAN</T.Label>
-      <Row gap={8}>
-        {(['A', 'B'] as WorkoutType[]).map((t) => (
-          <Btn key={t} small kind={inPlan(t) ? 'primary' : 'ghost'} icon={inPlan(t) ? 'check' : 'plus'} title={inPlan(t) ? `In Full Body ${t}` : `Add to Full Body ${t}`} style={{ flex: 1 }} onPress={() => toggle(t)} />
-        ))}
-      </Row>
+      <View style={{ gap: 4 }}>
+        <T.Label>Add to plan</T.Label>
+        <T.Small style={{ color: C.dim }}>{inDays.length ? `In ${inDays.map((d) => PROGRAM[d].name).join(', ')}. Tap a day to add or remove.` : 'Not in your plan. Tap the days you want it on.'}</T.Small>
+      </View>
+      <DayChips selected={inDays} onPress={toggle} />
 
       {bySession.length ? (
         <>
           <Row gap={8}>
             <Stat label={weighted ? 'Top set' : 'Best'} value={`${top[top.length - 1]}${weighted ? ' kg' : ''}`} />
-            <Stat label="Since start" value={top.length > 1 ? `${top[top.length - 1] - top[0] >= 0 ? '+' : ''}${+(top[top.length - 1] - top[0]).toFixed(2)}` : '—'} />
+            <Stat label="Since start" value={top.length > 1 ? `${top[top.length - 1] - top[0] >= 0 ? '+' : ''}${+(top[top.length - 1] - top[0]).toFixed(2)}` : '-'} />
             <Stat label="Sessions" value={String(bySession.length)} />
           </Row>
           <Card style={{ gap: 12 }}>
@@ -94,10 +95,10 @@ export default function ExerciseDetail() {
                 <Row key={g.sid} gap={12} style={{ minHeight: 58, paddingHorizontal: 16, borderTopWidth: i ? 1 : 0, borderTopColor: '#21221C' }}>
                   <View style={{ width: 70 }}>
                     <T.Strong style={{ fontSize: 13 }}>{dayMonth(g.date)}</T.Strong>
-                    <T.Small style={{ fontSize: 12.5, color: C.dim }}>Full Body {g.type}</T.Small>
+                    <T.Small style={{ fontSize: 12.5, color: C.dim }} numberOfLines={1}>{workoutName(g.type)}</T.Small>
                   </View>
                   <T.Mono style={{ flex: 1 }}>{`${weighted ? `${g.sets[0].weight_kg} × ` : ''}${g.sets.map((s) => s.reps).join(', ')}`}</T.Mono>
-                  <Text style={{ fontFamily: F.mono, fontSize: 12, color: pain ? C.orange : full ? C.lime : C.dim }}>{pain ? 'Pain' : full ? '↑ Next' : 'Hold'}</Text>
+                  <Text style={{ fontFamily: F.mono, fontSize: 12, color: pain ? C.text : full ? C.lime : C.dim }}>{pain ? 'Pain' : full ? 'Add weight' : 'Hold'}</Text>
                 </Row>
               );
             })}

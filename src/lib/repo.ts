@@ -1,5 +1,5 @@
 import { db, emitChange } from './db';
-import { DEFAULT_PRESETS, DEFAULT_SPECIALS, EXERCISES, MealKey, PlanItem, Special, WORKOUTS, WorkoutPlan, WorkoutType } from './plan';
+import { DAY_KEYS, DEFAULT_PRESETS, DEFAULT_SPECIALS, EXERCISES, MealKey, PROGRAM, restFor, Special, WorkoutPlan, WorkoutType } from './plan';
 import { today } from './dates';
 
 // ---------- types ----------
@@ -161,18 +161,28 @@ export async function getSpecials(): Promise<Record<number, Special>> {
 }
 
 // ---------- workout plan (editable) ----------
+const PLAN_KEY = 'workouts_ppl';
+
 export function defaultPlan(): WorkoutPlan {
-  const mk = (keys: string[]): PlanItem[] => keys.map((k) => ({ key: k, sets: EXERCISES[k].sets, repMin: EXERCISES[k].repMin, repMax: EXERCISES[k].repMax }));
-  return { A: mk(WORKOUTS.A), B: mk(WORKOUTS.B) };
+  const out = {} as WorkoutPlan;
+  for (const k of DAY_KEYS) out[k] = PROGRAM[k].items.map(({ key, sets, repMin, repMax, rest }) => ({ key, sets, repMin, repMax, rest }));
+  return out;
 }
+/** The editable 6-day plan. Missing days fall back to the default program; the old A/B plan is never read. */
 export async function getWorkouts(): Promise<WorkoutPlan> {
-  const p = await getKV<WorkoutPlan | null>('workouts', null);
-  if (!p) return defaultPlan();
-  // drop anything no longer in the library
-  return { A: p.A.filter((i) => EXERCISES[i.key]), B: p.B.filter((i) => EXERCISES[i.key]) };
+  const p = await getKV<Partial<WorkoutPlan> | null>(PLAN_KEY, null);
+  const def = defaultPlan();
+  if (!p) return def;
+  const out = {} as WorkoutPlan;
+  for (const k of DAY_KEYS) {
+    const items = Array.isArray(p[k]) ? p[k]! : def[k];
+    // drop anything no longer in the library
+    out[k] = items.filter((i) => EXERCISES[i.key]).map((i) => ({ ...i, rest: i.rest ?? restFor(i.key, i.repMax) }));
+  }
+  return out;
 }
 export async function saveWorkouts(p: WorkoutPlan): Promise<void> {
-  await setKV('workouts', p);
+  await setKV(PLAN_KEY, p);
 }
 
 // ---------- workouts ----------

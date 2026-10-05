@@ -80,7 +80,7 @@ export default function Health() {
         <Card tone="green" style={{ gap: 8 }}>
           <Row style={{ justifyContent: 'space-between' }}><T.Strong style={{ fontSize: 14 }}>Synced</T.Strong><Text style={{ fontFamily: F.mono, fontSize: 12.5, color: C.lime }}>Live</Text></Row>
           <Row style={{ justifyContent: 'space-between' }}><T.Small style={{ color: C.text2 }}>Today</T.Small><T.Mono>{fmt(data.day?.steps ?? 0)} steps</T.Mono></Row>
-          <Row style={{ justifyContent: 'space-between' }}><T.Small style={{ color: C.text2 }}>Last sync</T.Small><T.Mono>{data.last ? new Date(data.last).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : '—'}</T.Mono></Row>
+          <Row style={{ justifyContent: 'space-between' }}><T.Small style={{ color: C.text2 }}>Last sync</T.Small><T.Mono>{data.last ? new Date(data.last).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : '-'}</T.Mono></Row>
           <Row style={{ justifyContent: 'space-between' }}><T.Small style={{ color: C.text2 }}>Refresh</T.Small><T.Mono>on open + pull to refresh</T.Mono></Row>
         </Card>
       ) : null}

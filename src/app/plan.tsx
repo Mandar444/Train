@@ -4,8 +4,8 @@ import { Card, Enter, Header, Row, Screen, T } from '../components/ui';
 import { useQuery } from '../lib/hooks';
 import * as repo from '../lib/repo';
 import { addDays, dayMonth, dowShort, mondayOf, today, weekday } from '../lib/dates';
-import { isLiftDay, weekNumber } from '../lib/logic';
-import { EXERCISES, RULES, stepTargetLabel, WorkoutType } from '../lib/plan';
+import { weekNumber } from '../lib/logic';
+import { EXERCISES, planFor, PROGRAM, REST_DAY, RULES, SCHEDULE, shortLabel, stepTargetLabel } from '../lib/plan';
 import { C, F } from '../lib/theme';
 
 export default function Plan() {
@@ -14,33 +14,29 @@ export default function Plan() {
     const p = await repo.getProfile();
     const mon = mondayOf(date);
     const sess = await repo.sessionsBetween(mon, addDays(mon, 6));
-    const last = await repo.lastCompletedSession();
     const specials = await repo.getSpecials();
     const plan = await repo.getWorkouts();
-    return { p, mon, sess, last, specials, plan };
+    return { p, mon, sess, specials, plan };
   }, [date]);
   if (!data?.p) return <Screen bottomPad={40}><View /></Screen>;
   const { p, mon, sess, specials } = data;
   const week = weekNumber(p, date);
   const end = addDays(p.start_date, 83);
 
-  // Predict A/B for the remaining lift days this week by alternating from what's done.
-  let lastType: WorkoutType | null = null;
+  // Each weekday has a fixed workout: push, pull, legs twice, Sunday off.
   const before = sess.filter((s) => s.completed);
   const days = Array.from({ length: 7 }, (_, i) => addDays(mon, i)).map((d) => {
     const done = before.find((s) => s.date === d);
-    let type: WorkoutType | null = null;
-    if (isLiftDay(d)) {
-      if (done) type = done.type;
-      else type = lastType ? (lastType === 'A' ? 'B' : 'A') : data.last ? (data.last.type === 'A' ? 'B' : 'A') : 'A';
-      lastType = type;
-    }
+    const key = SCHEDULE[weekday(d)];
     const sp = specials[weekday(d)];
-    const isSun = weekday(d) === 0;
+    const spText = sp ? ` · ${sp} night` : '';
     return {
-      d, type, done: !!done, now: d === date, past: d < date,
-      title: type ? `Full Body ${type}` : isSun ? 'Rest / walk' : weekday(d) === 6 ? 'Walk' : 'Walk + recovery',
-      sub: type ? data.plan[type].slice(0, 3).map((i) => EXERCISES[i.key].name.split(' ').slice(-1)[0]).join(' · ') + (sp ? ` · ${sp} night` : '') : weekday(d) === 6 ? 'Optional easy rowing or cycling' : isSun ? `Weekly review${sp ? ` · ${sp} night` : ''}` : `${stepTargetLabel(week)} steps${sp ? ` · ${sp} night` : ''}`,
+      d, key, done: !!done, now: d === date, past: d < date,
+      label: shortLabel(key),
+      title: key ? `${PROGRAM[key].name}, ${PROGRAM[key].subtitle.toLowerCase()}` : REST_DAY.name,
+      sub: key
+        ? planFor(data.plan, key).slice(0, 3).map((i) => EXERCISES[i.key].name).join(' · ') + spText
+        : `Walk, mobility, weekly review${spText}`,
     };
   });
 
@@ -60,13 +56,13 @@ export default function Plan() {
       <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
         <Row style={{ justifyContent: 'space-between', padding: 16, paddingBottom: 10 }}>
           <T.Strong>{`Week ${week}`}</T.Strong>
-          <Text onPress={() => router.push('/workout-edit')} style={{ fontFamily: F.semibold, fontSize: 13, color: C.lime }}>Edit workouts</Text>
+          <Text onPress={() => router.push({ pathname: '/workout-edit', params: { type: SCHEDULE[weekday(date)] ?? 'push_a' } })} style={{ fontFamily: F.semibold, fontSize: 13, color: C.lime }}>Edit workouts</Text>
         </Row>
         {days.map((x) => (
           <Row key={x.d} gap={12} style={{ minHeight: 56, paddingHorizontal: 16, paddingVertical: 6, borderTopWidth: 1, borderTopColor: '#21221C', backgroundColor: x.now ? 'rgba(212,255,79,0.06)' : 'transparent' }}>
             <Text style={{ width: 34, fontFamily: F.mono, fontSize: 12, color: x.now ? C.lime : C.dim }}>{dowShort(x.d)}</Text>
-            <View style={{ width: 30, height: 30, borderRadius: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: x.type ? (x.now ? C.lime : C.text) : C.card2 }}>
-              <Text style={{ fontFamily: F.displayBold, fontSize: 16, color: x.type ? C.bg : C.faint }}>{x.type ?? '·'}</Text>
+            <View style={{ width: 50, height: 30, borderRadius: 9, alignItems: 'center', justifyContent: 'center', backgroundColor: x.key ? (x.now ? C.lime : C.card2) : 'transparent', borderWidth: x.key ? 0 : 1, borderColor: C.line2 }}>
+              <Text style={{ fontFamily: F.bold, fontSize: 11, letterSpacing: 0.4, color: x.key ? (x.now ? C.bg : C.text) : C.faint }}>{x.label}</Text>
             </View>
             <View style={{ flex: 1, gap: 2 }}>
               <T.Body style={{ fontFamily: F.semibold, fontSize: 14 }}>{x.title}</T.Body>
@@ -98,9 +94,9 @@ export default function Plan() {
           const sp = specials[wd];
           const on = weekday(date) === wd;
           return (
-            <Card key={wd} tone={on ? 'orange' : 'base'} style={{ flex: 1, padding: 14, gap: 6, borderColor: on ? C.orange : C.line }}>
-              <Text style={{ fontFamily: F.mono, fontSize: 12.5, color: on ? C.orange : C.muted }}>{['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][wd]}</Text>
-              <T.Strong>{sp === 'chicken' ? 'Chicken' : sp === 'eggs' ? 'Eggs' : '—'}</T.Strong>
+            <Card key={wd} style={{ flex: 1, padding: 14, gap: 6, borderColor: on ? C.lime : C.line }}>
+              <Text style={{ fontFamily: F.mono, fontSize: 12.5, color: on ? C.lime : C.muted }}>{['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][wd]}</Text>
+              <T.Strong>{sp === 'chicken' ? 'Chicken' : sp === 'eggs' ? 'Eggs' : '-'}</T.Strong>
             </Card>
           );
         })}

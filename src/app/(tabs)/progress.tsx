@@ -1,132 +1,214 @@
-import { useState } from 'react';
-import { Pressable, Text, useWindowDimensions, View } from 'react-native';
+import { ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import { router } from 'expo-router';
-import { Bar, Btn, Card, Enter, Icon, Pill, Row, Screen, Segmented, T } from '../../components/ui';
-import { Bars, TrendChart } from '../../components/charts';
+import { Bar, Card, Enter, Pill, Row, Screen, T } from '../../components/ui';
+import { TrendChart } from '../../components/charts';
+import { Grid2, LiftCard, MilestoneCard, MilestoneState, SectionHead, ShortcutTile, StatCard } from '../../components/progressCards';
 import { useQuery } from '../../lib/hooks';
 import { loadSummary, strengthTrend } from '../../lib/summary';
-import { measurements } from '../../lib/repo';
-import { avgSeries, exName } from '../../lib/logic';
-import { dayMonth, today } from '../../lib/dates';
-import { MILESTONES } from '../../lib/plan';
+import * as repo from '../../lib/repo';
+import { avgSeries, exName, fmt } from '../../lib/logic';
+import { mondayOf, today } from '../../lib/dates';
+import { LIFT_DAYS, MILESTONES } from '../../lib/plan';
 import { C, F } from '../../lib/theme';
+
+const kg1 = (n: number) => (+n.toFixed(1)).toString();
+
+async function load(date: string) {
+  const s = await loadSummary(date);
+  if (!s) return null;
+  const mon = mondayOf(date);
+  const [m, str, weekSessions, weekNut, logs, nut] = await Promise.all([
+    repo.measurements(),
+    strengthTrend(date),
+    repo.sessionsBetween(mon, date),
+    repo.nutritionByDay(mon, date),
+    repo.getDays(s.profile.start_date, date),
+    repo.nutritionByDay(s.profile.start_date, date),
+  ]);
+  // best weight per session for each lift, for the sparklines
+  const lifts = await Promise.all(str.rows.map(async (r) => {
+    const h = await repo.exerciseHistory(r.exercise);
+    const per: number[] = [];
+    let lastKey = '';
+    for (const x of h) {
+      if (x.weight_kg == null) continue;
+      const key = `${x.date}:${x.session_id}`;
+      if (key !== lastKey) { per.push(x.weight_kg); lastKey = key; } else per[per.length - 1] = Math.max(per[per.length - 1], x.weight_kg);
+    }
+    return { ...r, history: per.slice(-12), sessions: per.length };
+  }));
+  const loggedDays = new Set<string>();
+  for (const l of logs) if (l.weight_kg != null) loggedDays.add(l.date);
+  for (const n of nut) if (n.kcal > 0) loggedDays.add(n.date);
+  const protDays = weekNut.filter((n) => n.kcal > 0);
+  const protein = protDays.length ? protDays.reduce((a, n) => a + n.protein, 0) / protDays.length : null;
+  return { s, m, lifts, weekDone: weekSessions.filter((x) => x.completed).length, logged: loggedDays.size, protein, protDays: protDays.length };
+}
 
 export default function Progress() {
   const { width } = useWindowDimensions();
-  const [seg, setSeg] = useState<'w' | 'c' | 's'>('w');
   const date = today();
-  const { data } = useQuery(async () => ({ s: await loadSummary(date), m: await measurements(), str: await strengthTrend(date) }), [date]);
-  if (!data?.s) return <Screen><View /></Screen>;
-  const { s, m, str } = data;
+  const { data } = useQuery(() => load(date), [date]);
+  if (!data) return <Screen><View /></Screen>;
+  const { s, m, lifts, weekDone, logged, protein, protDays } = data;
+  const p = s.profile;
+
+  // weight
   const series = avgSeries(s.weights);
-  const chartW = width - 40 - 38;
-  const waists = m.filter((x) => x.waist_cm != null);
-  const waistDelta = waists.length > 1 ? (waists[waists.length - 1].waist_cm! - waists[0].waist_cm!) : null;
   const first = s.weights[0];
+  const hasAvg = s.avg != null;
+  const lost = hasAvg ? s.lostKg : 0;
+  const span = p.start_weight_kg - p.target_weight_kg;
+  const pct = hasAvg && span > 0 ? Math.max(0, Math.min(1, lost / span)) : 0;
+  const loss = s.change != null ? -s.change : null;
+  let pace: string;
+  if (!s.weights.length) pace = 'Log your first morning weigh-in to start the trend.';
+  else if (loss == null) pace = 'Keep weighing in. Your weekly pace shows up after about a week.';
+  else if (loss >= 0.05) {
+    const where = loss > 0.85 ? 'faster than the 0.4 to 0.8 kg target' : loss >= 0.35 ? 'right inside the target range' : 'a little under the 0.4 to 0.8 kg target';
+    pace = `On pace for ${loss.toFixed(1)} kg a week, ${where}.`;
+  } else pace = 'Flat this week. Judge it over two weeks, not one.';
+  const weeksLeft = loss != null && loss >= 0.1 && s.avg != null && s.avg > p.target_weight_kg ? Math.ceil((s.avg - p.target_weight_kg) / loss) : null;
+  const chartW = width - 40 - 38;
+
+  // waist
+  const waists = m.filter((x) => x.waist_cm != null);
+  const waistDelta = waists.length > 1 ? waists[waists.length - 1].waist_cm! - waists[0].waist_cm! : null;
+
+  // milestones (first entry is the start, use the real start weight)
+  const ms = MILESTONES.map((x, i) => {
+    const kg = i === 0 ? p.start_weight_kg : x.kg;
+    const reached = i === 0 || (s.avg != null && s.avg <= kg + 0.05);
+    const current = !reached && s.milestone?.kg === x.kg;
+    const state: MilestoneState = reached ? 'reached' : current ? 'current' : 'locked';
+    return { ...x, kgLabel: kg1(kg), state };
+  });
+  const reachedCount = ms.filter((x) => x.state === 'reached').length - 1;
+
+  let d = 0;
+  const next = () => (d += 60);
 
   return (
     <Screen>
-      <View style={{ gap: 4, paddingTop: 8 }}>
+      <Enter style={{ gap: 4, paddingTop: 8 }}>
         <T.Display>Progress</T.Display>
-        <T.Small>{`Day ${s.day} · week ${s.week} of 12`}</T.Small>
-      </View>
+        <T.Small>{`Day ${s.day} of 84, week ${s.week} of 12`}</T.Small>
+      </Enter>
 
-      <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
-        {[
-          { t: 'Weekly review', d: 'Is the plan working? What to change', to: '/review' },
-          { t: 'Waist & progress photos', d: 'Measure weekly, photos every 2 weeks', to: '/body' },
-          { t: '12-week plan', d: 'This week, targets and the rules', to: '/plan' },
-          { t: 'Exercise library', d: '112 exercises with form animations', to: '/library' },
-        ].map((x, i) => (
-          <Pressable key={x.t} onPress={() => router.push(x.to as never)} style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 14, borderTopWidth: i ? 1 : 0, borderTopColor: '#21221C', backgroundColor: pressed ? C.card2 : 'transparent' })}>
-            <View style={{ flex: 1, gap: 2 }}>
-              <T.Strong>{x.t}</T.Strong>
-              <T.Small>{x.d}</T.Small>
+      {/* hero */}
+      <Enter delay={next()}>
+        <Card style={{ gap: 16, borderColor: '#2C3320' }}>
+          <Row style={{ justifyContent: 'space-between' }}>
+            <T.Label style={{ fontSize: 13 }}>Lost so far, 7-day average</T.Label>
+            <Pill tone="lime" text={`Week ${s.week}`} style={{ paddingVertical: 4 }} />
+          </Row>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: -6 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 6 }}>
+              <Text style={{ fontFamily: F.display, fontSize: 68, letterSpacing: -2, color: lost > 0 ? C.lime : C.text, lineHeight: 76 }}>
+                {lost < 0 ? `+${Math.abs(lost).toFixed(1)}` : lost.toFixed(1)}
+              </Text>
+              <Text style={{ fontFamily: F.bold, fontSize: 18, color: C.dim }}>kg</Text>
             </View>
-            <Icon name="chevron" color={C.muted} />
-          </Pressable>
-        ))}
-      </Card>
+            <View style={{ alignItems: 'flex-end', paddingBottom: 10 }}>
+              <Text style={{ fontFamily: F.display, fontSize: 22, color: C.text }}>{s.avg != null ? s.avg.toFixed(1) : p.start_weight_kg}</Text>
+              <T.Small style={{ fontSize: 12 }}>{s.avg != null ? 'kg now' : 'kg start'}</T.Small>
+            </View>
+          </View>
 
-      <Segmented options={[{ key: 'w', label: 'Weight' }, { key: 'c', label: 'Waist' }, { key: 's', label: 'Strength' }]} value={seg} onChange={setSeg} />
-
-      {seg === 'w' ? (
-        <Enter key="w">
-          <Card style={{ gap: 12 }}>
-            <Row style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
-              <Row gap={6} style={{ alignItems: 'baseline' }}>
-                <Text style={{ fontFamily: F.display, fontSize: 40, letterSpacing: -1, color: C.text }}>{s.avg != null ? `${s.lostKg >= 0 ? '−' : '+'}${Math.abs(s.lostKg).toFixed(1)}` : '—'}</Text>
-                <T.Small style={{ fontSize: 14 }}>kg (avg)</T.Small>
-              </Row>
-              <View style={{ alignItems: 'flex-end', gap: 4 }}>
-                <Row gap={6}><View style={{ width: 14, height: 3, borderRadius: 2, backgroundColor: C.lime }} /><T.Small style={{ fontSize: 12.5 }}>7-day avg</T.Small></Row>
-                <Row gap={6}><View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#6A6B60' }} /><T.Small style={{ fontSize: 12.5 }}>Daily</T.Small></Row>
-              </View>
+          <View style={{ gap: 8 }}>
+            <Bar pct={pct} height={10} delay={200} />
+            <Row style={{ justifyContent: 'space-between' }}>
+              <T.Small style={{ fontSize: 12 }}>{`${kg1(p.start_weight_kg)} kg start`}</T.Small>
+              <Text style={{ fontFamily: F.bold, fontSize: 12, color: C.lime }}>{`${Math.round(pct * 100)}%`}</Text>
+              <T.Small style={{ fontSize: 12 }}>{`${kg1(p.target_weight_kg)} kg goal`}</T.Small>
             </Row>
-            <TrendChart daily={s.weights.map((w) => w.weight_kg)} avg={series.map((x) => x.avg)} width={chartW} height={210} showGrid
-              band={first ? { startKg: first.weight_kg, slowPerDay: 0.4 / 7, fastPerDay: 0.8 / 7 } : undefined} animKey={seg} />
-            {first ? <Row style={{ justifyContent: 'space-between', paddingLeft: 30 }}><T.Label style={{ fontSize: 12 }}>{dayMonth(first.date).toUpperCase()}</T.Label><T.Label style={{ fontSize: 12 }}>TODAY</T.Label></Row> : null}
-            <T.Small>Shaded band = expected pace, 0.4–0.8 kg/week. Daily dots bounce with water, salt and carbs. Judge the line, not the dots.</T.Small>
-          </Card>
-        </Enter>
-      ) : null}
+          </View>
 
-      {seg === 'c' ? (
-        <Enter key="c">
-          <Card style={{ gap: 14 }}>
-            <Row gap={6} style={{ alignItems: 'baseline' }}>
-              <Text style={{ fontFamily: F.display, fontSize: 40, letterSpacing: -1, color: C.text }}>{waistDelta != null ? `${waistDelta <= 0 ? '−' : '+'}${Math.abs(waistDelta).toFixed(1)}` : waists.length ? waists[0].waist_cm!.toFixed(1) : '—'}</Text>
-              <T.Small style={{ fontSize: 14 }}>{waistDelta != null ? 'cm at the navel' : 'cm · first measurement'}</T.Small>
-            </Row>
-            {waists.length ? (
-              <Bars values={waists.slice(-8).map((x) => x.waist_cm)} labels={waists.slice(-8).map((x) => dayMonth(x.date).split(' ')[0])} width={chartW} height={170}
-                format={(v) => v.toFixed(1)} max={Math.max(...waists.map((x) => x.waist_cm!)) * 1.04} />
-            ) : <T.Small>No waist measurements yet. Measure once a week at the navel, same conditions as the weigh-in.</T.Small>}
-            <Btn small kind="ghost" title="Measurements & photos" onPress={() => router.push('/body')} />
-          </Card>
-        </Enter>
-      ) : null}
+          <TrendChart daily={s.weights.map((w) => w.weight_kg)} avg={series.map((x) => x.avg)} width={chartW} height={120}
+            band={first ? { startKg: first.weight_kg, slowPerDay: 0.4 / 7, fastPerDay: 0.8 / 7 } : undefined} />
 
-      {seg === 's' ? (
-        <Enter key="s">
-          <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
-            {str.rows.length ? str.rows.map((r, i) => (
-              <Pressable key={r.exercise} onPress={() => router.push({ pathname: '/history', params: { exercise: r.exercise } })}>
-                <Row style={{ minHeight: 60, paddingHorizontal: 16, borderTopWidth: i ? 1 : 0, borderTopColor: '#21221C' }} gap={12}>
-                  <T.Strong style={{ flex: 1 }}>{exName(r.exercise)}</T.Strong>
-                  <T.Mono style={{ color: C.muted }}>{r.from} → <Text style={{ color: C.text }}>{r.to}</Text></T.Mono>
-                  <Text style={{ width: 58, textAlign: 'right', fontFamily: F.monoBold, fontSize: 13, color: r.to > r.from ? C.lime : C.dim }}>{r.to > r.from ? `+${+(r.to - r.from).toFixed(2)}` : '±0'}</Text>
-                </Row>
-              </Pressable>
-            )) : <T.Small style={{ padding: 18 }}>Strength trends appear after your first logged sessions.</T.Small>}
-          </Card>
-        </Enter>
-      ) : null}
+          <View style={{ gap: 2 }}>
+            <T.Body style={{ fontFamily: F.semibold, fontSize: 15 }}>{pace}</T.Body>
+            {weeksLeft != null ? <T.Small style={{ fontSize: 13 }}>{`At this pace you reach ${kg1(p.target_weight_kg)} kg in about ${weeksLeft} ${weeksLeft === 1 ? 'week' : 'weeks'}.`}</T.Small> : null}
+            {s.weights.length ? <T.Small style={{ fontSize: 12, color: C.faint }}>Shaded band is the expected pace. The bright line is your 7-day average.</T.Small> : null}
+          </View>
+        </Card>
+      </Enter>
 
-      <View style={{ gap: 4, marginTop: 4 }}>
-        <T.Strong style={{ marginBottom: 6, fontSize: 18 }}>Milestones</T.Strong>
-        {MILESTONES.map((ms, i) => {
-          const reached = s.avg != null && s.avg <= ms.kg + 0.05;
-          const current = s.milestone?.kg === ms.kg;
-          return (
-            <Row key={ms.name} gap={14} style={{ alignItems: 'stretch' }}>
-              <View style={{ width: 22, alignItems: 'center' }}>
-                <View style={{ width: 18, height: 18, borderRadius: 9, borderWidth: 2, borderColor: reached || current || i === 0 ? C.lime : C.line3, backgroundColor: reached || i === 0 ? C.lime : C.bg }} />
-                {i < MILESTONES.length - 1 ? <View style={{ flex: 1, width: 2, minHeight: 30, backgroundColor: reached || i === 0 ? C.lime : C.line2 }} /> : null}
-              </View>
-              <View style={{ flex: 1, gap: 6, paddingBottom: 18 }}>
-                <Row style={{ justifyContent: 'space-between' }}>
-                  <T.Strong>{ms.name}</T.Strong>
-                  <Text style={{ fontFamily: F.displayBold, fontSize: 22, color: current ? C.lime : i === 0 ? C.dim : C.text }}>{i === 0 ? s.profile.start_weight_kg : ms.kg === 85 ? '84–85' : ms.kg}</Text>
-                </Row>
-                <T.Small>{current && s.milestone ? `${Math.max(0, s.milestone.from - (s.avg ?? s.milestone.from)).toFixed(1)} of ${(s.milestone.from - ms.kg).toFixed(0)} kg · ${ms.what}` : ms.what}</T.Small>
-                {current && s.milestone ? <Bar pct={s.milestone.pct} height={6} /> : null}
-                {reached && i > 0 ? <Pill tone="lime" text="REACHED" /> : null}
-              </View>
-            </Row>
-          );
-        })}
-      </View>
+      {/* stats */}
+      <Enter delay={next()}>
+        <SectionHead title="This week" sub={`Week ${s.week} of 12`} />
+      </Enter>
+      <Enter delay={next()}>
+        <Grid2>
+          <StatCard icon="trend" label="Weekly rate" highlight={loss != null && loss >= 0.35 && loss <= 0.85}
+            value={loss != null ? (loss >= 0 ? `−${loss.toFixed(2)}` : `+${Math.abs(loss).toFixed(2)}`) : null} unit="kg/wk"
+            sub="Target 0.4 to 0.8" empty="Weigh in daily for a week to see your rate" onPress={loss == null ? () => router.push('/weight' as never) : undefined} />
+          <StatCard icon="ruler" label="Waist" highlight={waistDelta != null && waistDelta < 0}
+            value={waistDelta != null ? (waistDelta <= 0 ? `−${Math.abs(waistDelta).toFixed(1)}` : `+${waistDelta.toFixed(1)}`) : waists.length ? waists[0].waist_cm!.toFixed(1) : null}
+            unit="cm" sub={waistDelta != null ? `Now ${waists[waists.length - 1].waist_cm!.toFixed(1)} cm at the navel` : 'First measurement. Measure again next week.'}
+            empty="Log a waist measurement" onPress={() => router.push('/body')} />
+          <StatCard icon="dumbbell" label="Workouts" value={`${weekDone}/${LIFT_DAYS.length}`} highlight={weekDone >= LIFT_DAYS.length}
+            sub={`${s.sessionsDone} done in total`} empty="" onPress={() => router.push('/train' as never)} />
+          <StatCard icon="steps" label="Steps, 7-day avg" value={s.stepAvg7 != null ? fmt(s.stepAvg7) : null} highlight={s.stepAvg7 != null && s.stepAvg7 >= s.stepTarget}
+            sub={`Goal ${fmt(s.stepTarget)} a day`} empty="Add steps or connect Health Connect" onPress={() => router.push('/steps' as never)} />
+          <StatCard icon="calendar" label="Logging streak" value={`${s.loggedStreak}`} unit={s.loggedStreak === 1 ? 'day' : 'days'} highlight={s.loggedStreak >= 7}
+            sub={`${logged} of ${s.day} days logged`} empty="" />
+          <StatCard icon="protein" label="Protein, this week" value={protein != null ? `${Math.round(protein)}` : null} unit="g/day"
+            highlight={protein != null && protein >= p.protein_min}
+            sub={protein != null ? `Aim ${p.protein_min} to ${p.protein_max} g, ${protDays} ${protDays === 1 ? 'day' : 'days'} logged` : undefined}
+            empty="Log your meals to see protein" onPress={() => router.push('/food' as never)} />
+        </Grid2>
+      </Enter>
+
+      {/* strength */}
+      <Enter delay={next()}>
+        <SectionHead title="Strength" sub={lifts.length ? 'Best set per lift' : undefined} />
+      </Enter>
+      <Enter delay={next()}>
+        {lifts.length ? (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginHorizontal: -20 }}
+            contentContainerStyle={{ paddingHorizontal: 20, gap: 10 }} decelerationRate="fast" snapToInterval={178}>
+            {lifts.map((r) => (
+              <LiftCard key={r.exercise} name={exName(r.exercise)} best={r.to} gain={r.to - r.from} sessions={r.sessions} history={r.history}
+                onPress={() => router.push({ pathname: '/history', params: { exercise: r.exercise } })} />
+            ))}
+          </ScrollView>
+        ) : (
+          <Card onPress={() => router.push('/train' as never)} style={{ gap: 4 }}>
+            <T.Strong>No lifts logged yet</T.Strong>
+            <T.Small>Finish your first workout and each lift gets its own card here.</T.Small>
+          </Card>
+        )}
+      </Enter>
+
+      {/* milestones */}
+      <Enter delay={next()}>
+        <SectionHead title="Milestones" sub={`${Math.max(0, reachedCount)} of ${MILESTONES.length - 1} reached`} />
+      </Enter>
+      <Enter delay={next()}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginHorizontal: -20 }}
+          contentContainerStyle={{ paddingHorizontal: 20, gap: 10 }} decelerationRate="fast" snapToInterval={210}>
+          {ms.map((x, i) => (
+            <MilestoneCard key={x.name} name={i === 0 ? 'Start' : x.name} kg={x.kgLabel} what={x.what} state={x.state}
+              pct={x.state === 'current' ? s.milestone?.pct : undefined}
+              note={x.state === 'current' && s.milestone && s.avg != null ? `${Math.max(0, s.avg - x.kg).toFixed(1)} kg to go` : undefined} />
+          ))}
+        </ScrollView>
+      </Enter>
+
+      {/* shortcuts */}
+      <Enter delay={next()}>
+        <SectionHead title="More" />
+      </Enter>
+      <Enter delay={next()}>
+        <Grid2>
+          <ShortcutTile icon="check" title="Weekly review" sub="Is the plan working, and what to change" onPress={() => router.push('/review')} />
+          <ShortcutTile icon="camera" title="Body & photos" sub="Waist weekly, photos every 2 weeks" onPress={() => router.push('/body')} />
+          <ShortcutTile icon="calendar" title="12-week plan" sub="This week, targets and the rules" onPress={() => router.push('/plan')} />
+          <ShortcutTile icon="search" title="Exercise library" sub="Every exercise with form animations" onPress={() => router.push('/library')} />
+        </Grid2>
+      </Enter>
     </Screen>
   );
 }

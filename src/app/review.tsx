@@ -67,16 +67,16 @@ export default function Review() {
       </View>
 
       <Row gap={8}>
-        <Stat label="7-DAY AVG" value={r.end ? `${r.end.avg.toFixed(1)}` : '—'} sub={change != null ? `${change <= 0 ? '−' : '+'}${Math.abs(change).toFixed(1)} kg` : 'baseline'} subColor={change != null && change <= 0 ? C.lime : C.muted} />
-        <Stat label="WAIST" value={r.wEnd?.waist_cm ? `${r.wEnd.waist_cm}` : '—'} sub={waistChange != null ? `${waistChange <= 0 ? '−' : '+'}${Math.abs(waistChange).toFixed(1)} cm` : 'cm'} subColor={waistChange != null && waistChange <= 0 ? C.lime : C.muted} />
+        <Stat label="7-DAY AVG" value={r.end ? `${r.end.avg.toFixed(1)}` : '-'} sub={change != null ? `${change <= 0 ? '−' : '+'}${Math.abs(change).toFixed(1)} kg` : 'baseline'} subColor={change != null && change <= 0 ? C.lime : C.muted} />
+        <Stat label="WAIST" value={r.wEnd?.waist_cm ? `${r.wEnd.waist_cm}` : '-'} sub={waistChange != null ? `${waistChange <= 0 ? '−' : '+'}${Math.abs(waistChange).toFixed(1)} cm` : 'cm'} subColor={waistChange != null && waistChange <= 0 ? C.lime : C.muted} />
       </Row>
       <Row gap={8}>
-        <Stat label="STEPS AVG" value={r.steps != null ? fmt(r.steps) : '—'} sub={`target ${fmt(r.target)}${r.steps != null && r.steps >= r.target ? ' ✓' : ''}`} subColor={r.steps != null && r.steps >= r.target ? C.lime : C.muted} />
+        <Stat label="STEPS AVG" value={r.steps != null ? fmt(r.steps) : '-'} sub={`target ${fmt(r.target)}${r.steps != null && r.steps >= r.target ? ' ✓' : ''}`} subColor={r.steps != null && r.steps >= r.target ? C.lime : C.muted} />
         <Stat label="TRAINING" value={`${r.sessions} / 3`} sub={r.strength.up ? `${r.strength.up} lifts went up` : 'sessions'} subColor={r.strength.up ? C.lime : C.muted} />
       </Row>
       <Row gap={8}>
-        <Stat label="CALORIES AVG" value={r.kcal != null ? fmt(r.kcal) : '—'} sub={`target ${fmt(r.p.kcal_target)}`} />
-        <Stat label="PROTEIN AVG" value={r.protein != null ? `${Math.round(r.protein)} g` : '—'} sub={r.protein != null && r.protein < r.p.protein_min ? `below ${r.p.protein_min} g` : `${r.p.protein_min}–${r.p.protein_max} g`} subColor={r.protein != null && r.protein < r.p.protein_min ? C.orange : C.muted} />
+        <Stat label="CALORIES AVG" value={r.kcal != null ? fmt(r.kcal) : '-'} sub={`target ${fmt(r.p.kcal_target)}`} />
+        <Stat label="PROTEIN AVG" value={r.protein != null ? `${Math.round(r.protein)} g` : '-'} sub={r.protein != null && r.protein < r.p.protein_min ? `below ${r.p.protein_min} g` : `${r.p.protein_min}–${r.p.protein_max} g`} subColor={r.protein != null && r.protein < r.p.protein_min ? C.orange : C.muted} />
       </Row>
 
       {main ? (

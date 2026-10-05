@@ -70,7 +70,7 @@ export default function Body() {
           <View style={{ gap: 4 }}>
             <T.Label>WAIST · AT NAVEL</T.Label>
             <Row gap={6} style={{ alignItems: 'baseline' }}>
-              <Text style={{ fontFamily: F.displayBold, fontSize: 44, color: C.text }}>{last?.waist_cm?.toFixed(1) ?? '—'}</Text>
+              <Text style={{ fontFamily: F.displayBold, fontSize: 44, color: C.text }}>{last?.waist_cm?.toFixed(1) ?? '-'}</Text>
               <T.Small style={{ fontSize: 14 }}>cm</T.Small>
             </Row>
           </View>
@@ -88,7 +88,7 @@ export default function Body() {
         {OPT.map((o) => {
           const lv = lastOpt(o.key);
           const v = lv ? (lv as Record<string, unknown>)[o.key] as number : null;
-          return <ListRow key={o.key} title={o.label} right={<T.Mono style={{ color: v != null ? C.text2 : C.faint }}>{v != null ? `${v} cm` : '—'}</T.Mono>} />;
+          return <ListRow key={o.key} title={o.label} right={<T.Mono style={{ color: v != null ? C.text2 : C.faint }}>{v != null ? `${v} cm` : '-'}</T.Mono>} />;
         })}
       </Card>
 
@@ -105,7 +105,7 @@ export default function Body() {
               {p ? <Image source={{ uri: p.uri }} style={{ width: '100%', height: '100%' }} /> : <Icon name="camera" size={32} color={C.line3} />}
               {p ? <Text style={{ position: 'absolute', left: 10, top: 10, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 8, overflow: 'hidden', backgroundColor: 'rgba(13,14,11,0.85)', color: C.text, fontFamily: F.mono, fontSize: 12.5 }}>{dayMonth(p.date).toUpperCase()}</Text> : null}
             </Pressable>
-            <T.Small style={{ textAlign: 'center' }}>{p ? `${weightOn(p.date)?.toFixed(1) ?? '—'} kg · ${waistOn(p.date)?.toFixed(1) ?? '—'} cm` : i === 0 ? 'Baseline' : 'Latest'}</T.Small>
+            <T.Small style={{ textAlign: 'center' }}>{p ? `${weightOn(p.date)?.toFixed(1) ?? '-'} kg · ${waistOn(p.date)?.toFixed(1) ?? '-'} cm` : i === 0 ? 'Baseline' : 'Latest'}</T.Small>
           </View>
         ))}
       </Row>

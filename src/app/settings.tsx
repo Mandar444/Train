@@ -65,13 +65,13 @@ export default function Settings() {
       <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
         <ListRow first title="Calories" right={<T.Mono>{p.kcal_target.toLocaleString('en-US')} kcal</T.Mono>} onPress={() => setSheet('targets')} />
         <ListRow title="Protein" right={<T.Mono>{p.protein_min}–{p.protein_max} g</T.Mono>} onPress={() => setSheet('targets')} />
-        <ListRow title="Steps" sub="Ramps 7k → 8k → 9k → 9–10k by week" right={<T.Mono>auto</T.Mono>} />
+        <ListRow title="Steps" sub="Ramps up by week: 7k, 8k, 9k, then 9 to 10k" right={<T.Mono>auto</T.Mono>} />
         <ListRow title="Goal weight" right={<T.Mono>{p.target_weight_kg} kg</T.Mono>} onPress={() => setSheet('profile')} />
       </Card>
 
       <T.Label>TRAINING</T.Label>
       <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
-        <ListRow first title="Edit Full Body A & B" sub="Add, remove, reorder, sets and reps" onPress={() => router.push('/workout-edit')} right={<Icon name="chevron" color={C.dim} />} />
+        <ListRow first title="Edit workouts" sub="Add, remove, reorder, sets and reps" onPress={() => router.push('/workout-edit')} right={<Icon name="chevron" color={C.dim} />} />
         <ListRow title="Exercise library" sub="Every exercise has an animated form guide" onPress={() => router.push('/library')} right={<Icon name="chevron" color={C.dim} />} />
       </Card>
 
@@ -100,7 +100,7 @@ export default function Settings() {
         <Btn title="Export CSV" kind="light" style={{ flex: 1 }} onPress={() => exportCSV().catch((e) => Alert.alert('Export failed', String(e)))} />
         <Btn title="JSON backup" kind="ghost" style={{ flex: 1 }} onPress={() => exportJSON().catch((e) => Alert.alert('Export failed', String(e)))} />
       </Row>
-      <T.Small style={{ textAlign: 'center', color: C.dim }}>Local-first. No account, no analytics. Your data lives on this phone — back it up now and then.</T.Small>
+      <T.Small style={{ textAlign: 'center', color: C.dim }}>Local-first. No account, no analytics. Your data lives on this phone, so back it up now and then.</T.Small>
 
       {/* ---- sheets ---- */}
       <Sheet visible={sheet === 'profile'} onClose={() => setSheet(null)} title="Profile">
@@ -128,7 +128,7 @@ export default function Settings() {
           <Field label="PROTEIN MIN (G)" keyboardType="number-pad" value={form.pmin ?? ''} onChangeText={(t) => setForm({ ...form, pmin: t })} style={{ flex: 1 }} />
           <Field label="PROTEIN MAX (G)" keyboardType="number-pad" value={form.pmax ?? ''} onChangeText={(t) => setForm({ ...form, pmax: t })} style={{ flex: 1 }} />
         </Row>
-        <T.Small>Plan default: 2,100–2,200 kcal and 130–160 g protein. Only change calories after 2–3 weeks of trend data.</T.Small>
+        <T.Small>Plan default: 2,150 kcal and 150 to 180 g protein. Only change calories after 2 to 3 weeks of trend data.</T.Small>
         <Btn title="Save" onPress={async () => { await repo.saveProfile({ ...p, kcal_target: Math.round(num('kcal', p.kcal_target)), protein_min: Math.round(num('pmin', p.protein_min)), protein_max: Math.round(num('pmax', p.protein_max)) }); setSheet(null); }} />
       </Sheet>
 
@@ -138,7 +138,7 @@ export default function Settings() {
           <Row key={d} gap={12}>
             <T.Strong style={{ width: 40 }}>{d}</T.Strong>
             <View style={{ flex: 1 }}>
-              <Segmented options={[{ key: 'none', label: '—' }, { key: 'chicken', label: 'Chicken' }, { key: 'eggs', label: 'Eggs' }]} value={(specials[i] ?? 'none') as 'none' | Special}
+              <Segmented options={[{ key: 'none', label: '-' }, { key: 'chicken', label: 'Chicken' }, { key: 'eggs', label: 'Eggs' }]} value={(specials[i] ?? 'none') as 'none' | Special}
                 onChange={async (k) => { const n: Record<number, Special> = { ...specials }; if (k === 'none') delete n[i]; else n[i] = k as Special; await repo.setKV('mess_specials', n); }} />
             </View>
           </Row>

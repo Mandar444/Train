@@ -56,7 +56,7 @@ export default function Steps() {
           </View>
           <View style={{ flex: 1, gap: 2 }}>
             <T.Strong>Count steps automatically</T.Strong>
-            <T.Small style={{ color: C.text2 }}>Connect Health Connect once — steps fill in by themselves.</T.Small>
+            <T.Small style={{ color: C.text2 }}>Connect Health Connect once and steps fill in by themselves.</T.Small>
           </View>
           <Icon name="chevron" color={C.lime} />
         </Card>
@@ -71,7 +71,7 @@ export default function Steps() {
 
       <Card style={{ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16 }}>
         <Icon name={left ? 'clock' : 'check'} color={C.lime} />
-        <T.Body style={{ flex: 1 }}>{left ? `${fmt(left)} to go — about ${mins} min of walking.` : 'Goal done for today. Nice.'}</T.Body>
+        <T.Body style={{ flex: 1 }}>{left ? `${fmt(left)} to go, about ${mins} min of walking.` : 'Goal done for today. Nice.'}</T.Body>
       </Card>
 
       <Row gap={8}>
@@ -89,7 +89,7 @@ export default function Steps() {
       <Card style={{ gap: 10 }}>
         <Row style={{ justifyContent: 'space-between' }}>
           <T.Strong>Last 7 days</T.Strong>
-          <T.Small>Average <Text style={{ color: C.text, fontFamily: F.bold }}>{avg != null ? fmt(avg) : '—'}</Text></T.Small>
+          <T.Small>Average <Text style={{ color: C.text, fontFamily: F.bold }}>{avg != null ? fmt(avg) : '-'}</Text></T.Small>
         </Row>
         <Bars values={vals.map((x) => x.v)} labels={vals.map((x) => (x.d === date ? 'Today' : dowShort(x.d).slice(0, 1) + dowShort(x.d).slice(1).toLowerCase()))} target={target} width={width - 40 - 38} height={180} format={(v) => `${(v / 1000).toFixed(1)}k`} />
         <T.Small>Dashed line = your daily goal. The weekly average matters more than any single day.</T.Small>
@@ -99,9 +99,9 @@ export default function Steps() {
         <Icon name="moon" color={C.muted} />
         <View style={{ flex: 1, gap: 2 }}>
           <T.Strong>Sleep last night</T.Strong>
-          <T.Small>{sleep != null ? (t?.sleep_source === 'health' ? 'From Health Connect' : 'Tap to edit') : 'Tap to add · goal 7–9 h'}</T.Small>
+          <T.Small>{sleep != null ? (t?.sleep_source === 'health' ? 'From your watch or sleep app via Health Connect' : 'Entered by you. Tap to edit') : 'Tap to add. Goal 7 to 9 h'}</T.Small>
         </View>
-        <Text style={{ fontFamily: F.display, fontSize: 26, color: sleep != null && sleep >= 7 ? C.lime : C.text }}>{sleep != null ? `${sleep} h` : '—'}</Text>
+        <Text style={{ fontFamily: F.display, fontSize: 26, color: sleep != null && sleep >= 7 ? C.lime : C.text }}>{sleep != null ? `${sleep} h` : '-'}</Text>
       </Card>
 
       <Sheet visible={sheet === 'steps'} onClose={() => setSheet(null)} title="Add steps">
@@ -114,6 +114,7 @@ export default function Steps() {
         {data.connected ? <T.Small>A number you enter stops Health Connect from changing today's steps.</T.Small> : null}
       </Sheet>
       <Sheet visible={sheet === 'sleep'} onClose={() => setSheet(null)} title="Sleep">
+        <T.Small>Your phone can't measure sleep by itself. If you wear a smartwatch or band (Mi Band, Galaxy Watch, Fitbit, Noise etc.) or use a sleep app that syncs to Health Connect, GOAL reads it automatically. Otherwise, note when you fell asleep and woke up and type the hours here.</T.Small>
         <Field label="Hours slept last night" keyboardType="decimal-pad" value={val} onChangeText={setVal} placeholder="e.g. 7.5" />
         <Btn title="Save" disabled={!val} onPress={async () => { const v = parseFloat(val.replace(',', '.')); if (!isNaN(v)) { await repo.setSleep(date, v, 'manual'); emitChange(); } setSheet(null); }} />
       </Sheet>

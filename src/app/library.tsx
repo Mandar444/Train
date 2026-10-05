@@ -3,16 +3,18 @@ import { FlatList, Pressable, ScrollView, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Field, haptic, Header, Icon } from '../components/ui';
+import { DayChips, dayDow } from '../components/workout';
 import { ExerciseThumb } from '../components/ExerciseAnim';
 import { useQuery } from '../lib/hooks';
 import { getWorkouts, saveWorkouts } from '../lib/repo';
-import { EXERCISE_LIST, GROUPS, WorkoutType } from '../lib/plan';
+import { DAY_KEYS, DayKey, EXERCISE_LIST, GROUPS, isDayKey, PROGRAM, restFor } from '../lib/plan';
 import { scheme } from '../lib/logic';
 import { C, F } from '../lib/theme';
 
 export default function Library() {
   const ins = useSafeAreaInsets();
-  const { pick } = useLocalSearchParams<{ pick?: WorkoutType }>();
+  const params = useLocalSearchParams<{ pick?: string }>();
+  const [pick, setPick] = useState<DayKey | null>(isDayKey(params.pick) ? params.pick : null);
   const [q, setQ] = useState('');
   const [group, setGroup] = useState<string>('All');
   const { data: plan } = useQuery(getWorkouts, []);
@@ -22,20 +24,21 @@ export default function Library() {
     return EXERCISE_LIST.filter((e) => (group === 'All' || e.group === group) && (!s || e.name.toLowerCase().includes(s) || e.equip.toLowerCase().includes(s) || e.group.toLowerCase().includes(s)));
   }, [q, group]);
 
-  const inPlan = (t: WorkoutType, k: string) => !!plan?.[t].some((i) => i.key === k);
+  const inPlan = (t: DayKey, k: string) => !!plan?.[t].some((i) => i.key === k);
   const add = async (k: string) => {
     if (!plan || !pick) return;
     const e = EXERCISE_LIST.find((x) => x.key === k)!;
     const has = inPlan(pick, k);
-    await saveWorkouts({ ...plan, [pick]: has ? plan[pick].filter((i) => i.key !== k) : [...plan[pick], { key: k, sets: e.sets, repMin: e.repMin, repMax: e.repMax }] });
+    await saveWorkouts({ ...plan, [pick]: has ? plan[pick].filter((i) => i.key !== k) : [...plan[pick], { key: k, sets: e.sets, repMin: e.repMin, repMax: e.repMax, rest: restFor(k, e.repMax) }] });
     haptic(has ? 'light' : 'success');
   };
 
   return (
     <View style={{ flex: 1, backgroundColor: C.bg, paddingTop: ins.top + 16 }}>
       <View style={{ paddingHorizontal: 20, gap: 12 }}>
-        <Header title={pick ? `Add to ${pick}` : 'Exercises'} kicker={`${EXERCISE_LIST.length} EXERCISES · EACH WITH A FORM GUIDE`} />
+        <Header title={pick ? `Add to ${PROGRAM[pick].name}` : 'Exercises'} kicker={pick ? 'Tap an exercise to add or remove it' : `${EXERCISE_LIST.length} exercises, each with a form guide`} />
         <Field placeholder="Search: squat, cable, dumbbell, core…" value={q} onChangeText={setQ} />
+        {pick ? <DayChips value={pick} onPress={setPick} /> : null}
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flexGrow: 0, marginTop: 12 }} contentContainerStyle={{ paddingHorizontal: 20, gap: 6 }}>
         {['All', ...GROUPS].map((g) => {
@@ -55,12 +58,12 @@ export default function Library() {
         windowSize={7}
         ListEmptyComponent={<Text style={{ color: C.dim, fontFamily: F.body }}>Nothing matches “{q}”.</Text>}
         renderItem={({ item: e }) => {
-          const a = inPlan('A', e.key), b = inPlan('B', e.key);
+          const days = DAY_KEYS.filter((d) => inPlan(d, e.key));
           const picked = pick ? inPlan(pick, e.key) : false;
           return (
             <Pressable onPress={() => (pick ? add(e.key) : router.push({ pathname: '/history', params: { exercise: e.key } }))}
               onLongPress={() => router.push({ pathname: '/history', params: { exercise: e.key } })}
-              style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 10, borderRadius: 18, backgroundColor: picked ? '#161A10' : C.card, borderWidth: 1, borderColor: picked ? '#3A4A1C' : C.line, opacity: pressed ? 0.85 : 1 })}>
+              style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, padding: 10, borderRadius: 18, backgroundColor: picked ? C.limeSoft : C.card, borderWidth: 1, borderColor: picked ? C.lime : C.line, opacity: pressed ? 0.85 : 1 })}>
               <ExerciseThumb spec={e.anim} width={92} />
               <View style={{ flex: 1, gap: 4 }}>
                 <Text style={{ fontFamily: F.bold, fontSize: 15, color: C.text }} numberOfLines={2}>{e.name}</Text>
@@ -73,9 +76,8 @@ export default function Library() {
                 </View>
               ) : (
                 <View style={{ gap: 4, alignItems: 'flex-end' }}>
-                  {a ? <Badge t="A" /> : null}
-                  {b ? <Badge t="B" /> : null}
-                  {!a && !b ? <Icon name="chevron" size={18} color={C.faint} /> : null}
+                  {days.slice(0, 3).map((d) => <Badge key={d} t={dayDow(d)} />)}
+                  {!days.length ? <Icon name="chevron" size={18} color={C.faint} /> : null}
                 </View>
               )}
             </Pressable>
@@ -88,8 +90,8 @@ export default function Library() {
 
 function Badge({ t }: { t: string }) {
   return (
-    <View style={{ width: 24, height: 24, borderRadius: 7, backgroundColor: C.lime, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontFamily: F.displayBold, fontSize: 14, color: C.bg }}>{t}</Text>
+    <View style={{ paddingHorizontal: 7, height: 22, borderRadius: 7, backgroundColor: C.limeSoft, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ fontFamily: F.bold, fontSize: 11.5, color: C.lime }}>{t}</Text>
     </View>
   );
 }

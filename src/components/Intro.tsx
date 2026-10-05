@@ -5,11 +5,12 @@ import { FADE, END, LOGO_AT, introFrame, IPrim, IText } from '../lib/introScene'
 import { F } from '../lib/theme';
 
 /** Opening animation (~9 s): seven sport scenes, then the GOAL logo. Tap anywhere to skip. */
-export function Intro({ onDone }: { onDone: () => void }) {
+export function Intro({ onDone, onNearEnd }: { onDone: () => void; onNearEnd?: () => void }) {
   const { width, height } = useWindowDimensions();
   const [t, setT] = useState(0);
   const done = useRef(false);
-  const finish = () => { if (!done.current) { done.current = true; onDone(); } };
+  const near = useRef(false);
+  const finish = () => { if (!done.current) { done.current = true; near.current = true; onDone(); } };
 
   useEffect(() => {
     let raf = 0;
@@ -18,6 +19,7 @@ export function Intro({ onDone }: { onDone: () => void }) {
       if (t0 === null) t0 = now;
       const s = (now - t0) / 1000;
       setT(s);
+      if (!near.current && s > END - 0.5) { near.current = true; onNearEnd?.(); }
       if (s < END + FADE) raf = requestAnimationFrame(tick);
       else finish();
     };

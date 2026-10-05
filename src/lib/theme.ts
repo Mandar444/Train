@@ -13,13 +13,13 @@ export const C = {
   lime: '#D4FF4F',
   limeSoft: 'rgba(212,255,79,0.13)',
   limeDeep: '#6E8A1F',
-  orange: '#FF8A3D',
-  orangeSoft: '#1E1610',
-  orangeLine: '#3A2A1C',
-  orangeText: '#E9D7C4',
+  orange: '#F2F1EA',
+  orangeSoft: '#1C1D18',
+  orangeLine: '#3A3B33',
+  orangeText: '#D6D5CC',
   danger: '#FF6B5B',
-  cyan: '#5CE1E6',
-  violet: '#B69CFF',
+  cyan: '#D4FF4F',
+  violet: '#D4FF4F',
 };
 
 export const F = {

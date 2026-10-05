@@ -63,7 +63,7 @@ export function ExerciseAnim({ spec, width = 312 }: { spec: AnimSpec; width?: nu
   return <Frame spec={spec} sec={t} width={width} />;
 }
 
-/** Static thumbnail (bottom / turnaround position) — cheap for long lists. */
+/** Static thumbnail (bottom / turnaround position), cheap for long lists. */
 export const ExerciseThumb = memo(function ExerciseThumb({ spec, width = 96 }: { spec: AnimSpec; width?: number }) {
   return <Frame spec={spec} sec={(spec.ab ?? 1.2) - 0.001} width={width} labels={false} grid={false} />;
 });

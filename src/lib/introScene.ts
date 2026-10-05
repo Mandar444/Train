@@ -1,4 +1,4 @@
-// Opening animation — pure frame builder (no React), drawn in a 360 × 640 design space.
+// Opening animation: pure frame builder (no React), drawn in a 360 × 640 design space.
 // Seven sport scenes with full environments, then the GOAL logo slam.
 
 export type IPrim =
@@ -125,13 +125,8 @@ function sparks(P: IPrim[], cx: number, cy: number, t: number, color: string, n 
 
 function hud(P: IPrim[], T: IText[], scene: number, st: number, fg: string, label: string, sub: string) {
   // segmented progress at top
-  const gap = 6, w = (312 - gap * (SCENES - 1)) / SCENES;
-  for (let i = 0; i < SCENES; i++) {
-    const x = 24 + i * (w + gap);
-    P.push({ k: 'rect', x, y: 54, w, h: 4, rx: 2, fill: fg, o: 0.18 });
-    const f = i < scene ? 1 : i === scene ? st : 0;
-    if (f > 0) P.push({ k: 'rect', x, y: 54, w: w * f, h: 4, rx: 2, fill: fg, o: 0.95 });
-  }
+  P.push({ k: 'rect', x: 24, y: 54, w: 312, h: 3, rx: 1.5, fill: fg, o: 0.18 });
+  P.push({ k: 'rect', x: 24, y: 54, w: 312 * ((scene + st) / SCENES), h: 3, rx: 1.5, fill: fg, o: 0.95 });
   T.push({ text: 'GOAL', x: 24, y: 72, size: 22, font: 'logo', color: fg, o: 0.9, align: 'left', skew: true });
   T.push({ text: `0${scene + 1} / 0${SCENES}`, x: 336, y: 76, size: 13, font: 'bold', color: fg, o: 0.7, align: 'right' });
   // big kinetic word behind, sliding
@@ -141,6 +136,17 @@ function hud(P: IPrim[], T: IText[], scene: number, st: number, fg: string, labe
   const ci = out(clamp((st - 0.08) * 4));
   T.push({ text: label, x: 180, y: 446 + (1 - ci) * 18, size: 44, font: 'logo', color: fg, o: ci, align: 'center', skew: true, spacing: 2 });
   T.push({ text: sub, x: 180, y: 500 + (1 - ci) * 12, size: 15, font: 'bold', color: fg, o: ci * 0.75, align: 'center' });
+}
+
+const DARK = '#0D0E0B';
+// Brand palette: every scene is either lime with black ink, or black with lime ink.
+const LIGHT_SCENES = new Set([0, 2, 4]);
+function remap(c: string | undefined, scene: number): string | undefined {
+  if (!c || scene >= SCENES) return c;
+  if (LIGHT_SCENES.has(scene)) return c === ORANGE ? '#FFFFFF' : c;
+  if (scene === 1 || scene === 6) return c === WHITE ? LIME : c === ORANGE ? WHITE : c;
+  // scenes drawn in ink on a light background that now sit on black
+  return c === INK ? LIME : c === ORANGE ? WHITE : c;
 }
 
 export function introFrame(t: number): IFrame {
@@ -159,12 +165,7 @@ export function introFrame(t: number): IFrame {
     const body = mix(JJ_A, JJ_B, k);
     for (let i = 0; i < 7; i++) P.push({ k: 'line', x1: 0, y1: GROUND + 8 + i * i * 4, x2: 360, y2: GROUND + 8 + i * i * 4, w: 1.5, c: INK, o: 0.12 });
     for (let i = -6; i <= 6; i++) P.push({ k: 'line', x1: 180 + i * 18, y1: GROUND + 8, x2: 180 + i * 70, y2: 640, w: 1.5, c: INK, o: 0.1 });
-    // motion arcs for the arms
-    P.push({ k: 'path', d: `M${tp([70, 110])[0]},${tp([70, 110])[1]} Q${tp([40, 40])[0]},${tp([40, 40])[1]} ${tp([96, 14])[0]},${tp([96, 14])[1]}`, stroke: INK, w: 3, o: 0.25 * k, dash: '6 8' });
-    P.push({ k: 'path', d: `M${tp([130, 110])[0]},${tp([130, 110])[1]} Q${tp([160, 40])[0]},${tp([160, 40])[1]} ${tp([104, 14])[0]},${tp([104, 14])[1]}`, stroke: INK, w: 3, o: 0.25 * k, dash: '6 8' });
     shadow(P, body, INK);
-    const prev = mix(JJ_A, JJ_B, ease(((st - 0.04) * reps % 1) < 0.5 ? ((st - 0.04) * reps % 1) * 2 : 2 - ((st - 0.04) * reps % 1) * 2));
-    figure(P, prev, INK, 0.18);
     figure(P, body, INK);
     const rep = Math.min(3, Math.floor(st * reps) + 1);
     T.push({ text: `REP ${rep}`, x: 300, y: 300, size: 18, font: 'black', color: INK, o: 0.8, align: 'center' });
@@ -175,12 +176,12 @@ export function introFrame(t: number): IFrame {
     // spotlight cone
     P.push({ k: 'path', d: `M150,0 L210,0 L330,${GROUND + 10} L30,${GROUND + 10} Z`, fill: '#F2F1EA', o: 0.05 });
     // court floor with lines in perspective
-    P.push({ k: 'rect', x: 0, y: GROUND + 6, w: 360, h: 640 - GROUND, fill: '#1E1A12', o: 1 });
-    for (let i = 0; i < 9; i++) P.push({ k: 'line', x1: 0, y1: GROUND + 14 + i * 26, x2: 360, y2: GROUND + 14 + i * 26, w: 1, c: '#3A3122', o: 0.6 });
+    P.push({ k: 'rect', x: 0, y: GROUND + 6, w: 360, h: 640 - GROUND, fill: '#161713', o: 1 });
+    for (let i = 0; i < 9; i++) P.push({ k: 'line', x1: 0, y1: GROUND + 14 + i * 26, x2: 360, y2: GROUND + 14 + i * 26, w: 1, c: '#2C2D27', o: 0.6 });
     P.push({ k: 'path', d: `M40,${GROUND + 6} Q180,${GROUND + 130} 320,${GROUND + 6}`, stroke: ORANGE, w: 3, o: 0.55 });
     P.push({ k: 'rect', x: 230, y: GROUND + 6, w: 100, h: 60, stroke: ORANGE, sw: 3, o: 0.55 });
     // crowd dots
-    for (let i = 0; i < 46; i++) P.push({ k: 'circle', cx: (i * 37) % 360 + rand(i) * 10, cy: 168 + (i % 3) * 16 + rand(i + 9) * 6, r: 3.5, fill: '#F2F1EA', o: 0.06 + 0.06 * Math.sin(t * 6 + i) });
+    for (let i = 0; i < 22; i++) P.push({ k: 'circle', cx: (i * 37) % 360 + rand(i) * 10, cy: 168 + (i % 3) * 16 + rand(i + 9) * 6, r: 3.5, fill: '#F2F1EA', o: 0.06 + 0.06 * Math.sin(t * 6 + i) });
     // hoop
     const hx = 308, hy = 238;
     P.push({ k: 'rect', x: hx + 22, y: hy - 64, w: 8, h: 230, fill: '#3A3B33' });
@@ -195,7 +196,6 @@ export function introFrame(t: number): IFrame {
     const k = ease(clamp(st / 0.5));
     const body = mix(BB_A, BB_B, k);
     shadow(P, body, '#000');
-    figure(P, mix(BB_A, BB_B, ease(clamp((st - 0.05) / 0.5))), WHITE, 0.15);
     figure(P, body, WHITE);
     // ball with trail
     const rel = clamp((st - 0.42) / 0.38);
@@ -253,10 +253,9 @@ export function introFrame(t: number): IFrame {
     P.push({ k: 'ellipse', cx: tp([95, 0])[0], cy: GROUND + 4, rx: 110, ry: 6, fill: INK, o: 0.12 + k * 0.1 });
     // up/down guide arrow
     const ax = 300, ay0 = 250, ay1 = 330;
-    P.push({ k: 'line', x1: ax, y1: ay0, x2: ax, y2: ay1, w: 3, c: INK, o: 0.2, dash: '4 7' });
+    P.push({ k: 'rect', x: ax - 2, y: ay0, w: 4, h: ay1 - ay0, rx: 2, fill: INK, o: 0.15 });
     const ay = ay0 + (ay1 - ay0) * k;
     P.push({ k: 'circle', cx: ax, cy: ay, r: 7, fill: ORANGE });
-    figure(P, mix(PU_A, PU_B, (1 - Math.cos((st - 0.05) * 1.6 * Math.PI * 2)) / 2), INK, 0.12);
     figure(P, body, INK);
     const rep = Math.floor(st * 1.6 + 0.5);
     T.push({ text: `× ${10 + rep}`, x: 300, y: 222, size: 20, font: 'black', color: INK, o: 0.8, align: 'center' });
@@ -330,7 +329,7 @@ export function introFrame(t: number): IFrame {
   } else if (scene === 6) {
     // ---------- RUN on a track ----------
     bg = TRACK;
-    P.push({ k: 'rect', x: 0, y: GROUND + 6, w: 360, h: 640 - GROUND, fill: '#2A1A14' });
+    P.push({ k: 'rect', x: 0, y: GROUND + 6, w: 360, h: 640 - GROUND, fill: '#161713' });
     for (let i = 0; i < 5; i++) {
       const y = GROUND + 10 + i * 34;
       P.push({ k: 'line', x1: 0, y1: y, x2: 360, y2: y, w: 2, c: WHITE, o: 0.35 });
@@ -350,7 +349,6 @@ export function introFrame(t: number): IFrame {
     const cyc = st * 1.7;
     const body = runPose(cyc);
     shadow(P, body, '#000');
-    figure(P, runPose(cyc - 0.05), LIME, 0.12, -10);
     figure(P, body, LIME);
     const secs = (st * 9.8).toFixed(1).padStart(4, '0');
     T.push({ text: `00:${secs}`, x: 300, y: 220, size: 20, font: 'black', color: LIME, o: 0.85, align: 'center' });
@@ -380,6 +378,16 @@ export function introFrame(t: number): IFrame {
     void slam;
   }
 
-  const light = bg === LIME || bg === ORANGE || bg === CREAM || bg === VIOLET || bg === CYAN;
+  if (scene < SCENES) {
+    bg = LIGHT_SCENES.has(scene) ? LIME : DARK;
+    for (const q of P) {
+      const r = q as { c?: string; fill?: string; stroke?: string };
+      if (r.c) r.c = remap(r.c, scene);
+      if (r.fill) r.fill = remap(r.fill, scene);
+      if (r.stroke) r.stroke = remap(r.stroke, scene);
+    }
+    for (const x of T) x.color = remap(x.color, scene)!;
+  }
+  const light = bg === LIME;
   return { bg, light, prims: P, texts: T, done: t >= TOTAL };
 }

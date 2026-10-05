@@ -5,10 +5,10 @@ import { Bar, Card, Enter, Icon, IconName, Row, Screen, T } from '../../componen
 import { MultiRing, TrendChart } from '../../components/charts';
 import { useQuery } from '../../lib/hooks';
 import { loadSummary } from '../../lib/summary';
-import { avgSeries, fmt } from '../../lib/logic';
+import { avgSeries, fmt, nextTrainingDay } from '../../lib/logic';
 import { dowShort, dayMonth, greeting, today } from '../../lib/dates';
 import { C, F } from '../../lib/theme';
-import { DAY1_CHECKLIST, EXERCISES } from '../../lib/plan';
+import { DAY1_CHECKLIST, estMinutes, EXERCISES, isDayKey, planFor, PROGRAM, workoutName } from '../../lib/plan';
 import { syncHealth } from '../../lib/health';
 import { refreshStepNudge } from '../../lib/notify';
 import { getKV, getWorkouts, setKV } from '../../lib/repo';
@@ -39,20 +39,30 @@ export default function Home() {
 
   const session = s.openSession ?? s.todaySession;
   const wType = session?.type ?? s.nextWorkout;
-  const lifts = plan?.[wType] ?? [];
+  const lifts = planFor(plan, wType);
+  const wName = workoutName(wType);
   const kcalLeft = s.profile.kcal_target - s.kcal;
   const showDay1 = s.day <= 2 && DAY1_CHECKLIST.some((c) => !checklist?.[c.key]);
   const series = avgSeries(s.weights).slice(-21);
   const recent = s.weights.slice(-21);
   const doneCount = [s.todayWeight != null, s.kcal > 0, s.steps >= s.stepTarget, !!session?.completed || !s.liftDay].filter(Boolean).length;
 
+  const ringSize = Math.min(width - 96, 270);
+  const RING = ['#D4FF4F', '#AFD43F', '#8AA931', '#677E25'];
+  const legend = [
+    { c: RING[0], l: 'Food', v: `${fmt(s.kcal)} kcal`, pct: s.kcal / s.profile.kcal_target },
+    { c: RING[1], l: 'Steps', v: fmt(s.steps), pct: s.steps / s.stepTarget },
+    { c: RING[2], l: 'Workout', v: session?.completed ? 'Done' : s.liftDay ? 'To do' : 'Rest', pct: session?.completed || !s.liftDay ? 1 : s.openSession ? 0.5 : 0 },
+    { c: RING[3], l: 'Weight', v: s.todayWeight != null ? `${s.todayWeight.toFixed(1)} kg` : 'Not yet', pct: s.todayWeight != null ? 1 : 0 },
+  ];
+
   const workoutRow = session?.completed
-    ? { value: `Full Body ${wType} done`, sub: 'Nice work. Recover and hit your steps.', action: 'View', done: true }
+    ? { value: `${wName} done`, sub: 'Nice work. Recover and hit your steps.', action: 'View', done: true }
     : s.openSession
-      ? { value: `Full Body ${wType} in progress`, sub: `${lifts.length} exercises`, action: 'Resume', done: false }
+      ? { value: `${wName} in progress`, sub: `${lifts.length} exercises`, action: 'Resume', done: false }
       : s.liftDay
-        ? { value: `Full Body ${wType}`, sub: `${lifts.length} exercises · about ${Math.round(lifts.reduce((a, i) => a + i.sets, 0) * 3.2)} min`, action: 'Start', done: false }
-        : { value: 'Rest day', sub: `Next: Full Body ${wType}. Walk and recover today.`, action: 'Open', done: true };
+        ? { value: wName, sub: `${lifts.length} exercises · about ${estMinutes(lifts, isDayKey(wType) ? PROGRAM[wType].finisherMin : 0)} min`, action: 'Start', done: false }
+        : { value: 'Rest day', sub: `Next: ${workoutName(nextTrainingDay(date).key)} tomorrow. Walk and recover today.`, action: 'Open', done: true };
 
   const rows: { key: string; icon: IconName; title: string; value: string; sub: string; pct?: number; color?: string; tint: string; action: string; done: boolean; to: string }[] = [
     {
@@ -62,20 +72,20 @@ export default function Home() {
       action: s.todayWeight != null ? 'Edit' : 'Log', done: s.todayWeight != null, to: '/weight',
     },
     {
-      key: 'food', icon: 'bowl', title: 'Food', tint: C.orange,
+      key: 'food', icon: 'bowl', title: 'Food', tint: C.lime,
       value: `${fmt(s.kcal)} / ${fmt(s.profile.kcal_target)} kcal`,
       sub: `${Math.round(s.protein)} g protein of ${s.profile.protein_min}+ g · ${kcalLeft >= 0 ? `${fmt(kcalLeft)} kcal left` : `${fmt(-kcalLeft)} over`}`,
-      pct: s.kcal / s.profile.kcal_target, color: C.orange,
+      pct: s.kcal / s.profile.kcal_target, color: C.lime,
       action: 'Add', done: false, to: '/food',
     },
     {
-      key: 'steps', icon: 'steps', title: 'Steps', tint: C.cyan,
+      key: 'steps', icon: 'steps', title: 'Steps', tint: C.lime,
       value: `${fmt(s.steps)} / ${fmt(s.stepTarget)}`,
       sub: s.steps >= s.stepTarget ? 'Goal done' : `${fmt(s.stepTarget - s.steps)} to go${s.stepsSource === 'health' ? ' · synced' : ''}`,
-      pct: s.steps / s.stepTarget, color: C.cyan,
+      pct: s.steps / s.stepTarget, color: C.lime,
       action: 'Open', done: s.steps >= s.stepTarget, to: '/steps',
     },
-    { key: 'workout', icon: 'dumbbell', title: 'Workout', tint: C.violet, ...workoutRow, to: '/train' },
+    { key: 'workout', icon: 'dumbbell', title: 'Workout', tint: C.lime, ...workoutRow, to: '/train' },
   ];
 
   const onRefresh = async () => { setRefreshing(true); await syncHealth(7); setRefreshing(false); };
@@ -95,31 +105,26 @@ export default function Home() {
       </Enter>
 
       <Enter delay={40}>
-        <View style={{ borderRadius: 26, padding: 18, backgroundColor: '#14150F', borderWidth: 1, borderColor: '#2A2C22', flexDirection: 'row', alignItems: 'center', gap: 18, overflow: 'hidden' }}>
-          <View style={{ position: 'absolute', right: -60, top: -60, width: 200, height: 200, borderRadius: 100, backgroundColor: C.lime, opacity: 0.06 }} />
-          <View style={{ width: 132, height: 132, alignItems: 'center', justifyContent: 'center' }}>
-            <MultiRing size={132} stroke={12} gap={4} rings={[
-              { pct: s.kcal / s.profile.kcal_target, color: C.orange },
-              { pct: s.steps / s.stepTarget, color: C.cyan },
-              { pct: session?.completed || !s.liftDay ? 1 : s.openSession ? 0.5 : 0, color: C.violet },
-              { pct: s.todayWeight != null ? 1 : 0, color: C.lime },
-            ]} />
+        <View style={{ borderRadius: 28, paddingVertical: 24, paddingHorizontal: 18, backgroundColor: '#12130E', borderWidth: 1, borderColor: '#2A2C22', alignItems: 'center', gap: 20, overflow: 'hidden' }}>
+          <View style={{ position: 'absolute', left: -80, top: -90, width: 260, height: 260, borderRadius: 130, backgroundColor: C.lime, opacity: 0.05 }} />
+          <View style={{ width: ringSize, height: ringSize, alignItems: 'center', justifyContent: 'center' }}>
+            <MultiRing size={ringSize} stroke={18} gap={6} rings={legend.map((x) => ({ pct: x.pct, color: x.c }))} />
             <View style={{ position: 'absolute', alignItems: 'center' }}>
-              <Text style={{ fontFamily: F.display, fontSize: 24, color: C.text }}>{`${doneCount}/4`}</Text>
+              <Text style={{ fontFamily: F.display, fontSize: 54, color: C.text, letterSpacing: -1 }}>
+                {doneCount}<Text style={{ color: C.dim, fontSize: 30 }}>/4</Text>
+              </Text>
+              <T.Small>done today</T.Small>
             </View>
           </View>
-          <View style={{ flex: 1, gap: 9 }}>
-            {[
-              { c: C.orange, l: 'Food', v: `${fmt(s.kcal)} kcal` },
-              { c: C.cyan, l: 'Steps', v: fmt(s.steps) },
-              { c: C.violet, l: 'Workout', v: session?.completed ? 'Done' : s.liftDay ? 'To do' : 'Rest' },
-              { c: C.lime, l: 'Weight', v: s.todayWeight != null ? `${s.todayWeight.toFixed(1)}` : '—' },
-            ].map((x) => (
-              <Row key={x.l} gap={8}>
-                <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: x.c }} />
-                <Text style={{ flex: 1, fontFamily: F.medium, fontSize: 14, color: C.muted }}>{x.l}</Text>
-                <Text style={{ fontFamily: F.bold, fontSize: 15, color: C.text }}>{x.v}</Text>
-              </Row>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, alignSelf: 'stretch' }}>
+            {legend.map((x) => (
+              <View key={x.l} style={{ width: '48.5%', flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 12, borderRadius: 16, backgroundColor: '#1A1B15' }}>
+                <View style={{ width: 12, height: 12, borderRadius: 6, backgroundColor: x.c }} />
+                <View style={{ flex: 1 }}>
+                  <Text style={{ fontFamily: F.medium, fontSize: 13, color: C.muted }}>{x.l}</Text>
+                  <Text style={{ fontFamily: F.bold, fontSize: 16, color: C.text }} numberOfLines={1}>{x.v}</Text>
+                </View>
+              </View>
             ))}
           </View>
         </View>
@@ -139,7 +144,7 @@ export default function Home() {
         <Enter delay={90}>
           <Card style={{ gap: 4 }}>
             <T.Strong>Day 1 checklist</T.Strong>
-            <T.Small style={{ marginBottom: 6 }}>Not about being perfect — just a reliable baseline.</T.Small>
+            <T.Small style={{ marginBottom: 6 }}>Not about being perfect. Just a reliable baseline.</T.Small>
             {DAY1_CHECKLIST.map((c) => {
               const on = !!checklist?.[c.key];
               return (
@@ -188,11 +193,11 @@ export default function Home() {
           <Row style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <View style={{ gap: 2 }}>
               <T.Small>{s.avgN >= 7 ? '7-day average weight' : 'Average weight so far'}</T.Small>
-              <Text style={{ fontFamily: F.display, fontSize: 36, color: C.text, letterSpacing: -1 }}>{s.avg != null ? `${s.avg.toFixed(1)} kg` : '—'}</Text>
+              <Text style={{ fontFamily: F.display, fontSize: 36, color: C.text, letterSpacing: -1 }}>{s.avg != null ? `${s.avg.toFixed(1)} kg` : 'No data'}</Text>
             </View>
             <View style={{ alignItems: 'flex-end', gap: 2 }}>
               <T.Small>This week</T.Small>
-              <Text style={{ fontFamily: F.bold, fontSize: 18, color: s.change == null ? C.muted : s.change <= 0 ? C.lime : C.orange }}>
+              <Text style={{ fontFamily: F.bold, fontSize: 18, color: s.change == null ? C.muted : s.change <= 0 ? C.lime : C.text }}>
                 {s.change == null ? 'Building' : `${s.change <= 0 ? '−' : '+'}${Math.abs(s.change).toFixed(1)} kg`}
               </Text>
             </View>
@@ -211,17 +216,17 @@ export default function Home() {
       </Enter>
 
       {s.special ? (
-        <Card tone="orange" onPress={() => router.push('/food')} style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-          <Icon name="bowl" color={C.orange} size={24} />
+        <Card onPress={() => router.push('/food')} style={{ flexDirection: 'row', alignItems: 'center', gap: 14, borderColor: '#3A4A16' }}>
+          <Icon name="bowl" color={C.lime} size={24} />
           <View style={{ flex: 1, gap: 2 }}>
             <T.Strong>{s.special === 'chicken' ? 'Chicken night at the mess' : 'Egg night at the mess'}</T.Strong>
-            <T.Small style={{ color: C.orangeText }}>{s.special === 'chicken' ? 'Take a good portion and eat it first.' : 'Have the eggs first, then dal and curd.'}</T.Small>
+            <T.Small style={{ color: C.muted }}>{s.special === 'chicken' ? 'Take a good portion and eat it first.' : 'Have the eggs first, then dal and curd.'}</T.Small>
           </View>
         </Card>
       ) : null}
 
       {lifts.length && !session?.completed ? (
-        <T.Small style={{ textAlign: 'center' }}>{`Full Body ${wType}: ${lifts.slice(0, 3).map((i) => EXERCISES[i.key].name).join(', ')}${lifts.length > 3 ? '…' : ''}`}</T.Small>
+        <T.Small style={{ textAlign: 'center' }}>{`${wName}: ${lifts.slice(0, 3).map((i) => EXERCISES[i.key].name).join(', ')}${lifts.length > 3 ? '…' : ''}`}</T.Small>
       ) : null}
     </Screen>
   );

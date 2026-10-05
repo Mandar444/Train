@@ -1,6 +1,6 @@
 import { addDays, range, weekday } from './dates';
-import { avgAt, dayNumber, isLiftDay, nextMilestone, nextType, status, Status, weekNumber, weeklyChange, Weigh } from './logic';
-import { Special, stepTarget, WorkoutType } from './plan';
+import { avgAt, dayNumber, isLiftDay, nextMilestone, scheduledDay, status, Status, weekNumber, weeklyChange, Weigh } from './logic';
+import { DayKey, Special, stepTarget } from './plan';
 import * as repo from './repo';
 
 export type DayMark = 'all' | 'some' | 'none' | 'today' | 'future';
@@ -27,7 +27,8 @@ export type Summary = {
   protein: number;
   special: Special | null;
   liftDay: boolean;
-  nextWorkout: WorkoutType;
+  /** Today's scheduled workout, or null on a rest day. */
+  nextWorkout: DayKey | null;
   todaySession: repo.Session | null;
   openSession: repo.Session | null;
   marks: { date: string; mark: DayMark }[];
@@ -82,7 +83,6 @@ export async function loadSummary(date: string): Promise<Summary | null> {
   const stepVals = days7.filter((d) => d.steps != null).map((d) => d.steps as number);
   const meals = await repo.getMeals(date);
   const specials = await repo.getSpecials();
-  const last = await repo.lastCompletedSession();
   const open = await repo.openSession();
   const todaySession = await repo.sessionOn(date);
 
@@ -143,7 +143,7 @@ export async function loadSummary(date: string): Promise<Summary | null> {
     protein: meals.reduce((s, m) => s + m.protein_g, 0),
     special: specials[weekday(date)] ?? null,
     liftDay: isLiftDay(date),
-    nextWorkout: nextType(last),
+    nextWorkout: scheduledDay(date),
     todaySession,
     openSession: open,
     marks,

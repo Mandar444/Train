@@ -1,6 +1,6 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
-import { LIFT_DAYS } from './plan';
+import { LIFT_DAYS, PROGRAM, SCHEDULE } from './plan';
 import { DEFAULT_REMINDERS, getKV, Reminders } from './repo';
 
 Notifications.setNotificationHandler({
@@ -38,14 +38,17 @@ export async function scheduleAll(): Promise<void> {
   const T = Notifications.SchedulableTriggerInputTypes;
   if (r.weigh.on) {
     await Notifications.scheduleNotificationAsync({
-      content: { title: 'Morning weigh-in', body: 'Record your morning weight when convenient — after the bathroom, before food.' },
+      content: { title: 'Morning weigh-in', body: 'Record your morning weight after the bathroom, before food.' },
       trigger: { type: T.DAILY, hour: r.weigh.hour, minute: r.weigh.minute, channelId: CHANNEL },
     });
   }
   if (r.workout.on) {
+    // Mon to Sat, one reminder per training day with that day's workout
     for (const d of LIFT_DAYS) {
+      const day = SCHEDULE[d];
+      const name = day ? PROGRAM[day].name : 'Training';
       await Notifications.scheduleNotificationAsync({
-        content: { title: 'Training day', body: 'Today’s full-body session is ready. Previous numbers are waiting in the app.' },
+        content: { title: `${name} today`, body: `${day ? PROGRAM[day].subtitle + '. ' : ''}Your last numbers and today's weights are in the Workout tab.` },
         trigger: { type: T.WEEKLY, weekday: d + 1, hour: r.workout.hour, minute: r.workout.minute, channelId: CHANNEL },
       });
     }
@@ -66,7 +69,7 @@ export async function scheduleAll(): Promise<void> {
   }
 }
 
-/** Evening step nudge — only scheduled when today's steps are below target. */
+/** Evening step nudge, only scheduled when today's steps are below target. */
 export async function refreshStepNudge(steps: number, target: number): Promise<void> {
   try {
     await Notifications.cancelScheduledNotificationAsync(STEP_NUDGE_ID);

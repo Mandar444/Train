@@ -1,4 +1,4 @@
-// Side-view stick-figure animation engine (pure TS, no React) — forward kinematics.
+// Side-view stick-figure animation engine (pure TS, no React), forward kinematics.
 // Angles in degrees: 0 = straight up, 90 = facing direction (right), 180 = down, 270 = behind (left).
 
 export type Pt = [number, number];
@@ -12,7 +12,7 @@ export type Pose = {
   th2?: number; sh2?: number; ua2?: number; fa2?: number; // far-side limbs (default = near side)
   ft?: number; ft2?: number; // foot direction (default 90)
   hd?: number;  // head tilt relative to torso
-  sl?: number;  // shoulder lift (px, along torso) — shrugs
+  sl?: number;  // shoulder lift (px, along torso), shrugs
   dx?: number; dy?: number; // whole-body offset for this pose (jumps, travel)
 };
 

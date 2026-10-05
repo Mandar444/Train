@@ -34,7 +34,7 @@ export default function ConnectSteps() {
 
   const points: { icon: IconName; t: string; d: string }[] = [
     { icon: 'steps', t: 'Steps fill in by themselves', d: 'From your phone, Google Fit, Fitbit or Samsung Health.' },
-    { icon: 'moon', t: 'Sleep too, if you track it', d: 'Optional — only if another app records it.' },
+    { icon: 'moon', t: 'Sleep too, if you track it', d: 'Optional, only if a watch or sleep app records it.' },
     { icon: 'lock', t: 'Private', d: 'GOAL only reads. Nothing leaves your phone, no password needed.' },
   ];
 
@@ -72,7 +72,7 @@ export default function ConnectSteps() {
         <>
           <Card tone="orange"><T.Small style={{ color: C.orangeText }}>{avail === 'needs_install' ? 'Health Connect is not on this phone yet. Get it free from the Play Store (built in on Android 14+), then come back.' : 'Health Connect needs an update from the Play Store.'}</T.Small></Card>
           <Btn title={avail === 'needs_install' ? 'Get Health Connect' : 'Update Health Connect'} onPress={openHealthConnectPlayStore} />
-          <Btn title="I've installed it — connect" kind="ghost" onPress={async () => { const a = await healthAvailability(); setAvail(a); if (a === 'available') connect(); }} />
+          <Btn title="I've installed it, connect" kind="ghost" onPress={async () => { const a = await healthAvailability(); setAvail(a); if (a === 'available') connect(); }} />
         </>
       ) : (
         <Btn title={busy ? 'Waiting for permission…' : 'Connect Health Connect'} icon="sync" disabled={busy || avail === null || avail === 'unsupported'} onPress={connect} />
