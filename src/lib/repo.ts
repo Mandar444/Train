@@ -26,6 +26,8 @@ export type Reminders = {
   steps: { on: boolean; hour: number; minute: number };
   meals: { on: boolean };
   review: { on: boolean; hour: number; minute: number };
+  protein: { on: boolean; hour: number; minute: number };
+  missed: { on: boolean; hour: number; minute: number };
 };
 export const DEFAULT_REMINDERS: Reminders = {
   weigh: { on: true, hour: 7, minute: 0 },
@@ -33,7 +35,13 @@ export const DEFAULT_REMINDERS: Reminders = {
   steps: { on: true, hour: 20, minute: 0 },
   meals: { on: false },
   review: { on: true, hour: 21, minute: 0 },
+  protein: { on: true, hour: 20, minute: 30 },
+  missed: { on: true, hour: 21, minute: 0 },
 };
+/** Stored reminders merged over defaults, so settings saved by older versions still get new reminder types. */
+export async function getReminders(): Promise<Reminders> {
+  return { ...DEFAULT_REMINDERS, ...(await getKV<Partial<Reminders>>('reminders', {})) };
+}
 
 // ---------- kv ----------
 export async function getKV<T>(key: string, fallback: T): Promise<T> {

@@ -7,7 +7,7 @@ import * as repo from '../lib/repo';
 import { DEFAULT_SPECIALS, Special } from '../lib/plan';
 import { scheduleAll } from '../lib/notify';
 import { exportCSV, exportJSON, importJSON } from '../lib/backup';
-import { today } from '../lib/dates';
+import { addDays, today } from '../lib/dates';
 import { C, F } from '../lib/theme';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -16,7 +16,7 @@ const fmtTime = (h: number, m: number) => `${h % 12 || 12}:${String(m).padStart(
 export default function Settings() {
   const { data } = useQuery(async () => ({
     p: await repo.getProfile(),
-    rem: await repo.getKV<repo.Reminders>('reminders', repo.DEFAULT_REMINDERS),
+    rem: await repo.getReminders(),
     specials: await repo.getSpecials(),
     presets: await repo.getPresets(),
     hc: await repo.getKV('health_connected', false),
@@ -78,8 +78,10 @@ export default function Settings() {
       <T.Label>REMINDERS</T.Label>
       <Card style={{ padding: 0, gap: 0, overflow: 'hidden' }}>
         {remRow('weigh', 'Morning weigh-in', 'Daily')}
-        {remRow('workout', 'Workout', 'Mon, Wed, Fri')}
+        {remRow('workout', 'Workout', 'Mon to Sat')}
         {remRow('steps', 'Step nudge', 'Evening, only if below target')}
+        {remRow('protein', 'Protein check', 'Only if under your protein minimum')}
+        {remRow('missed', 'Missed workout', 'Only if today\'s session isn\'t done')}
         {remRow('meals', 'Meal logging', '9:30, 2:30, 9:30')}
         {remRow('review', 'Weekly review', 'Sunday')}
       </Card>
@@ -114,7 +116,10 @@ export default function Settings() {
           <Field label="GOAL WEIGHT" keyboardType="decimal-pad" value={form.target ?? ''} onChangeText={(t) => setForm({ ...form, target: t })} style={{ flex: 1 }} />
         </Row>
         <Field label="PLAN START DATE (YYYY-MM-DD)" value={form.date ?? ''} onChangeText={(t) => setForm({ ...form, date: t })} />
-        <Btn small kind="ghost" title="Restart plan from today" onPress={() => setForm({ ...form, date: today() })} />
+        <Row gap={8}>
+          <Btn small kind="ghost" title="Start today" style={{ flex: 1 }} onPress={() => setForm({ ...form, date: today() })} />
+          <Btn small kind="ghost" title="Start next Monday" style={{ flex: 1 }} onPress={() => { const w = new Date(today() + 'T12:00:00').getDay(); setForm({ ...form, date: addDays(today(), ((8 - w) % 7) || 7) }); }} />
+        </Row>
         <Btn title="Save" onPress={async () => {
           const d = /^\d{4}-\d{2}-\d{2}$/.test(form.date ?? '') ? form.date! : p.start_date;
           await repo.saveProfile({ ...p, name: form.name?.trim() || p.name, age: num('age', p.age ?? 0) || null, height_cm: num('height', p.height_cm ?? 0) || null, start_weight_kg: num('start', p.start_weight_kg), target_weight_kg: num('target', p.target_weight_kg), start_date: d });

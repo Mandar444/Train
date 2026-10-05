@@ -6,11 +6,11 @@ import { MultiRing, TrendChart } from '../../components/charts';
 import { useQuery } from '../../lib/hooks';
 import { loadSummary } from '../../lib/summary';
 import { avgSeries, fmt, nextTrainingDay } from '../../lib/logic';
-import { dowShort, dayMonth, greeting, today } from '../../lib/dates';
+import { diffDays, dowShort, dayMonth, greeting, today } from '../../lib/dates';
 import { C, F } from '../../lib/theme';
 import { DAY1_CHECKLIST, estMinutes, EXERCISES, isDayKey, planFor, PROGRAM, workoutName } from '../../lib/plan';
 import { syncHealth } from '../../lib/health';
-import { refreshStepNudge } from '../../lib/notify';
+import { refreshNudges } from '../../lib/notify';
 import { getKV, getWorkouts, setKV } from '../../lib/repo';
 
 export default function Home() {
@@ -21,9 +21,16 @@ export default function Home() {
   const { width } = useWindowDimensions();
   const [refreshing, setRefreshing] = useState(false);
 
+  const sess0 = s ? s.openSession ?? s.todaySession : null;
+  const wDone = !!sess0?.completed;
   useEffect(() => {
-    if (s) refreshStepNudge(s.steps, s.stepTarget);
-  }, [s?.steps, s?.stepTarget]);
+    if (!s) return;
+    refreshNudges({
+      steps: s.steps, stepTarget: s.stepTarget,
+      protein: s.protein, proteinMin: s.profile.protein_min,
+      workoutName: s.liftDay ? workoutName(sess0?.type ?? s.nextWorkout) : null, workoutDone: wDone,
+    });
+  }, [s?.steps, s?.stepTarget, s?.protein, wDone, s?.liftDay]);
 
   // Existing installs that never linked steps: ask once.
   useEffect(() => {
@@ -96,7 +103,9 @@ export default function Home() {
         <Row style={{ justifyContent: 'space-between', paddingTop: 8 }}>
           <View style={{ gap: 4, flex: 1 }}>
             <T.Display style={{ fontSize: 28 }}>{`${greeting()}, ${s.profile.name}`}</T.Display>
-            <T.Small>{`${dowShort(date).slice(0, 1)}${dowShort(date).slice(1).toLowerCase()} ${dayMonth(date)} · Week ${s.week} of 12 · Day ${s.day}`}</T.Small>
+            <T.Small>{date < s.profile.start_date
+              ? `${dowShort(date).slice(0, 1)}${dowShort(date).slice(1).toLowerCase()} ${dayMonth(date)} · Plan starts ${dayMonth(s.profile.start_date)}, in ${diffDays(s.profile.start_date, date)} day${diffDays(s.profile.start_date, date) === 1 ? '' : 's'}`
+              : `${dowShort(date).slice(0, 1)}${dowShort(date).slice(1).toLowerCase()} ${dayMonth(date)} · Week ${s.week} of 12 · Day ${s.day}`}</T.Small>
           </View>
           <Pressable accessibilityLabel="Settings" onPress={() => router.push('/settings')} style={{ width: 46, height: 46, borderRadius: 23, backgroundColor: C.card2, alignItems: 'center', justifyContent: 'center' }}>
             <Icon name="settings" size={22} color={C.text} />
